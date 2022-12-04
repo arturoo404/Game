@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class MapGenerator {
 
-    private AnchorPane pane;
+    private final AnchorPane pane;
 
     public MapGenerator(AnchorPane pane) {
         this.pane = pane;

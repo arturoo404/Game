@@ -7,7 +7,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -20,7 +19,8 @@ public class StartWindowController {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         Scene scene = new Scene(root, 1920, 1080);
         stage.setScene(scene);
-        //stage.show();
-        Image image = new Image(getClass().getResourceAsStream("/txt/block/grassDirt.png"));
+        stage.show();
+        //Potrzebne do działania klawiatury
+        root.requestFocus();
     }
 }
