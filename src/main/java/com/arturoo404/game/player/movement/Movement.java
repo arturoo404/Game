@@ -16,13 +16,8 @@ public class Movement {
     private final BooleanProperty  goRight = new SimpleBooleanProperty();
     private final BooleanProperty goLeft = new SimpleBooleanProperty();
     private final BooleanBinding keyPress = goUp.or(goDown).or(goLeft).or(goRight);
-
-    private boolean down;
-    private boolean up;
-    private boolean right;
-    private boolean left;
+    private boolean gravity;
     private final Player player;
-
     private final List<Rectangle> rectangleList;
 
     public Movement(Player player, List<Rectangle> rectangleList) {
@@ -33,31 +28,41 @@ public class Movement {
     public void init(){
         Thread thread = new Thread(new MapCollision(rectangleList, player));
         thread.start();
+        gravityTimer.start();
         keyPress.addListener(((observableValue, aBoolean, t1) -> {
             if(!aBoolean){
-                animationTimer.start();
+                movementTimer.start();
             } else {
-                animationTimer.stop();
+                movementTimer.stop();
             }
         }));
     }
 
     private void move(){
-        if (goUp.get() && up){
+        if (goUp.get()){
             player.getRectangle().setY(player.getRectangle().getY() - 5);
-        } else if (goDown.get() && down) {
+        } else if (goDown.get()) {
             player.getRectangle().setY(player.getRectangle().getY() + 5);
-        }else if (goLeft.get() && left) {
+        }else if (goLeft.get()) {
             player.getRectangle().setX(player.getRectangle().getX() - 5);
-        }else if (goRight.get() && right) {
+        }else if (goRight.get()) {
             player.getRectangle().setX(player.getRectangle().getX() + 5);
         }
     }
 
-    AnimationTimer animationTimer = new AnimationTimer() {
+    AnimationTimer movementTimer = new AnimationTimer() {
         @Override
         public void handle(long now) {
             move();
+        }
+    };
+
+    AnimationTimer gravityTimer = new AnimationTimer() {
+        @Override
+        public void handle(long now) {
+            if (gravity){
+                player.getRectangle().setY(player.getRectangle().getY() + 2);
+            }
         }
     };
 
@@ -75,21 +80,5 @@ public class Movement {
 
     public void setGoLeft(boolean goLeft) {
         this.goLeft.set(goLeft);
-    }
-
-    public void setDown(boolean down) {
-        this.down = down;
-    }
-
-    public void setUp(boolean up) {
-        this.up = up;
-    }
-
-    public void setRight(boolean right) {
-        this.right = right;
-    }
-
-    public void setLeft(boolean left) {
-        this.left = left;
     }
 }
