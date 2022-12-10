@@ -1,23 +1,24 @@
 package com.arturoo404.game.player;
 
+import com.arturoo404.game.player.movement.Movement;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 
 public class PlayerOnKeyPressedController implements EventHandler<KeyEvent> {
 
-    private final Player player;
+    private final Movement movement;
 
-    public PlayerOnKeyPressedController(Player player) {
-        this.player = player;
+    public PlayerOnKeyPressedController(Movement movement) {
+        this.movement = movement;
     }
 
     @Override
     public void handle(KeyEvent keyEvent) {
         switch (keyEvent.getCode()) {
-            case W -> player.setGoUp(true);
-            case S -> player.setGoDown(true);
-            case A -> player.setGoLeft(true);
-            case D -> player.setGoRight(true);
+            case W -> movement.setGoUp(true);
+            case S -> movement.setGoDown(true);
+            case A -> movement.setGoLeft(true);
+            case D -> movement.setGoRight(true);
         }
     }
 }
