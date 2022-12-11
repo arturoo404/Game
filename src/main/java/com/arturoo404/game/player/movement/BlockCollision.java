@@ -28,13 +28,13 @@ public class BlockCollision extends AnimationTimer {
 
             if (playerRect.getY() <= rectangle.getY() + 60 && playerRect.getY() >= rectangle.getY() && playerRect.getX() >= rectangle.getX() && playerRect.getX() < rectangle.getX() + 60 ||
                     playerRect.getY() <= rectangle.getY() + 60 && playerRect.getY() >= rectangle.getY() && playerRect.getX() + 60 > rectangle.getX() && playerRect.getX() + 60 < rectangle.getX() + 60){
-                player.getMovement().setGoUp(false);
+                player.getMovement().setJumpTimes(0);
             }
 
             if (playerRect.getX() + 60 == rectangle.getX() && playerRect.getY() >= rectangle.getY() && playerRect.getY() < rectangle.getY() + 60 ||
                     playerRect.getX() + 60 == rectangle.getX() && playerRect.getY() + 60 > rectangle.getY() && playerRect.getY() + 60 < rectangle.getY() + 60){
                 player.getMovement().setGoRight(false);
-            }
+            }else
 
             if (playerRect.getX() == rectangle.getX() + 60 && playerRect.getY() >= rectangle.getY() && playerRect.getY() < rectangle.getY() + 60 ||
                     playerRect.getX() == rectangle.getX() + 60 && playerRect.getY() + 60 > rectangle.getY() && playerRect.getY() + 60 < rectangle.getY() + 60){

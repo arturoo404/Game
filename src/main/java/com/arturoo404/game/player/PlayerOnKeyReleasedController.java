@@ -15,7 +15,7 @@ public class PlayerOnKeyReleasedController implements EventHandler<KeyEvent> {
     @Override
     public void handle(KeyEvent keyEvent) {
         switch (keyEvent.getCode()){
-            case W -> movement.setGoUp(false);
+            case W -> movement.setJump(false);
             case S -> movement.setGoDown(false);
             case A -> movement.setGoLeft(false);
             case D -> movement.setGoRight(false);

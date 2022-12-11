@@ -11,15 +11,18 @@ import java.util.List;
 
 public class Movement {
 
-    private final BooleanProperty goUp = new SimpleBooleanProperty();
+    private final BooleanProperty jump = new SimpleBooleanProperty();
     private final BooleanProperty  goDown = new SimpleBooleanProperty();
     private final BooleanProperty  goRight = new SimpleBooleanProperty();
     private final BooleanProperty goLeft = new SimpleBooleanProperty();
-    private final BooleanBinding keyPress = goUp.or(goDown).or(goLeft).or(goRight);
+    private final BooleanBinding keyPress = jump.or(goDown).or(goLeft).or(goRight);
     private final BooleanProperty gravityStatus = new SimpleBooleanProperty();
     private final BooleanBinding gravity = gravityStatus.or(gravityStatus);
+    private boolean jumpProgres;
     private final Player player;
     private final List<Rectangle> rectangleList;
+    private int jumpTimes = 0;
+    private int jumpClick = 0;
 
     public Movement(Player player, List<Rectangle> rectangleList) {
         this.player = player;
@@ -47,16 +50,44 @@ public class Movement {
     }
 
     private void move(){
-        if (goUp.get()){
-            player.getRectangle().setY(player.getRectangle().getY() - 5);
+        if (jump.get() && jumpTimes == 0 && jumpClick == 0&& !gravityStatus.get()){
+            jumpChecker();
         } else if (goDown.get()) {
             //player.getRectangle().setY(player.getRectangle().getY() + 5);
         }else if (goLeft.get()) {
-            player.getRectangle().setX(player.getRectangle().getX() - 5);
+            player.getRectangle().setX(player.getRectangle().getX() - 4);
         }else if (goRight.get()) {
-            player.getRectangle().setX(player.getRectangle().getX() + 5);
+            player.getRectangle().setX(player.getRectangle().getX() + 4);
         }
     }
+
+    private void jumpChecker(){
+        jumpTimer.start();
+        jumpTimes = 50;
+        jumpClick = 1;
+        jumpProgres = true;
+        gravityStatus.set(false);
+    }
+
+    private void jumpAnimation(){
+        if (jumpTimes == 0){
+            jumpTimer.stop();
+            jumpProgres = false;
+            gravityStatus.set(true);
+            jumpClick = 0;
+            return;
+        }
+
+        player.getRectangle().setY(player.getRectangle().getY() - 3);
+        jumpTimes--;
+    }
+
+    AnimationTimer jumpTimer = new AnimationTimer() {
+        @Override
+        public void handle(long now) {
+            jumpAnimation();
+        }
+    };
 
     AnimationTimer movementTimer = new AnimationTimer() {
         @Override
@@ -66,7 +97,7 @@ public class Movement {
     };
 
     private void grav(){
-        player.getRectangle().setY(player.getRectangle().getY() + 2);
+        player.getRectangle().setY(player.getRectangle().getY() + 3);
     }
 
     AnimationTimer gravTimer = new AnimationTimer() {
@@ -76,8 +107,8 @@ public class Movement {
         }
     };
 
-    public void setGoUp(boolean goUp) {
-        this.goUp.set(goUp);
+    public void setJump(boolean jump) {
+        this.jump.set(jump);
     }
 
     public void setGoDown(boolean goDown) {
@@ -94,5 +125,13 @@ public class Movement {
 
     public void setGravityStatus(boolean gravityStatus) {
         this.gravityStatus.set(gravityStatus);
+    }
+
+    public boolean isJumpProgres() {
+        return jumpProgres;
+    }
+
+    public void setJumpTimes(int jumpTimes) {
+        this.jumpTimes = jumpTimes;
     }
 }
