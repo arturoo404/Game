@@ -16,7 +16,8 @@ public class Movement {
     private final BooleanProperty  goRight = new SimpleBooleanProperty();
     private final BooleanProperty goLeft = new SimpleBooleanProperty();
     private final BooleanBinding keyPress = goUp.or(goDown).or(goLeft).or(goRight);
-    private boolean gravity;
+    private final BooleanProperty gravityStatus = new SimpleBooleanProperty();
+    private final BooleanBinding gravity = gravityStatus.or(gravityStatus);
     private final Player player;
     private final List<Rectangle> rectangleList;
 
@@ -26,14 +27,21 @@ public class Movement {
     }
 
     public void init(){
-        Thread thread = new Thread(new MapCollision(rectangleList, player));
-        thread.start();
-        gravityTimer.start();
+        Thread blockCollision = new Thread(new MapCollision(rectangleList, player));
+        blockCollision.start();
         keyPress.addListener(((observableValue, aBoolean, t1) -> {
             if(!aBoolean){
                 movementTimer.start();
             } else {
                 movementTimer.stop();
+            }
+        }));
+
+        gravity.addListener(((observableValue, aBoolean, t1) -> {
+            if(!aBoolean){
+                gravTimer.start();
+            } else {
+                gravTimer.stop();
             }
         }));
     }
@@ -42,7 +50,7 @@ public class Movement {
         if (goUp.get()){
             player.getRectangle().setY(player.getRectangle().getY() - 5);
         } else if (goDown.get()) {
-            player.getRectangle().setY(player.getRectangle().getY() + 5);
+            //player.getRectangle().setY(player.getRectangle().getY() + 5);
         }else if (goLeft.get()) {
             player.getRectangle().setX(player.getRectangle().getX() - 5);
         }else if (goRight.get()) {
@@ -57,12 +65,14 @@ public class Movement {
         }
     };
 
-    AnimationTimer gravityTimer = new AnimationTimer() {
+    private void grav(){
+        player.getRectangle().setY(player.getRectangle().getY() + 2);
+    }
+
+    AnimationTimer gravTimer = new AnimationTimer() {
         @Override
         public void handle(long now) {
-            if (gravity){
-                player.getRectangle().setY(player.getRectangle().getY() + 2);
-            }
+            grav();
         }
     };
 
@@ -80,5 +90,9 @@ public class Movement {
 
     public void setGoLeft(boolean goLeft) {
         this.goLeft.set(goLeft);
+    }
+
+    public void setGravityStatus(boolean gravityStatus) {
+        this.gravityStatus.set(gravityStatus);
     }
 }
