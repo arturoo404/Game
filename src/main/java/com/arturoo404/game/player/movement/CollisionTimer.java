@@ -23,32 +23,28 @@ public class CollisionTimer extends AnimationTimer {
         Rectangle playerRect = player.getRectangle();
         for (Rectangle rectangle : rectangleList){
 
-            if (playerRect.getY() + 60 >= rectangle.getY() && playerRect.getY() + 60 <= rectangle.getY() + 60 && playerRect.getX() >= rectangle.getX() && playerRect.getX() < rectangle.getX() + 60 ||
-                    playerRect.getY() + 60 >= rectangle.getY() && playerRect.getY() + 60 <= rectangle.getY() + 60 && playerRect.getX() + 60 > rectangle.getX() && playerRect.getX() + 60 < rectangle.getX() + 60){
+            final int block = 120;
+            final int width = 80;
+            final int height = 120;
+
+            if (playerRect.getY() + height >= rectangle.getY() && playerRect.getY() + height <= rectangle.getY() + block && playerRect.getX() >= rectangle.getX() && playerRect.getX() < rectangle.getX() + block ||
+                    playerRect.getY() + height >= rectangle.getY() && playerRect.getY() + height <= rectangle.getY() + block && playerRect.getX() + width > rectangle.getX() && playerRect.getX() + width < rectangle.getX() + block){
                 player.getMovement().setGoDown(false);
-            }else {
-                player.getMovement().setDown(true);
             }
 
-            if (playerRect.getY() <= rectangle.getY() + 60 && playerRect.getY() >= rectangle.getY() && playerRect.getX() >= rectangle.getX() && playerRect.getX() < rectangle.getX() + 60 ||
-                    playerRect.getY() <= rectangle.getY() + 60 && playerRect.getY() >= rectangle.getY() && playerRect.getX() + 60 > rectangle.getX() && playerRect.getX() + 60 < rectangle.getX() + 60){
+            if (playerRect.getY() <= rectangle.getY() + block && playerRect.getY() >= rectangle.getY() && playerRect.getX() >= rectangle.getX() && playerRect.getX() < rectangle.getX() + block ||
+                    playerRect.getY() <= rectangle.getY() + block && playerRect.getY() >= rectangle.getY() && playerRect.getX() + width > rectangle.getX() && playerRect.getX() + width < rectangle.getX() + block){
                 player.getMovement().setGoUp(false);
-            }else {
-                player.getMovement().setUp(true);
             }
 
-            if (playerRect.getX() + 60 == rectangle.getX() && playerRect.getY() >= rectangle.getY() && playerRect.getY() < rectangle.getY() + 60 ||
-                    playerRect.getX() + 60 == rectangle.getX() && playerRect.getY() + 60 > rectangle.getY() && playerRect.getY() + 60 < rectangle.getY() + 60){
+            if (playerRect.getX() + width == rectangle.getX() && playerRect.getY() >= rectangle.getY() && playerRect.getY() < rectangle.getY() + block ||
+                    playerRect.getX() + width == rectangle.getX() && playerRect.getY() + height > rectangle.getY() && playerRect.getY() + height < rectangle.getY() + block){
                 player.getMovement().setGoRight(false);
-            }else {
-                player.getMovement().setRight(true);
             }
 
-            if (playerRect.getX() == rectangle.getX() + 60 && playerRect.getY() >= rectangle.getY() && playerRect.getY() < rectangle.getY() + 60 ||
-                    playerRect.getX() == rectangle.getX() + 60 && playerRect.getY() + 60 > rectangle.getY() && playerRect.getY() + 60 < rectangle.getY() + 60){
+            if (playerRect.getX() == rectangle.getX() + block && playerRect.getY() >= rectangle.getY() && playerRect.getY() < rectangle.getY() + block ||
+                    playerRect.getX() == rectangle.getX() + block && playerRect.getY() + height > rectangle.getY() && playerRect.getY() + height < rectangle.getY() + block){
                 player.getMovement().setGoLeft(false);
-            }else {
-                player.getMovement().setLeft(true);
             }
         }
     }

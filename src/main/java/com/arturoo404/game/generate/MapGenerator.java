@@ -43,10 +43,13 @@ public class MapGenerator {
                             case "2":
                                 rectangleList.add(rectangleGen(xPos.get(), yPos.get(), 2));
                                 break;
+                            case "3":
+                                rectangleGen(xPos.get(), yPos.get(), 3);
+                                break;
                         }
-                        xPos.set(xPos.get() + 60);
+                        xPos.set(xPos.get() + 120);
                     }
-                    yPos.set(yPos.get() + 60);
+                    yPos.set(yPos.get() + 120);
                     xPos.set(0);
                 }
             });
@@ -55,11 +58,12 @@ public class MapGenerator {
     }
 
     private Rectangle rectangleGen(int x, int y, int i) {
-        Rectangle rectangle = new Rectangle(x, y, 60, 60);
+        Rectangle rectangle = new Rectangle(x, y, 120, 120);
 
         switch (i) {
-            case 1 -> rectangle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/txt/block/grassMain.png"))));
+            case 1 -> rectangle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/txt/block/blackBrick.png"))));
             case 2 -> rectangle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/txt/block/grassDirt.png"))));
+            case 3 -> rectangle.setFill(new ImagePattern(new Image(getClass().getResourceAsStream("/txt/block/wood.png"))));
         }
         pane.getChildren().add(rectangle);
         return rectangle;

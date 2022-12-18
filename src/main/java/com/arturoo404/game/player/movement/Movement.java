@@ -16,41 +16,44 @@ public class Movement {
     private final BooleanProperty  goRight = new SimpleBooleanProperty();
     private final BooleanProperty goLeft = new SimpleBooleanProperty();
     private final BooleanBinding keyPress = goUp.or(goDown).or(goLeft).or(goRight);
-
-    private boolean down;
-    private boolean up;
-    private boolean right;
-    private boolean left;
     private final Player player;
-
     private final List<Rectangle> rectangleList;
+    private final MovementAnimation movementAnimation;
 
     public Movement(Player player, List<Rectangle> rectangleList) {
         this.player = player;
         this.rectangleList = rectangleList;
+        movementAnimation = new MovementAnimation(player.getRectangle());
     }
 
     public void init(){
         Thread thread = new Thread(new MapCollision(rectangleList, player));
         thread.start();
+        movementAnimation.init();
         keyPress.addListener(((observableValue, aBoolean, t1) -> {
             if(!aBoolean){
                 animationTimer.start();
+                movementAnimation.setPlay(true);
             } else {
                 animationTimer.stop();
+                movementAnimation.setPlay(false);
             }
         }));
     }
 
     private void move(){
-        if (goUp.get() && up){
-            player.getRectangle().setY(player.getRectangle().getY() - 5);
-        } else if (goDown.get() && down) {
-            player.getRectangle().setY(player.getRectangle().getY() + 5);
-        }else if (goLeft.get() && left) {
-            player.getRectangle().setX(player.getRectangle().getX() - 5);
-        }else if (goRight.get() && right) {
-            player.getRectangle().setX(player.getRectangle().getX() + 5);
+        if (goUp.get()){
+            player.getRectangle().setY(player.getRectangle().getY() - 2);
+            movementAnimation.setKey("W");
+        } else if (goDown.get()) {
+            player.getRectangle().setY(player.getRectangle().getY() + 2);
+            movementAnimation.setKey("S");
+        }else if (goLeft.get()) {
+            player.getRectangle().setX(player.getRectangle().getX() - 2);
+            movementAnimation.setKey("A");
+        }else if (goRight.get()) {
+            player.getRectangle().setX(player.getRectangle().getX() + 2);
+            movementAnimation.setKey("D");
         }
     }
 
@@ -75,21 +78,5 @@ public class Movement {
 
     public void setGoLeft(boolean goLeft) {
         this.goLeft.set(goLeft);
-    }
-
-    public void setDown(boolean down) {
-        this.down = down;
-    }
-
-    public void setUp(boolean up) {
-        this.up = up;
-    }
-
-    public void setRight(boolean right) {
-        this.right = right;
-    }
-
-    public void setLeft(boolean left) {
-        this.left = left;
     }
 }
