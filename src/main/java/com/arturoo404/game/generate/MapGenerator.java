@@ -4,7 +4,6 @@ import com.arturoo404.game.file.CsvFileReader;
 import com.opencsv.exceptions.CsvException;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 

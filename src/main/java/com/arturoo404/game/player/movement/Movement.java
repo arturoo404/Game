@@ -5,6 +5,8 @@ import javafx.animation.AnimationTimer;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.scene.input.KeyCode;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 
 import java.util.List;
@@ -19,11 +21,13 @@ public class Movement {
     private final Player player;
     private final List<Rectangle> rectangleList;
     private final MovementAnimation movementAnimation;
+    private final CameraMovement cameraMovement;
 
     public Movement(Player player, List<Rectangle> rectangleList) {
         this.player = player;
         this.rectangleList = rectangleList;
         movementAnimation = new MovementAnimation(player.getRectangle());
+        cameraMovement = new CameraMovement(player.getRectangle());
     }
 
     public void init(){
@@ -44,24 +48,27 @@ public class Movement {
     private void move(){
         if (goUp.get()){
             player.getRectangle().setY(player.getRectangle().getY() - 2);
-            movementAnimation.setKey("W");
+            movementAnimation.setKey(KeyCode.W);
+            cameraMovement.moveCamera(KeyCode.W);
         } else if (goDown.get()) {
             player.getRectangle().setY(player.getRectangle().getY() + 2);
-            movementAnimation.setKey("S");
+            movementAnimation.setKey(KeyCode.S);
+            cameraMovement.moveCamera(KeyCode.S);
         }else if (goLeft.get()) {
             player.getRectangle().setX(player.getRectangle().getX() - 2);
-            movementAnimation.setKey("A");
+            movementAnimation.setKey(KeyCode.A);
+            cameraMovement.moveCamera(KeyCode.A);
         }else if (goRight.get()) {
             player.getRectangle().setX(player.getRectangle().getX() + 2);
-            movementAnimation.setKey("D");
+            movementAnimation.setKey(KeyCode.D);
+            cameraMovement.moveCamera(KeyCode.D);
         }
     }
 
     AnimationTimer animationTimer = new AnimationTimer() {
         @Override
         public void handle(long now) {
-            move();
-        }
+            move();}
     };
 
     public void setGoUp(boolean goUp) {

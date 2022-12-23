@@ -6,6 +6,7 @@ import javafx.animation.Timeline;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
+import javafx.scene.input.KeyCode;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
@@ -13,7 +14,7 @@ import javafx.util.Duration;
 public class MovementAnimation {
 
     private boolean play;
-    private String key;
+    private KeyCode key;
     private final Rectangle player;
     private final Image image;
     private int animationCount = 1;
@@ -45,19 +46,19 @@ public class MovementAnimation {
         }
 
         return switch (key) {
-            case "S" -> writableImage(x, 481);
-            case "A" -> writableImage(x, 601);
-            case "D" -> writableImage(x, 721);
-            case "W" -> writableImage(x, 841);
+            case S -> writableImage(x, 481);
+            case A -> writableImage(x, 601);
+            case D -> writableImage(x, 721);
+            case W -> writableImage(x, 841);
             default -> writableImage(320, 481);
         };
     }
 
     private WritableImage playerTextureStop(){
         return switch (key) {
-            case "A" -> writableImage(320, 601);
-            case "D" -> writableImage(320, 721);
-            case "W" -> writableImage(320, 841);
+            case A -> writableImage(320, 601);
+            case D -> writableImage(320, 721);
+            case W -> writableImage(320, 841);
             default -> writableImage(320, 481);
         };
     }
@@ -75,7 +76,7 @@ public class MovementAnimation {
         this.play = play;
     }
 
-    public void setKey(String key) {
+    public void setKey(KeyCode key) {
         this.key = key;
     }
 }
