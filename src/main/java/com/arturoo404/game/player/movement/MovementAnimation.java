@@ -20,6 +20,7 @@ public class MovementAnimation {
     private int animationCount = 1;
 
     public void init(){
+        key = KeyCode.S;
         Thread thread = new Thread(() -> {
             Timeline playerAnimation = new Timeline(new KeyFrame(Duration.millis(100), actionEvent -> {
                 if (play){
@@ -78,5 +79,9 @@ public class MovementAnimation {
 
     public void setKey(KeyCode key) {
         this.key = key;
+    }
+
+    public KeyCode getKey() {
+        return key;
     }
 }

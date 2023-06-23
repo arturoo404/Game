@@ -6,7 +6,6 @@ import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 
 import java.util.List;
@@ -34,6 +33,7 @@ public class Movement {
         Thread thread = new Thread(new MapCollision(rectangleList, player));
         thread.start();
         movementAnimation.init();
+        player.setDirection(KeyCode.S);
         keyPress.addListener(((observableValue, aBoolean, t1) -> {
             if(!aBoolean){
                 animationTimer.start();
@@ -49,18 +49,22 @@ public class Movement {
         if (goUp.get()){
             player.getRectangle().setY(player.getRectangle().getY() - 2);
             movementAnimation.setKey(KeyCode.W);
+            player.setDirection(KeyCode.W);
             cameraMovement.moveCamera(KeyCode.W);
         } else if (goDown.get()) {
             player.getRectangle().setY(player.getRectangle().getY() + 2);
             movementAnimation.setKey(KeyCode.S);
+            player.setDirection(KeyCode.S);
             cameraMovement.moveCamera(KeyCode.S);
         }else if (goLeft.get()) {
             player.getRectangle().setX(player.getRectangle().getX() - 2);
             movementAnimation.setKey(KeyCode.A);
+            player.setDirection(KeyCode.A);
             cameraMovement.moveCamera(KeyCode.A);
         }else if (goRight.get()) {
             player.getRectangle().setX(player.getRectangle().getX() + 2);
             movementAnimation.setKey(KeyCode.D);
+            player.setDirection(KeyCode.D);
             cameraMovement.moveCamera(KeyCode.D);
         }
     }
@@ -85,5 +89,9 @@ public class Movement {
 
     public void setGoLeft(boolean goLeft) {
         this.goLeft.set(goLeft);
+    }
+
+    public MovementAnimation getMovementAnimation() {
+        return movementAnimation;
     }
 }

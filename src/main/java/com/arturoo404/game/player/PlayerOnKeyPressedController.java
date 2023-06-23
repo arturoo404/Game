@@ -1,6 +1,7 @@
 package com.arturoo404.game.player;
 
 import com.arturoo404.game.player.movement.Movement;
+import com.arturoo404.game.player.skills.SkillsController;
 import javafx.event.EventHandler;
 import javafx.scene.input.KeyEvent;
 
@@ -8,8 +9,11 @@ public class PlayerOnKeyPressedController implements EventHandler<KeyEvent> {
 
     private final Movement movement;
 
-    public PlayerOnKeyPressedController(Movement movement) {
+    private final SkillsController skillsController;
+
+    public PlayerOnKeyPressedController(Movement movement, SkillsController skillsController) {
         this.movement = movement;
+        this.skillsController = skillsController;
     }
 
     @Override
@@ -19,6 +23,10 @@ public class PlayerOnKeyPressedController implements EventHandler<KeyEvent> {
             case S -> movement.setGoDown(true);
             case A -> movement.setGoLeft(true);
             case D -> movement.setGoRight(true);
+        }
+
+        switch (keyEvent.getCode()) {
+            case SPACE -> skillsController.setBasicAttack(true);
         }
     }
 }

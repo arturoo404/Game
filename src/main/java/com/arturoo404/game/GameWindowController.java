@@ -1,19 +1,20 @@
 package com.arturoo404.game;
 
 import com.arturoo404.game.generate.MapGenerator;
+import com.arturoo404.game.player.SkillStats;
 import com.arturoo404.game.player.movement.Movement;
 import com.arturoo404.game.player.Player;
 import com.arturoo404.game.player.PlayerOnKeyPressedController;
 import com.arturoo404.game.player.PlayerOnKeyReleasedController;
+import com.arturoo404.game.player.skills.SkillsController;
 import com.opencsv.exceptions.CsvException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 
@@ -41,12 +42,17 @@ public class GameWindowController implements Initializable {
 
         pane.getChildren().add(playerShape);
         Player player = new Player(playerShape);
+
         Movement movement = new Movement(player, init);
         movement.init();
         player.setMovement(movement);
 
-        pane.setOnKeyPressed(new PlayerOnKeyPressedController(movement));
-        pane.setOnKeyReleased(new PlayerOnKeyReleasedController(movement));
+        player.setSkillStats(new SkillStats());
+        SkillsController skillsController = new SkillsController(player);
+        skillsController.init();
+
+        pane.setOnKeyPressed(new PlayerOnKeyPressedController(movement, skillsController));
+        pane.setOnKeyReleased(new PlayerOnKeyReleasedController(movement, skillsController));
         pane.requestFocus();
     }
 
