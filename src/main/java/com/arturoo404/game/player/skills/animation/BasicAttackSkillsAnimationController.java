@@ -15,12 +15,14 @@ import javafx.util.Duration;
 public class BasicAttackSkillsAnimationController {
     private final BasicAttack basicAttack;
     private final Image image;
+
+    /**
+     * This method is used to initialize the basic attack animation.
+     */
     public void initBasicAttackAnimation(){
         Thread thread = new Thread(() -> {
-            Timeline playerAnimation = new Timeline(new KeyFrame(Duration.millis(100), actionEvent -> {
-                synchronized (basicAttack){
-                    basicAttack.getBasickAttackList().forEach(f -> f.getSkill().setFill(new ImagePattern(bulletImage(f))));
-                }
+            Timeline playerAnimation = new Timeline(new KeyFrame(Duration.millis(100), actionEvent -> {                    basicAttack.getBasickAttackList().forEach(f -> f.getSkill().setFill(new ImagePattern(bulletImage(f))));
+                basicAttack.getBasickAttackList().forEach(f -> f.getSkill().setFill(new ImagePattern(bulletImage(f))));
             }));
             playerAnimation.setCycleCount(Animation.INDEFINITE);
             playerAnimation.play();
@@ -28,11 +30,20 @@ public class BasicAttackSkillsAnimationController {
         thread.start();
     }
 
+    /**
+     * This method is used to initialize the basic attack animation.
+     * @param basicAttack
+     */
     public BasicAttackSkillsAnimationController(BasicAttack basicAttack) {
         image = new Image(getClass().getResourceAsStream("/txt/skills/basicAttack.png"));
         this.basicAttack = basicAttack;
     }
 
+    /**
+     * This method is used to get the bullet image.
+     * @param bulletAttackObject
+     * @return
+     */
     private synchronized WritableImage bulletImage(BulletAttackObject bulletAttackObject){
         int x, y,  width, height;
         if (bulletAttackObject.getKeyCode().equals(KeyCode.S)){
@@ -74,6 +85,14 @@ public class BasicAttackSkillsAnimationController {
         return writableImage(x, y,  width, height);
     }
 
+    /**
+     * This method is used to get the writable image.
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     * @return
+     */
     private WritableImage writableImage(int x, int y, int width, int height){
         PixelReader reader = image.getPixelReader();
         return new WritableImage(reader, x, y, width, height);

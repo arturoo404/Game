@@ -15,6 +15,11 @@ public class CameraMovement {
 
     }
 
+    /**
+     * Move the camera based on the key pressed
+     * @param keyCode
+     */
+
     public void moveCamera(KeyCode keyCode){
         double playerX = player.getX();
         double playerY = player.getY();

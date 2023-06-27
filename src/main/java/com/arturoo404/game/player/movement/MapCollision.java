@@ -16,6 +16,9 @@ public class MapCollision implements Runnable{
         this.player = player;
     }
 
+    /**
+     * This method is used to check if the player is colliding with a wall.
+     */
     @Override
     public void run() {
         AnimationTimer animationTimer = new CollisionTimer(rectangleList, player);

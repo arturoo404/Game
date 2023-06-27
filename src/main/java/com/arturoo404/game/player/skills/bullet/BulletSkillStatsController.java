@@ -1,13 +1,13 @@
 package com.arturoo404.game.player.skills.bullet;
 
 
-import javafx.scene.image.Image;
-import javafx.scene.image.PixelReader;
-import javafx.scene.image.WritableImage;
-
 public class BulletSkillStatsController {
 
     private final BasicAttack basicAttack;
+
+    /**
+     * This method is used to refresh the basic attack stack
+     */
     public void countBasicAttackStack(){
         Thread thread = new Thread(() -> {
             try {

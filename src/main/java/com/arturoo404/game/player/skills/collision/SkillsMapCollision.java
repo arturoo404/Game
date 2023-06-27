@@ -21,6 +21,9 @@ public class SkillsMapCollision {
         this.mapBlock = mapBlock;
     }
 
+    /**
+     * This method is used to initialize the basic attack collision detection.
+     */
     public void init(){
         Thread thread = new Thread(() -> {
             Timeline collision = new Timeline(new KeyFrame(Duration.millis(20), actionEvent -> {
@@ -41,6 +44,12 @@ public class SkillsMapCollision {
         thread.start();
     }
 
+    /**
+     * This method is used to check if the bullet is colliding with the map.
+     * @param mapBlock
+     * @param bulletAttackObject
+     * @return
+     */
     private boolean check(Rectangle mapBlock, BulletAttackObject bulletAttackObject) {
         return mapBlock.getBoundsInParent().intersects(bulletAttackObject.getSkill().getBoundsInParent());
     }

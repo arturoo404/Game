@@ -8,7 +8,7 @@ public class Player {
 
     private final Rectangle rectangle;
     private Movement movement;
-    private SkillStats skillStats;
+    private PlayerStats skillStats;
 
     private KeyCode direction;
 
@@ -36,11 +36,11 @@ public class Player {
         this.direction = direction;
     }
 
-    public void setSkillStats(SkillStats skillStats) {
+    public void setSkillStats(PlayerStats skillStats) {
         this.skillStats = skillStats;
     }
 
-    public SkillStats getSkillStats() {
+    public PlayerStats getSkillStats() {
         return skillStats;
     }
 }

@@ -16,6 +16,10 @@ public class PlayerOnKeyPressedController implements EventHandler<KeyEvent> {
         this.skillsController = skillsController;
     }
 
+    /**
+     * Handle the key pressed event
+     * @param keyEvent
+     */
     @Override
     public void handle(KeyEvent keyEvent) {
         switch (keyEvent.getCode()) {

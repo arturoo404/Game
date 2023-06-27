@@ -1,7 +1,7 @@
 package com.arturoo404.game;
 
 import com.arturoo404.game.generate.MapGenerator;
-import com.arturoo404.game.player.SkillStats;
+import com.arturoo404.game.player.PlayerStats;
 import com.arturoo404.game.player.movement.Movement;
 import com.arturoo404.game.player.Player;
 import com.arturoo404.game.player.PlayerOnKeyPressedController;
@@ -10,7 +10,6 @@ import com.arturoo404.game.player.skills.SkillsController;
 import com.opencsv.exceptions.CsvException;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
@@ -29,6 +28,11 @@ public class GameWindowController implements Initializable {
     private AnchorPane pane;
     private List<Rectangle> init;
 
+    /**
+     * Initializes the game window.
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initGame();
@@ -47,7 +51,7 @@ public class GameWindowController implements Initializable {
         movement.init();
         player.setMovement(movement);
 
-        player.setSkillStats(new SkillStats());
+        player.setSkillStats(new PlayerStats());
         SkillsController skillsController = new SkillsController(player, pane);
         skillsController.init();
         pane.setOnKeyPressed(new PlayerOnKeyPressedController(movement, skillsController));
@@ -55,6 +59,9 @@ public class GameWindowController implements Initializable {
         pane.requestFocus();
     }
 
+    /**
+     * Initializes the map.
+     */
     private void initGame(){
         MapGenerator mapGenerator = new MapGenerator(pane);
         try {

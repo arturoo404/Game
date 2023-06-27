@@ -29,6 +29,9 @@ public class Movement {
         cameraMovement = new CameraMovement(player.getRectangle());
     }
 
+    /**
+     * This method is used to initialize the movement of the player.
+     */
     public void init(){
         Thread thread = new Thread(new MapCollision(rectangleList, player));
         thread.start();
@@ -45,6 +48,9 @@ public class Movement {
         }));
     }
 
+    /**
+     * This method is used to move the player.
+     */
     private void move(){
         if (goUp.get()){
             player.getRectangle().setY(player.getRectangle().getY() - 2);
@@ -69,10 +75,14 @@ public class Movement {
         }
     }
 
+    /**
+     * This method is used to start the movement of the player.
+     */
     AnimationTimer animationTimer = new AnimationTimer() {
         @Override
         public void handle(long now) {
-            move();}
+            move();
+        }
     };
 
     public void setGoUp(boolean goUp) {

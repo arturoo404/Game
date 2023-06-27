@@ -19,6 +19,9 @@ public class MovementAnimation {
     private final Image image;
     private int animationCount = 1;
 
+    /**
+     * This method is used to initialize the movement animation.
+     */
     public void init(){
         key = KeyCode.S;
         Thread thread = new Thread(() -> {
@@ -37,6 +40,10 @@ public class MovementAnimation {
         thread.start();
     }
 
+    /**
+     * This method is used to change the texture of the player.
+     * @return
+     */
     private WritableImage playerTexturePlay(){
         int x = 160 + (animationCount * 80);
 
@@ -64,10 +71,21 @@ public class MovementAnimation {
         };
     }
 
+    /**
+     * This method is used to create a writable image.
+     * @param x
+     * @param y
+     * @return
+     */
     private WritableImage writableImage(int x, int y){
         PixelReader reader = image.getPixelReader();
         return new WritableImage(reader, x, y, 80, 119);
     }
+
+    /**
+     * This method is used to initialize the movement animation.
+     * @param player
+     */
     public MovementAnimation(Rectangle player) {
         this.player = player;
         image = new Image(getClass().getResourceAsStream("/txt/player/player.png"));

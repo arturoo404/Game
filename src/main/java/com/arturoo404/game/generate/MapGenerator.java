@@ -20,6 +20,12 @@ public class MapGenerator {
         this.pane = pane;
     }
 
+    /**
+     * Generates the map from the csv file
+     * @return
+     * @throws IOException
+     * @throws CsvException
+     */
     public List<Rectangle> init() throws IOException, CsvException {
         List<Rectangle> rectangleList = new ArrayList<>();
 
@@ -56,6 +62,13 @@ public class MapGenerator {
         return rectangleList;
     }
 
+    /**
+     * Generates a rectangle based on the parameters
+     * @param x
+     * @param y
+     * @param i
+     * @return
+     */
     private Rectangle rectangleGen(int x, int y, int i) {
         Rectangle rectangle = new Rectangle(x, y, 120, 120);
 

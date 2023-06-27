@@ -18,6 +18,9 @@ public class SkillsController {
 
     private final BasicAttack basic;
 
+    /**
+     * Initialize the player skills
+     */
     public void init(){
         basic.init();
         keyPress.addListener(((observableValue, aBoolean, t1) -> {

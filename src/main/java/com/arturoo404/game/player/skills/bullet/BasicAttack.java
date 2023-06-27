@@ -38,6 +38,9 @@ public class BasicAttack {
         this.pane = pane;
     }
 
+    /**
+     * This method is used to initialize the basic attack
+     */
     public void init(){
         stack = true;
         bulletSkillStatsController = new BulletSkillStatsController(this);
@@ -50,10 +53,7 @@ public class BasicAttack {
             Timeline basicAttack = new Timeline(new KeyFrame(Duration.millis(50), actionEvent -> {
                 if (play && stack){
                     bulletSkillStatsController.countBasicAttackStack();
-                    synchronized (basickAttackList){
-                        shot();
-
-                    }
+                    shot();
                 }
             }));
             basicAttack.setCycleCount(Animation.INDEFINITE);
@@ -63,6 +63,9 @@ public class BasicAttack {
         thread.start();
     }
 
+    /**
+     * This method is used to create the basic attack object
+     */
     private void shot(){
         stack = false;
         BulletAttackObject bullet = basicAttack();
@@ -72,6 +75,10 @@ public class BasicAttack {
         basickAttackList.add(bullet);
     }
 
+    /**
+     * This method is used to update the basic attack position
+     * @param bullet
+     */
     private void skillAnimation(BulletAttackObject bullet){
         Timeline animation = new Timeline(new KeyFrame(Duration.millis(30), actionEvent -> {
             switch (bullet.getKeyCode()){
@@ -87,6 +94,11 @@ public class BasicAttack {
 
         bullet.setTimeline(animation);
     }
+
+    /**
+     * This method is used to create BulletAttackObject and set it to correct position
+     * @return BulletAttackObject
+     */
     private BulletAttackObject basicAttack(){
         Rectangle rectangle = new Rectangle();
         BulletAttackObject bullet = new BulletAttackObject();
@@ -117,6 +129,11 @@ public class BasicAttack {
         return bullet;
     }
 
+    /**
+     * This method is used to get the image of the basic attack
+     * @param bulletAttackObject
+     * @return WritableImage
+     */
     private WritableImage bulletImage(BulletAttackObject bulletAttackObject){
         return switch (bulletAttackObject.getKeyCode()) {
             case S -> writableImage(75, 24,  56, 127);
@@ -127,6 +144,14 @@ public class BasicAttack {
         };
     }
 
+    /**
+     * This method is used to get the image of the basic attack
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     * @return
+     */
     private WritableImage writableImage(int x, int y, int width, int height){
         PixelReader reader = image.getPixelReader();
         return new WritableImage(reader, x, y, width, height);
@@ -152,6 +177,10 @@ public class BasicAttack {
         return player;
     }
 
+    /**
+     * This method is used to update the basic attack. Remove from list and from view.
+     * @param attackObject
+     */
     public void update(List<BulletAttackObject> attackObject){
         basickAttackList.removeAll(attackObject);
         attackObject.forEach(a -> pane.getChildren().remove(a.getSkill()));

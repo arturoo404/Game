@@ -15,6 +15,10 @@ public class PlayerOnKeyReleasedController implements EventHandler<KeyEvent> {
         this.skillsController = skillsController;
     }
 
+    /**
+     * Handle the key released event.
+     * @param keyEvent
+     */
     @Override
     public void handle(KeyEvent keyEvent) {
         switch (keyEvent.getCode()){

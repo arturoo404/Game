@@ -8,6 +8,12 @@ import java.util.List;
 
 public class CsvFileReader {
 
+    /**
+     * Read csv file
+     * @return
+     * @throws IOException
+     * @throws CsvException
+     */
     public List<String[]> read() throws IOException, CsvException {
         CSVReader reader = new CSVReader(new FileReader("src/main/resources/level/level_1.csv"));
         return reader.readAll();

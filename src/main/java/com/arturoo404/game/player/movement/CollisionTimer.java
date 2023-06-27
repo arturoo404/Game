@@ -16,6 +16,13 @@ public class CollisionTimer extends AnimationTimer {
         this.player = player;
     }
 
+    /**
+     * This method is called once per frame.
+     * @param now
+     *            The timestamp of the current frame given in nanoseconds. This
+     *            value will be the same for all {@code AnimationTimers} called
+     *            during one frame.
+     */
     @Override
     public void handle(long now) {
         Rectangle playerRect = player.getRectangle();
