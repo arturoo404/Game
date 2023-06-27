@@ -94,4 +94,8 @@ public class Movement {
     public MovementAnimation getMovementAnimation() {
         return movementAnimation;
     }
+
+    public List<Rectangle> getRectangleList() {
+        return rectangleList;
+    }
 }

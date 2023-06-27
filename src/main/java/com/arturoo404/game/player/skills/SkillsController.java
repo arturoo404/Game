@@ -6,6 +6,7 @@ import javafx.animation.AnimationTimer;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.scene.layout.AnchorPane;
 
 public class SkillsController {
 
@@ -25,9 +26,9 @@ public class SkillsController {
     }
 
 
-    public SkillsController(Player player) {
+    public SkillsController(Player player, AnchorPane pane) {
         this.player = player;
-        basic = new BasicAttack(player);
+        basic = new BasicAttack(player, pane);
     }
 
     public void setBasicAttack(boolean basicAttack) {

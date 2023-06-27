@@ -1,7 +1,8 @@
 package com.arturoo404.game.player.skills.bullet;
 
 import com.arturoo404.game.player.Player;
-import com.arturoo404.game.player.skills.SkillsAnimationController;
+import com.arturoo404.game.player.skills.animation.BasicAttackSkillsAnimationController;
+import com.arturoo404.game.player.skills.collision.SkillsMapCollision;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -15,6 +16,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class BasicAttack {
@@ -23,30 +25,39 @@ public class BasicAttack {
     private final Player player;
     private boolean stack;
     private Image image;
-    private List<BulletAttackObject> basickAttackList;
+    private final List<BulletAttackObject> basickAttackList;
     private BulletSkillStatsController bulletSkillStatsController;
-    private SkillsAnimationController skillsAnimationController;
+    private BasicAttackSkillsAnimationController skillsAnimationController;
 
-    public BasicAttack(Player player) {
+    private SkillsMapCollision skillsMapCollision;
+    private AnchorPane pane;
+
+    public BasicAttack(Player player, AnchorPane pane) {
+        basickAttackList = Collections.synchronizedList(new ArrayList<>());
         this.player = player;
+        this.pane = pane;
     }
 
     public void init(){
-        basickAttackList = new ArrayList<>();
         stack = true;
         bulletSkillStatsController = new BulletSkillStatsController(this);
-        skillsAnimationController = new SkillsAnimationController(this);
+        skillsAnimationController = new BasicAttackSkillsAnimationController(this);
         skillsAnimationController.initBasicAttackAnimation();
+        skillsMapCollision = new SkillsMapCollision(player.getMovement().getRectangleList(), this);
+        skillsMapCollision.init();
         image = new Image(getClass().getResourceAsStream("/txt/skills/basicAttack.png"));
         Thread thread = new Thread(() -> {
-            Timeline playerAnimation = new Timeline(new KeyFrame(Duration.millis(50), actionEvent -> {
+            Timeline basicAttack = new Timeline(new KeyFrame(Duration.millis(50), actionEvent -> {
                 if (play && stack){
                     bulletSkillStatsController.countBasicAttackStack();
-                    shot();
+                    synchronized (basickAttackList){
+                        shot();
+
+                    }
                 }
             }));
-            playerAnimation.setCycleCount(Animation.INDEFINITE);
-            playerAnimation.play();
+            basicAttack.setCycleCount(Animation.INDEFINITE);
+            basicAttack.play();
         });
 
         thread.start();
@@ -121,7 +132,7 @@ public class BasicAttack {
         return new WritableImage(reader, x, y, width, height);
     }
 
-    public List<BulletAttackObject> getBasickAttackList() {
+    public synchronized List<BulletAttackObject> getBasickAttackList() {
         return basickAttackList;
     }
 
@@ -139,5 +150,10 @@ public class BasicAttack {
 
     public Player getPlayer() {
         return player;
+    }
+
+    public void update(List<BulletAttackObject> attackObject){
+        basickAttackList.removeAll(attackObject);
+        attackObject.forEach(a -> pane.getChildren().remove(a.getSkill()));
     }
 }

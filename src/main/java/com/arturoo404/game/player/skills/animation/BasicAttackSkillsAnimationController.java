@@ -1,4 +1,4 @@
-package com.arturoo404.game.player.skills;
+package com.arturoo404.game.player.skills.animation;
 
 import com.arturoo404.game.player.skills.bullet.BasicAttack;
 import com.arturoo404.game.player.skills.bullet.BulletAttackObject;
@@ -12,13 +12,15 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.paint.ImagePattern;
 import javafx.util.Duration;
 
-public class SkillsAnimationController {
-    private BasicAttack basicAttack;
+public class BasicAttackSkillsAnimationController {
+    private final BasicAttack basicAttack;
     private final Image image;
     public void initBasicAttackAnimation(){
         Thread thread = new Thread(() -> {
             Timeline playerAnimation = new Timeline(new KeyFrame(Duration.millis(100), actionEvent -> {
-                basicAttack.getBasickAttackList().forEach(f -> f.getSkill().setFill(new ImagePattern(bulletImage(f))));
+                synchronized (basicAttack){
+                    basicAttack.getBasickAttackList().forEach(f -> f.getSkill().setFill(new ImagePattern(bulletImage(f))));
+                }
             }));
             playerAnimation.setCycleCount(Animation.INDEFINITE);
             playerAnimation.play();
@@ -26,12 +28,12 @@ public class SkillsAnimationController {
         thread.start();
     }
 
-    public SkillsAnimationController(BasicAttack basicAttack) {
+    public BasicAttackSkillsAnimationController(BasicAttack basicAttack) {
         image = new Image(getClass().getResourceAsStream("/txt/skills/basicAttack.png"));
         this.basicAttack = basicAttack;
     }
 
-    private WritableImage bulletImage(BulletAttackObject bulletAttackObject){
+    private synchronized WritableImage bulletImage(BulletAttackObject bulletAttackObject){
         int x, y,  width, height;
         if (bulletAttackObject.getKeyCode().equals(KeyCode.S)){
             if (bulletAttackObject.getAnimationFrame() == 0){
