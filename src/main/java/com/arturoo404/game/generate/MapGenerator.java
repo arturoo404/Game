@@ -1,6 +1,6 @@
 package com.arturoo404.game.generate;
 
-import com.arturoo404.game.file.CsvFileReader;
+import com.arturoo404.game.file.FileReader;
 import com.opencsv.exceptions.CsvException;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
@@ -29,7 +29,7 @@ public class MapGenerator {
     public List<Rectangle> init() throws IOException, CsvException {
         List<Rectangle> rectangleList = new ArrayList<>();
 
-        CsvFileReader csvReader = new CsvFileReader();
+        FileReader csvReader = new FileReader();
         final List<String[]> read = csvReader.read();
 
         if (read.size() > 0){
