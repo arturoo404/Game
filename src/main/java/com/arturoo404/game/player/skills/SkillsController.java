@@ -29,9 +29,9 @@ public class SkillsController {
     }
 
 
-    public SkillsController(Player player, AnchorPane pane) {
+    public SkillsController(Player player) {
         this.player = player;
-        basic = new BasicAttack(player, pane);
+        basic = new BasicAttack(player);
     }
 
     public void setBasicAttack(boolean basicAttack) {

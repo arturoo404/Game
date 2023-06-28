@@ -52,7 +52,7 @@ public class GameWindowController implements Initializable {
         player.setMovement(movement);
 
         player.setSkillStats(new PlayerStats());
-        SkillsController skillsController = new SkillsController(player, pane);
+        SkillsController skillsController = new SkillsController(player);
         skillsController.init();
         pane.setOnKeyPressed(new PlayerOnKeyPressedController(movement, skillsController));
         pane.setOnKeyReleased(new PlayerOnKeyReleasedController(movement, skillsController));

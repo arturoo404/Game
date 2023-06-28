@@ -30,12 +30,10 @@ public class BasicAttack {
     private BasicAttackSkillsAnimationController skillsAnimationController;
 
     private SkillsMapCollision skillsMapCollision;
-    private AnchorPane pane;
 
-    public BasicAttack(Player player, AnchorPane pane) {
+    public BasicAttack(Player player) {
         basickAttackList = Collections.synchronizedList(new ArrayList<>());
         this.player = player;
-        this.pane = pane;
     }
 
     /**
@@ -183,6 +181,6 @@ public class BasicAttack {
      */
     public void update(List<BulletAttackObject> attackObject){
         basickAttackList.removeAll(attackObject);
-        attackObject.forEach(a -> pane.getChildren().remove(a.getSkill()));
+        attackObject.forEach(a -> player.getAnchorPane().getChildren().remove(a.getSkill()));
     }
 }
