@@ -87,7 +87,7 @@ public class Movement {
     private void changeBarsPosition(){
         playerBars.getPlayerHpBar().setLayoutY(player.getRectangle().getY() - 18);
         playerBars.getPlayerHpBar().setLayoutX(player.getRectangle().getX() - 15);
-        playerBars.getPlayerManaBar().setLayoutY(player.getRectangle().getY() - 4);
+        playerBars.getPlayerManaBar().setLayoutY(player.getRectangle().getY() - 6);
         playerBars.getPlayerManaBar().setLayoutX(player.getRectangle().getX() - 15);
     }
     /**
