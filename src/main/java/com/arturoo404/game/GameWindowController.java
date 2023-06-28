@@ -45,7 +45,7 @@ public class GameWindowController implements Initializable {
         playerShape.setFill(new ImagePattern(newImage));
 
         pane.getChildren().add(playerShape);
-        Player player = new Player(playerShape);
+        Player player = new Player(playerShape, this.pane);
 
         Movement movement = new Movement(player, init);
         movement.init();
