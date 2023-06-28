@@ -63,7 +63,7 @@ public class MapGenerator {
     }
 
     /**
-     * Generates a rectangle based on the parameters
+     * Generates entity_location rectangle based on the parameters
      * @param x
      * @param y
      * @param i

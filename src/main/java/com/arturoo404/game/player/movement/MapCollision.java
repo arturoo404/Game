@@ -17,7 +17,7 @@ public class MapCollision implements Runnable{
     }
 
     /**
-     * This method is used to check if the player is colliding with a wall.
+     * This method is used to check if the player is colliding with entity_location wall.
      */
     @Override
     public void run() {

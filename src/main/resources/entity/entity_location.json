@@ -1,0 +1,14 @@
+{
+  "entityPositions": [
+    {
+      "posX": 10,
+      "posY": 20,
+      "entityType": "WOLF"
+    },
+    {
+      "posX": 30,
+      "posY": 40,
+      "entityType": "WOLF"
+    }
+  ]
+}

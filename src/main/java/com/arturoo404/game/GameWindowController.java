@@ -1,5 +1,6 @@
 package com.arturoo404.game;
 
+import com.arturoo404.game.generate.EntityGenerator;
 import com.arturoo404.game.generate.MapGenerator;
 import com.arturoo404.game.player.PlayerStats;
 import com.arturoo404.game.player.movement.Movement;
@@ -64,8 +65,10 @@ public class GameWindowController implements Initializable {
      */
     private void initGame(){
         MapGenerator mapGenerator = new MapGenerator(pane);
+        EntityGenerator entityGenerator = new EntityGenerator(pane);
         try {
             init = mapGenerator.init();
+            entityGenerator.init();
         } catch (IOException | CsvException e) {
             throw new RuntimeException(e);
         }

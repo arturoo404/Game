@@ -72,7 +72,7 @@ public class MovementAnimation {
     }
 
     /**
-     * This method is used to create a writable image.
+     * This method is used to create entity_location writable image.
      * @param x
      * @param y
      * @return
