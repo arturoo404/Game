@@ -4,7 +4,7 @@ public class PlayerStats {
 
     private double attackSpeed = 1;
     private int maxHealth = 100;
-    private int currentHealth = 50;
+    private int currentHealth = 20;
 
 
     public double getAttackSpeed() {

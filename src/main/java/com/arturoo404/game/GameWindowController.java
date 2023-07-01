@@ -2,11 +2,8 @@ package com.arturoo404.game;
 
 import com.arturoo404.game.generate.EntityGenerator;
 import com.arturoo404.game.generate.MapGenerator;
-import com.arturoo404.game.player.PlayerStats;
+import com.arturoo404.game.player.*;
 import com.arturoo404.game.player.movement.Movement;
-import com.arturoo404.game.player.Player;
-import com.arturoo404.game.player.PlayerOnKeyPressedController;
-import com.arturoo404.game.player.PlayerOnKeyReleasedController;
 import com.arturoo404.game.player.skills.SkillsController;
 import com.opencsv.exceptions.CsvException;
 import javafx.fxml.FXML;
@@ -29,6 +26,7 @@ public class GameWindowController implements Initializable {
     private AnchorPane pane;
     private List<Rectangle> init;
 
+
     /**
      * Initializes the game window.
      * @param url
@@ -48,16 +46,16 @@ public class GameWindowController implements Initializable {
         pane.getChildren().add(playerShape);
         Player player = new Player(playerShape, this.pane);
 
+        player.setSkillStats(new PlayerStats());
         Movement movement = new Movement(player, init);
         movement.init();
         player.setMovement(movement);
-
-        player.setSkillStats(new PlayerStats());
         SkillsController skillsController = new SkillsController(player);
         skillsController.init();
         pane.setOnKeyPressed(new PlayerOnKeyPressedController(movement, skillsController));
         pane.setOnKeyReleased(new PlayerOnKeyReleasedController(movement, skillsController));
         pane.requestFocus();
+
     }
 
     /**
