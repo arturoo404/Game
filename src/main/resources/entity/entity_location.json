@@ -1,14 +1,26 @@
 {
-  "entityPositions": [
+  "entityModel": [
     {
-      "posX": 10,
-      "posY": 20,
-      "entityType": "WOLF"
-    },
-    {
-      "posX": 30,
-      "posY": 40,
-      "entityType": "WOLF"
+      "width": 50,
+      "height": 100,
+      "entityType": "WOLF",
+      "health": 150,
+      "damage": 10,
+      "speed": 1,
+      "range": 20,
+      "attackSpeed": 1,
+      "detectionRange": 300,
+      "defence": 30,
+      "entityPositions": [
+        {
+          "posX": 10,
+          "posY": 20
+        },
+        {
+          "posX": 30,
+          "posY": 40
+        }
+      ]
     }
   ]
 }

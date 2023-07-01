@@ -20,9 +20,9 @@ public class FileReader {
         return reader.readAll();
     }
 
-    public EntityModelFile entityModelFilesRead() throws IOException {
+    public EntityMainModel entityModelFilesRead() throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File("src/main/resources/entity/entity_location.json");
-        return objectMapper.readValue(file, EntityModelFile.class);
+        return objectMapper.readValue(file, EntityMainModel.class);
     }
 }

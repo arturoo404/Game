@@ -1,5 +1,7 @@
 package com.arturoo404.game.entity;
 
+import javafx.scene.shape.Rectangle;
+
 public class Entity {
 
     private int posX;
@@ -9,10 +11,12 @@ public class Entity {
     private EntityType entityType;
     private int health;
     private double damage;
-    private double speed;
+    private int speed;
     private int range;
-    private int attackSpeed;
+    private double attackSpeed;
     private int detectionRange;
+    private int defence;
+    private Rectangle rectangle;
 
     public int getPosX() {
         return posX;
@@ -70,11 +74,11 @@ public class Entity {
         this.damage = damage;
     }
 
-    public double getSpeed() {
+    public int getSpeed() {
         return speed;
     }
 
-    public void setSpeed(double speed) {
+    public void setSpeed(int speed) {
         this.speed = speed;
     }
 
@@ -86,7 +90,7 @@ public class Entity {
         this.range = range;
     }
 
-    public int getAttackSpeed() {
+    public double getAttackSpeed() {
         return attackSpeed;
     }
 
@@ -100,5 +104,21 @@ public class Entity {
 
     public void setDetectionRange(int detectionRange) {
         this.detectionRange = detectionRange;
+    }
+
+    public int getDefence() {
+        return defence;
+    }
+
+    public void setDefence(int defence) {
+        this.defence = defence;
+    }
+
+    public Rectangle getRectangle() {
+        return rectangle;
+    }
+
+    public void setRectangle(Rectangle rectangle) {
+        this.rectangle = rectangle;
     }
 }
