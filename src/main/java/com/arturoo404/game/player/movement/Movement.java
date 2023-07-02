@@ -64,6 +64,8 @@ public class Movement {
             cameraMovement.moveCamera(KeyCode.W);
             playerBars.getPlayerHpBar().setLayoutY(player.getRectangle().getY() - 14);
             playerBars.getPlayerHpBar().setLayoutX(player.getRectangle().getX() - 15);
+            playerBars.getPlayerManaBar().setLayoutY(player.getRectangle().getY() - 4);
+            playerBars.getPlayerManaBar().setLayoutX(player.getRectangle().getX() - 15);
         } else if (goDown.get()) {
             player.getRectangle().setY(player.getRectangle().getY() + 2);
             movementAnimation.setKey(KeyCode.S);
@@ -71,6 +73,8 @@ public class Movement {
             cameraMovement.moveCamera(KeyCode.S);
             playerBars.getPlayerHpBar().setLayoutY(player.getRectangle().getY() - 14);
             playerBars.getPlayerHpBar().setLayoutX(player.getRectangle().getX() - 15);
+            playerBars.getPlayerManaBar().setLayoutY(player.getRectangle().getY() - 4);
+            playerBars.getPlayerManaBar().setLayoutX(player.getRectangle().getX() - 15);
         }else if (goLeft.get()) {
             player.getRectangle().setX(player.getRectangle().getX() - 2);
             movementAnimation.setKey(KeyCode.A);
@@ -78,6 +82,8 @@ public class Movement {
             cameraMovement.moveCamera(KeyCode.A);
             playerBars.getPlayerHpBar().setLayoutY(player.getRectangle().getY() - 14);
             playerBars.getPlayerHpBar().setLayoutX(player.getRectangle().getX() - 15);
+            playerBars.getPlayerManaBar().setLayoutY(player.getRectangle().getY() - 4);
+            playerBars.getPlayerManaBar().setLayoutX(player.getRectangle().getX() - 15);
         }else if (goRight.get()) {
             player.getRectangle().setX(player.getRectangle().getX() + 2);
             movementAnimation.setKey(KeyCode.D);
@@ -85,6 +91,8 @@ public class Movement {
             cameraMovement.moveCamera(KeyCode.D);
             playerBars.getPlayerHpBar().setLayoutY(player.getRectangle().getY() - 14);
             playerBars.getPlayerHpBar().setLayoutX(player.getRectangle().getX() - 15);
+            playerBars.getPlayerManaBar().setLayoutY(player.getRectangle().getY() - 4);
+            playerBars.getPlayerManaBar().setLayoutX(player.getRectangle().getX() - 15);
         }
     }
 
