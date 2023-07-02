@@ -21,7 +21,7 @@ public class MapCollision implements Runnable{
      */
     @Override
     public void run() {
-        AnimationTimer animationTimer = new CollisionTimer(rectangleList, player);
+        AnimationTimer animationTimer = new BlockCollision(rectangleList, player);
         animationTimer.start();
     }
 

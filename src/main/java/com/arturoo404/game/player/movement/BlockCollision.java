@@ -6,12 +6,12 @@ import javafx.scene.shape.Rectangle;
 
 import java.util.List;
 
-public class CollisionTimer extends AnimationTimer {
+public class BlockCollision extends AnimationTimer {
 
     private final List<Rectangle> rectangleList;
     private final Player player;
 
-    public CollisionTimer(List<Rectangle> rectangleList, Player player) {
+    public BlockCollision(List<Rectangle> rectangleList, Player player) {
         this.rectangleList = rectangleList;
         this.player = player;
     }
