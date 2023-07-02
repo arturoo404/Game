@@ -1,5 +1,6 @@
 package com.arturoo404.game.generate;
 
+import com.arturoo404.game.entity.LivingEntities;
 import com.arturoo404.game.entity.wolf.Wolf;
 import com.arturoo404.game.file.EntityModel;
 import com.arturoo404.game.file.EntityPosition;
@@ -17,16 +18,16 @@ public class GenerateEntityModel {
         this.pane = pane;
     }
 
-    public List<Wolf> generateWolfModel(EntityModel entityModel){
+    public List<Wolf> generateWolfModel(EntityModel entityModel, LivingEntities livingEntities){
         List<Wolf> wolfList = new ArrayList<>();
         for (EntityPosition model : entityModel.entityPositions()) {
-            Wolf wolf = generateWolf(entityModel, model);
+            Wolf wolf = generateWolf(entityModel, model, livingEntities);
             wolfList.add(wolf);
         }
         return wolfList;
     }
 
-    private Wolf generateWolf(EntityModel entityModel, EntityPosition entityPosition){
+    private Wolf generateWolf(EntityModel entityModel, EntityPosition entityPosition, LivingEntities livingEntities){
         Wolf wolf = new Wolf();
         wolf.setAttackSpeed(entityModel.width());
         wolf.setEntityType(entityModel.entityType());
@@ -37,6 +38,7 @@ public class GenerateEntityModel {
         wolf.setDetectionRange(entityModel.detectionRange());
         wolf.setDefence(entityModel.defence());
         wolf.setRectangle(new Rectangle(entityPosition.posX(), entityPosition.posY(), entityModel.width(), entityModel.height()));
+        wolf.setLivingEntities(livingEntities);
         pane.getChildren().add(wolf.getRectangle());
         return wolf;
     }

@@ -62,40 +62,34 @@ public class Movement {
             movementAnimation.setKey(KeyCode.W);
             player.setDirection(KeyCode.W);
             cameraMovement.moveCamera(KeyCode.W);
-            playerBars.getPlayerHpBar().setLayoutY(player.getRectangle().getY() - 14);
-            playerBars.getPlayerHpBar().setLayoutX(player.getRectangle().getX() - 15);
-            playerBars.getPlayerManaBar().setLayoutY(player.getRectangle().getY() - 4);
-            playerBars.getPlayerManaBar().setLayoutX(player.getRectangle().getX() - 15);
+            changeBarsPosition();
         } else if (goDown.get()) {
             player.getRectangle().setY(player.getRectangle().getY() + 2);
             movementAnimation.setKey(KeyCode.S);
             player.setDirection(KeyCode.S);
             cameraMovement.moveCamera(KeyCode.S);
-            playerBars.getPlayerHpBar().setLayoutY(player.getRectangle().getY() - 14);
-            playerBars.getPlayerHpBar().setLayoutX(player.getRectangle().getX() - 15);
-            playerBars.getPlayerManaBar().setLayoutY(player.getRectangle().getY() - 4);
-            playerBars.getPlayerManaBar().setLayoutX(player.getRectangle().getX() - 15);
+            changeBarsPosition();
         }else if (goLeft.get()) {
             player.getRectangle().setX(player.getRectangle().getX() - 2);
             movementAnimation.setKey(KeyCode.A);
             player.setDirection(KeyCode.A);
             cameraMovement.moveCamera(KeyCode.A);
-            playerBars.getPlayerHpBar().setLayoutY(player.getRectangle().getY() - 14);
-            playerBars.getPlayerHpBar().setLayoutX(player.getRectangle().getX() - 15);
-            playerBars.getPlayerManaBar().setLayoutY(player.getRectangle().getY() - 4);
-            playerBars.getPlayerManaBar().setLayoutX(player.getRectangle().getX() - 15);
+            changeBarsPosition();
         }else if (goRight.get()) {
             player.getRectangle().setX(player.getRectangle().getX() + 2);
             movementAnimation.setKey(KeyCode.D);
             player.setDirection(KeyCode.D);
             cameraMovement.moveCamera(KeyCode.D);
-            playerBars.getPlayerHpBar().setLayoutY(player.getRectangle().getY() - 14);
-            playerBars.getPlayerHpBar().setLayoutX(player.getRectangle().getX() - 15);
-            playerBars.getPlayerManaBar().setLayoutY(player.getRectangle().getY() - 4);
-            playerBars.getPlayerManaBar().setLayoutX(player.getRectangle().getX() - 15);
+           changeBarsPosition();
         }
     }
 
+    private void changeBarsPosition(){
+        playerBars.getPlayerHpBar().setLayoutY(player.getRectangle().getY() - 18);
+        playerBars.getPlayerHpBar().setLayoutX(player.getRectangle().getX() - 15);
+        playerBars.getPlayerManaBar().setLayoutY(player.getRectangle().getY() - 4);
+        playerBars.getPlayerManaBar().setLayoutX(player.getRectangle().getX() - 15);
+    }
     /**
      * This method is used to start the movement of the player.
      */

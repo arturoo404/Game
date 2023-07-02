@@ -18,6 +18,8 @@ public class Entity {
     private int defence;
     private Rectangle rectangle;
 
+    private LivingEntities livingEntities;
+
     public int getPosX() {
         return posX;
     }
@@ -116,6 +118,18 @@ public class Entity {
 
     public Rectangle getRectangle() {
         return rectangle;
+    }
+
+    public void setAttackSpeed(double attackSpeed) {
+        this.attackSpeed = attackSpeed;
+    }
+
+    public LivingEntities getLivingEntities() {
+        return livingEntities;
+    }
+
+    public void setLivingEntities(LivingEntities livingEntities) {
+        this.livingEntities = livingEntities;
     }
 
     public void setRectangle(Rectangle rectangle) {
