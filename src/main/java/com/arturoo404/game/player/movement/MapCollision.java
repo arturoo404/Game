@@ -16,13 +16,13 @@ public class MapCollision implements Runnable{
         this.player = player;
     }
 
+    /**
+     * This method is used to check if the player is colliding with entity_location wall.
+     */
     @Override
     public void run() {
-        AnimationTimer blockCollision = new BlockCollision(rectangleList, player);
-        blockCollision.start();
-
-        AnimationTimer gravityCollision = new GravityCollision(rectangleList, player);
-        gravityCollision.start();
+        AnimationTimer animationTimer = new CollisionTimer(rectangleList, player);
+        animationTimer.start();
     }
 
 }

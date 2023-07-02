@@ -1,114 +1,107 @@
 package com.arturoo404.game.player.movement;
 
 import com.arturoo404.game.player.Player;
+import com.arturoo404.game.player.PlayerBars;
 import javafx.animation.AnimationTimer;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.scene.input.KeyCode;
 import javafx.scene.shape.Rectangle;
 
 import java.util.List;
 
 public class Movement {
 
-    private final BooleanProperty jump = new SimpleBooleanProperty();
+    private final BooleanProperty goUp = new SimpleBooleanProperty();
     private final BooleanProperty  goDown = new SimpleBooleanProperty();
     private final BooleanProperty  goRight = new SimpleBooleanProperty();
     private final BooleanProperty goLeft = new SimpleBooleanProperty();
-    private final BooleanBinding keyPress = jump.or(goDown).or(goLeft).or(goRight);
-    private final BooleanProperty gravityStatus = new SimpleBooleanProperty();
-    private final BooleanBinding gravity = gravityStatus.or(gravityStatus);
-    private boolean jumpProgres;
+    private final BooleanBinding keyPress = goUp.or(goDown).or(goLeft).or(goRight);
     private final Player player;
     private final List<Rectangle> rectangleList;
-    private int jumpTimes = 0;
-    private int jumpClick = 0;
+    private final MovementAnimation movementAnimation;
+    private final CameraMovement cameraMovement;
+    private PlayerBars playerBars;
 
     public Movement(Player player, List<Rectangle> rectangleList) {
         this.player = player;
         this.rectangleList = rectangleList;
+        movementAnimation = new MovementAnimation(player.getRectangle());
+        cameraMovement = new CameraMovement(player.getRectangle());
     }
-
+    /**
+     * This method is used to initialize the movement of the player.
+     */
     public void init(){
-        Thread blockCollision = new Thread(new MapCollision(rectangleList, player));
-        blockCollision.start();
+        Thread thread = new Thread(new MapCollision(rectangleList, player));
+        thread.start();
+        movementAnimation.init();
+        playerBars = new PlayerBars(player);
+        playerBars.init();
+        player.setDirection(KeyCode.S);
+
         keyPress.addListener(((observableValue, aBoolean, t1) -> {
             if(!aBoolean){
-                movementTimer.start();
-            } else {
-                movementTimer.stop();
-            }
-        }));
+                animationTimer.start();
+                movementAnimation.setPlay(true);
 
-        gravity.addListener(((observableValue, aBoolean, t1) -> {
-            if(!aBoolean){
-                gravTimer.start();
             } else {
-                gravTimer.stop();
+                animationTimer.stop();
+                movementAnimation.setPlay(false);
             }
         }));
     }
 
+    /**
+     * This method is used to move the player.
+     */
     private void move(){
-        if (jump.get() && jumpTimes == 0 && jumpClick == 0&& !gravityStatus.get()){
-            jumpChecker();
+        if (goUp.get()){
+            player.getRectangle().setY(player.getRectangle().getY() - 2);
+            movementAnimation.setKey(KeyCode.W);
+            player.setDirection(KeyCode.W);
+            cameraMovement.moveCamera(KeyCode.W);
+            changeBarsPosition();
         } else if (goDown.get()) {
-            //player.getRectangle().setY(player.getRectangle().getY() + 5);
+            player.getRectangle().setY(player.getRectangle().getY() + 2);
+            movementAnimation.setKey(KeyCode.S);
+            player.setDirection(KeyCode.S);
+            cameraMovement.moveCamera(KeyCode.S);
+            changeBarsPosition();
         }else if (goLeft.get()) {
-            player.getRectangle().setX(player.getRectangle().getX() - 4);
+            player.getRectangle().setX(player.getRectangle().getX() - 2);
+            movementAnimation.setKey(KeyCode.A);
+            player.setDirection(KeyCode.A);
+            cameraMovement.moveCamera(KeyCode.A);
+            changeBarsPosition();
         }else if (goRight.get()) {
-            player.getRectangle().setX(player.getRectangle().getX() + 4);
+            player.getRectangle().setX(player.getRectangle().getX() + 2);
+            movementAnimation.setKey(KeyCode.D);
+            player.setDirection(KeyCode.D);
+            cameraMovement.moveCamera(KeyCode.D);
+           changeBarsPosition();
         }
     }
 
-    private void jumpChecker(){
-        jumpTimer.start();
-        jumpTimes = 50;
-        jumpClick = 1;
-        jumpProgres = true;
-        gravityStatus.set(false);
+    private void changeBarsPosition(){
+        playerBars.getPlayerHpBar().setLayoutY(player.getRectangle().getY() - 18);
+        playerBars.getPlayerHpBar().setLayoutX(player.getRectangle().getX() - 15);
+        playerBars.getPlayerManaBar().setLayoutY(player.getRectangle().getY() - 4);
+        playerBars.getPlayerManaBar().setLayoutX(player.getRectangle().getX() - 15);
     }
-
-    private void jumpAnimation(){
-        if (jumpTimes == 0){
-            jumpTimer.stop();
-            jumpProgres = false;
-            gravityStatus.set(true);
-            jumpClick = 0;
-            return;
-        }
-
-        player.getRectangle().setY(player.getRectangle().getY() - 3);
-        jumpTimes--;
-    }
-
-    AnimationTimer jumpTimer = new AnimationTimer() {
-        @Override
-        public void handle(long now) {
-            jumpAnimation();
-        }
-    };
-
-    AnimationTimer movementTimer = new AnimationTimer() {
+    /**
+     * This method is used to start the movement of the player.
+     */
+    AnimationTimer animationTimer = new AnimationTimer() {
         @Override
         public void handle(long now) {
             move();
         }
     };
 
-    private void grav(){
-        player.getRectangle().setY(player.getRectangle().getY() + 3);
-    }
-
-    AnimationTimer gravTimer = new AnimationTimer() {
-        @Override
-        public void handle(long now) {
-            grav();
-        }
-    };
-
-    public void setJump(boolean jump) {
-        this.jump.set(jump);
+    public void setGoUp(boolean goUp) {
+        this.goUp.set(goUp);
     }
 
     public void setGoDown(boolean goDown) {
@@ -123,15 +116,11 @@ public class Movement {
         this.goLeft.set(goLeft);
     }
 
-    public void setGravityStatus(boolean gravityStatus) {
-        this.gravityStatus.set(gravityStatus);
+    public MovementAnimation getMovementAnimation() {
+        return movementAnimation;
     }
 
-    public boolean isJumpProgres() {
-        return jumpProgres;
-    }
-
-    public void setJumpTimes(int jumpTimes) {
-        this.jumpTimes = jumpTimes;
+    public List<Rectangle> getRectangleList() {
+        return rectangleList;
     }
 }
