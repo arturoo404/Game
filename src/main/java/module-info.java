@@ -10,4 +10,6 @@ module com.arturoo404.game {
     exports com.arturoo404.game.entity;
     exports com.arturoo404.game.player;
     opens com.arturoo404.game.player to javafx.fxml;
+    exports com.arturoo404.game.player.gui;
+    opens com.arturoo404.game.player.gui to javafx.fxml;
 }

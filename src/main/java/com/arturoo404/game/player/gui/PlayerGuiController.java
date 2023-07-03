@@ -1,4 +1,4 @@
-package com.arturoo404.game.player;
+package com.arturoo404.game.player.gui;
 
 import com.arturoo404.game.player.Player;
 import javafx.fxml.Initializable;
