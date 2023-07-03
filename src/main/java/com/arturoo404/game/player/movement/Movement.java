@@ -2,6 +2,7 @@ package com.arturoo404.game.player.movement;
 
 import com.arturoo404.game.player.Player;
 import com.arturoo404.game.player.PlayerBars;
+import com.arturoo404.game.player.skills.PlayerResourceManagement;
 import javafx.animation.AnimationTimer;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.BooleanProperty;
@@ -23,6 +24,7 @@ public class Movement {
     private final MovementAnimation movementAnimation;
     private final CameraMovement cameraMovement;
     private PlayerBars playerBars;
+    private PlayerResourceManagement playerResourceManagement;
 
     public Movement(Player player, List<Rectangle> rectangleList) {
         this.player = player;
@@ -40,6 +42,9 @@ public class Movement {
         playerBars = new PlayerBars(player);
         playerBars.init();
         player.setDirection(KeyCode.S);
+        playerResourceManagement = new PlayerResourceManagement(player);
+        playerResourceManagement.setPlayerBars(playerBars);
+        playerResourceManagement.init();
 
         keyPress.addListener(((observableValue, aBoolean, t1) -> {
             if(!aBoolean){

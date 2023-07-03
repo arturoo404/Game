@@ -39,4 +39,6 @@ public class PlayerBars{
         playerHpBar.setMaxHeight(12);
         playerManaBar.setMaxHeight(12);
     }
+
+
 }

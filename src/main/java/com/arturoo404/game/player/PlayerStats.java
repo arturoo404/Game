@@ -7,6 +7,10 @@ public class PlayerStats {
     private int currentHealth = 20;
     private int maxMana = 100;
     private int currentMana = 40;
+    private double healthRegen = 20;
+    private double percentHealthRegen = (double) maxHealth / 200;
+    private double manaRegen = 10;
+    private double percentManaRegen = (double) maxMana / 200;
 
 
     public double getAttackSpeed() {
@@ -40,4 +44,20 @@ public class PlayerStats {
     public int getCurrentMana() {return currentMana;}
 
     public void setCurrentMana(int currentMana) {this.currentMana = currentMana; }
+
+    public double getHealthRegen() {return healthRegen;}
+
+    public void setHealthRegen(double healthRegen) {this.healthRegen = healthRegen; }
+
+    public double getPercentHealthRegen() {return percentHealthRegen;}
+
+    public void setPercentHealthRegen(double percentHealthRegen) {this.percentHealthRegen = percentHealthRegen; }
+
+    public double getManaRegen() {return manaRegen;}
+
+    public void setManaRegen(double manaRegen) {this.manaRegen = manaRegen; }
+
+    public double getPercentManaRegen() {return percentManaRegen;}
+
+    public void setPercentManaRegen(double percentManaRegen) {this.percentManaRegen = percentManaRegen; }
 }
