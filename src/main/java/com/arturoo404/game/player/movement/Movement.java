@@ -43,7 +43,6 @@ public class Movement {
         playerBars.init();
         player.setDirection(KeyCode.S);
         playerResourceManagement = new PlayerResourceManagement(player);
-        playerResourceManagement.setPlayerBars(playerBars);
         playerResourceManagement.init();
 
         keyPress.addListener(((observableValue, aBoolean, t1) -> {
@@ -127,5 +126,9 @@ public class Movement {
 
     public List<Rectangle> getRectangleList() {
         return rectangleList;
+    }
+
+    public PlayerBars getPlayerBars() {
+        return playerBars;
     }
 }

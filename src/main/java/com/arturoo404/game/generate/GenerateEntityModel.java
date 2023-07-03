@@ -12,7 +12,7 @@ import java.util.List;
 
 public class GenerateEntityModel {
 
-    private AnchorPane pane;
+    private final AnchorPane pane;
 
     public GenerateEntityModel(AnchorPane pane) {
         this.pane = pane;
