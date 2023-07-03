@@ -1,7 +1,6 @@
 package com.arturoo404.game.player.skills;
 
 import com.arturoo404.game.player.Player;
-import com.arturoo404.game.player.PlayerBars;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.util.Duration;

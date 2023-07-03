@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="pane" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.arturoo404.game.GameWindowController" />
+
+<AnchorPane fx:id="pane" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.arturoo404.game.GameWindowController">
+   <children>
+      <ProgressIndicator layoutX="702.0" layoutY="387.0" progress="0.0" />
+   </children>
+</AnchorPane>

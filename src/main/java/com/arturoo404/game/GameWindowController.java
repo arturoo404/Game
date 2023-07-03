@@ -1,30 +1,40 @@
 package com.arturoo404.game;
 
 import com.arturoo404.game.generate.EntityGenerator;
+import com.arturoo404.game.generate.GeneratePlayerGui;
 import com.arturoo404.game.generate.MapGenerator;
 import com.arturoo404.game.player.*;
 import com.arturoo404.game.player.movement.Movement;
 import com.arturoo404.game.player.skills.SkillsController;
 import com.opencsv.exceptions.CsvException;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class GameWindowController implements Initializable {
+public class GameWindowController implements Initializable{
 
     @FXML
     private AnchorPane pane;
     private List<Rectangle> init;
+
+    //Niebezpieczne nie ruszać
+    private static Player player;
 
 
     /**
@@ -44,7 +54,7 @@ public class GameWindowController implements Initializable {
         playerShape.setFill(new ImagePattern(newImage));
 
         pane.getChildren().add(playerShape);
-        Player player = new Player(playerShape, this.pane);
+        player = new Player(playerShape, this.pane);
 
         player.setSkillStats(new PlayerStats());
         Movement movement = new Movement(player, init);
@@ -55,7 +65,12 @@ public class GameWindowController implements Initializable {
         pane.setOnKeyPressed(new PlayerOnKeyPressedController(movement, skillsController));
         pane.setOnKeyReleased(new PlayerOnKeyReleasedController(movement, skillsController));
         pane.requestFocus();
-
+        try {
+           GeneratePlayerGui generatePlayerGui = new GeneratePlayerGui(this);
+           generatePlayerGui.init();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     /**
@@ -70,5 +85,9 @@ public class GameWindowController implements Initializable {
         } catch (IOException | CsvException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public static Player getPlayer() {
+        return player;
     }
 }
