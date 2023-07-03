@@ -13,6 +13,7 @@ public class PlayerStats {
     private double percentManaRegen = (double) maxMana / 200;
     private int armor = 0;
     private int cooldownReduction = 0;
+    private int damage = 10;
 
 
     public double getAttackSpeed() {
@@ -77,5 +78,13 @@ public class PlayerStats {
 
     public void setCooldownReduction(int cooldownReduction) {
         this.cooldownReduction = cooldownReduction;
+    }
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public void setDamage(int damage) {
+        this.damage = damage;
     }
 }
