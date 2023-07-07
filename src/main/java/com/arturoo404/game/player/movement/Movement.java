@@ -45,6 +45,7 @@ public class Movement {
         playerResourceManagement = new PlayerResourceManagement(player);
         playerResourceManagement.init();
 
+
         keyPress.addListener(((observableValue, aBoolean, t1) -> {
             if(!aBoolean){
                 animationTimer.start();

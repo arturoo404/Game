@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.arturoo404.game.player.gui.PlayerGuiController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="200.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.arturoo404.game.player.gui.PlayerGuiController">
+   <children>
+      <Label fx:id="manaRegen" layoutX="69.0" layoutY="74.0" text="Mana Regen:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="90.0" />
+      <Label fx:id="damage" layoutX="14.0" layoutY="14.0" text="Damage:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="12.0" />
+      <Label fx:id="armor" text="Armor:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="50.0" />
+      <Label fx:id="healthRegen" text="Health Regen" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="70.0" />
+      <Label fx:id="attackSpeed" text="Attack Speed:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="30.0" />
+      <Label fx:id="cooldownReduction" text="cd Reduction:" AnchorPane.leftAnchor="12.0" AnchorPane.topAnchor="110.0" />
+      <ProgressBar fx:id="hpBar" layoutX="224.0" layoutY="30.0" prefHeight="24.0" prefWidth="553.0" progress="0.0" />
+      <ProgressBar fx:id="manaBar" layoutX="224.0" layoutY="59.0" prefHeight="24.0" prefWidth="553.0" progress="0.0" />
+      <Label fx:id="hpText" layoutX="468.0" layoutY="34.0" prefHeight="17.0" prefWidth="113.0" text="Label" />
+      <Label fx:id="manaText" layoutX="468.0" layoutY="63.0" prefHeight="17.0" prefWidth="113.0" text="Label" />
+      <Label fx:id="playerLvl" layoutX="850.0" layoutY="13.0" prefHeight="42.0" prefWidth="79.0" text="Label" textAlignment="CENTER">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <Label fx:id="experiance" layoutX="850.0" layoutY="55.0" prefHeight="17.0" prefWidth="58.0" text="Label" />
+      <Label fx:id="money" layoutX="850.0" layoutY="92.0" prefHeight="17.0" prefWidth="58.0" text="Label" />
+   </children>
 </AnchorPane>
