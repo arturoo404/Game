@@ -30,7 +30,7 @@ public class EntityGenerator {
         GenerateEntityModel entityGenerator  = new GenerateEntityModel(pane);
         for (EntityModel model : entityModelFile.entityModel()) {
             if (model.entityType().equals(EntityType.WOLF)){
-                livingEntities.setWolves(entityGenerator.generateWolfModel(model, this.livingEntities));
+                livingEntities.setWolves(entityGenerator.generateWolfModel(model, this.livingEntities, entityModelFile.difficulty()));
             }
         }
     }

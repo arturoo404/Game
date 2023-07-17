@@ -28,7 +28,7 @@ public class PlayerBars{
     public ProgressBar getPlayerManaBar() {return  playerManaBar;}
 
     private void barAppearance(){
-        // ustawia pasek zdrowia nad graczem
+        // ustawia pasek zdrowia nad graczom
         playerManaBar.setLayoutX(player.getRectangle().getX() - 12);
         playerManaBar.setLayoutY(player.getRectangle().getY() - 10);
         playerHpBar.setLayoutY(player.getRectangle().getY() - 22);

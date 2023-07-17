@@ -16,7 +16,6 @@ import java.io.IOException;
 
 public class GeneratePlayerGui {
 
-    private Player player;
     private final Initializable initializable;
 
     public GeneratePlayerGui(Initializable initializable) {

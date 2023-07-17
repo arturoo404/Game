@@ -15,6 +15,8 @@ import java.io.IOException;
 
 public class StartWindowController {
 
+    private Stage optionsStage;
+
     @FXML
     private void startGame(ActionEvent event) throws IOException, CsvException {
         Parent root = FXMLLoader.load(getClass().getResource("game-window.fxml"));
@@ -29,6 +31,8 @@ public class StartWindowController {
     private void openOptions(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("option-window.fxml"));
         Parent root = loader.load();
+        OptionWindowController controller = loader.getController();
+
         Stage optionsStage = new Stage();
         optionsStage.initModality(Modality.WINDOW_MODAL);
         optionsStage.initOwner(((Node) event.getSource()).getScene().getWindow());
@@ -36,6 +40,8 @@ public class StartWindowController {
         optionsStage.initStyle(StageStyle.UNDECORATED);
         optionsStage.setScene(scene);
         optionsStage.show();
+
+        controller.setOptionsStage(optionsStage);
         //Potrzebne do działania klawiatury
         root.requestFocus();
     }
