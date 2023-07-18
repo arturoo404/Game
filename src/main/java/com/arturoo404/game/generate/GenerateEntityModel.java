@@ -4,14 +4,14 @@ import com.arturoo404.game.entity.LivingEntities;
 import com.arturoo404.game.entity.wolf.Wolf;
 import com.arturoo404.game.file.EntityModel;
 import com.arturoo404.game.file.EntityPosition;
-import com.arturoo404.game.player.Difficulty;
+import com.arturoo404.game.generate.difficulty.Difficulty;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.arturoo404.game.GameDifficulty.*;
+import static com.arturoo404.game.generate.difficulty.GameDifficulty.*;
 
 
 public class GenerateEntityModel {

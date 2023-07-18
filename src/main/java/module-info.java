@@ -14,4 +14,6 @@ module com.arturoo404.game {
     opens com.arturoo404.game.player.gui to javafx.fxml;
     exports com.arturoo404.game.options;
     opens com.arturoo404.game.options to javafx.fxml;
+    exports com.arturoo404.game.generate.difficulty;
+    opens com.arturoo404.game.generate.difficulty to javafx.fxml;
 }

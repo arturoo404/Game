@@ -21,8 +21,7 @@ public class EntityGenerator {
 
 
     public void init() throws IOException {
-        FileReader fileReader = new FileReader();
-        final EntityMainModel entityModelFile = fileReader.entityModelFilesRead();
+        final EntityMainModel entityModelFile = FileReader.entityModelFilesRead();
         createList(entityModelFile);
     }
 

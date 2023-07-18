@@ -1,4 +1,4 @@
-package com.arturoo404.game.player;
+package com.arturoo404.game.generate.difficulty;
 
 public enum Difficulty {
     EASY,

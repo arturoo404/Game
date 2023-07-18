@@ -1,6 +1,6 @@
 package com.arturoo404.game.file;
 
-import com.arturoo404.game.player.Difficulty;
+import com.arturoo404.game.generate.difficulty.Difficulty;
 
 public record EntityMainModel(EntityModel[] entityModel, Difficulty difficulty) {
 

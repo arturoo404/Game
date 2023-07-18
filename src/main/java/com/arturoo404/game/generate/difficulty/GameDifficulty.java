@@ -1,6 +1,4 @@
-package com.arturoo404.game;
-
-import com.arturoo404.game.player.Difficulty;
+package com.arturoo404.game.generate.difficulty;
 
 public class GameDifficulty {
 
@@ -13,6 +11,7 @@ public class GameDifficulty {
         }
         return health;
     }
+
     public static Integer damageChanger(int damage, Difficulty difficulty){
         switch (difficulty){
             case EASY -> {return (int) (damage * 0.5);}
@@ -22,6 +21,7 @@ public class GameDifficulty {
         }
         return damage;
     }
+
     public static Integer defenceChanger(int defence, Difficulty difficulty){
         switch (difficulty){
             case EASY -> {return (int) (defence * 0.6);}

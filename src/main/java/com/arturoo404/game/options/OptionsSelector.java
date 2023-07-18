@@ -2,7 +2,7 @@ package com.arturoo404.game.options;
 
 import com.arturoo404.game.file.EntityMainModel;
 import com.arturoo404.game.file.FileReader;
-import com.arturoo404.game.player.Difficulty;
+import com.arturoo404.game.generate.difficulty.Difficulty;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
