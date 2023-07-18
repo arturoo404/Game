@@ -3,20 +3,21 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.arturoo404.game.OptionWindowController">
-   <children>
-      <TitledPane animated="false" prefHeight="400.0" prefWidth="600.0" text="test">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-               <children>
-                  <Button fx:id="saveButton" layoutX="259.0" layoutY="312.0" mnemonicParsing="false" onAction="#closeWindow" prefHeight="41.0" prefWidth="80.0" text="Save" />
-                  <Button fx:id="easyButton" layoutX="74.0" layoutY="33.0" mnemonicParsing="false" onAction="#selectEasy" prefHeight="35.0" prefWidth="77.0" text="Easy" />
-                  <Button fx:id="mediumButton" layoutX="75.0" layoutY="79.0" mnemonicParsing="false" onAction="#selectMedium" prefHeight="35.0" prefWidth="76.0" text="Medium" />
-                  <Button fx:id="hardButton" layoutX="75.0" layoutY="124.0" mnemonicParsing="false" onAction="#selectHard" prefHeight="35.0" prefWidth="77.0" text="Hard" />
-                  <Button fx:id="nightmareButton" layoutX="75.0" layoutY="170.0" mnemonicParsing="false" onAction="#selectNightmare" prefHeight="35.0" prefWidth="77.0" text="Nightmare" />
-                  <Label layoutX="67.0" layoutY="1.0" prefHeight="26.0" prefWidth="94.0" text="Choose difficulty:" />
-               </children></AnchorPane>
-        </content>
-      </TitledPane>
-   </children>
+<AnchorPane fx:id="pane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.arturoo404.game.options.OptionWindowController">
+    <TitledPane animated="false" prefHeight="400.0" prefWidth="600.0" text="test">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+            <Button fx:id="saveButton" layoutX="259.0" layoutY="312.0" mnemonicParsing="false"
+                    prefHeight="41.0" prefWidth="80.0" text="Save"/>
+            <Button fx:id="easyButton" layoutX="74.0" layoutY="33.0" mnemonicParsing="false"
+                    prefHeight="35.0" prefWidth="77.0" text="Easy"/>
+            <Button fx:id="mediumButton" layoutX="75.0" layoutY="79.0" mnemonicParsing="false"
+                     prefHeight="35.0" prefWidth="76.0" text="Medium"/>
+            <Button fx:id="hardButton" layoutX="75.0" layoutY="124.0" mnemonicParsing="false"
+                    prefHeight="35.0" prefWidth="77.0" text="Hard"/>
+            <Button fx:id="nightmareButton" layoutX="75.0" layoutY="170.0" mnemonicParsing="false"
+                    prefHeight="35.0" prefWidth="77.0" text="Nightmare"/>
+            <Label layoutX="67.0" layoutY="1.0" prefHeight="26.0" prefWidth="94.0" text="Choose difficulty:"/>
+        </AnchorPane>
+    </TitledPane>
 </AnchorPane>

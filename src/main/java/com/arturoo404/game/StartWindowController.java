@@ -1,5 +1,6 @@
 package com.arturoo404.game;
 
+import com.arturoo404.game.options.OptionWindowController;
 import com.opencsv.exceptions.CsvException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -14,8 +15,6 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public class StartWindowController {
-
-    private Stage optionsStage;
 
     @FXML
     private void startGame(ActionEvent event) throws IOException, CsvException {
@@ -34,15 +33,12 @@ public class StartWindowController {
         OptionWindowController controller = loader.getController();
 
         Stage optionsStage = new Stage();
+        controller.setStageOptionsSelector(optionsStage);
         optionsStage.initModality(Modality.WINDOW_MODAL);
         optionsStage.initOwner(((Node) event.getSource()).getScene().getWindow());
         Scene scene = new Scene(root, 500, 400);
         optionsStage.initStyle(StageStyle.UNDECORATED);
         optionsStage.setScene(scene);
         optionsStage.show();
-
-        controller.setOptionsStage(optionsStage);
-        //Potrzebne do działania klawiatury
-        root.requestFocus();
     }
 }
