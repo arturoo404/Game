@@ -2,11 +2,9 @@ package com.arturoo404.game.player.skills;
 
 import com.arturoo404.game.player.Player;
 import com.arturoo404.game.player.skills.bullet.BasicAttack;
-import javafx.animation.AnimationTimer;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
-import javafx.scene.layout.AnchorPane;
 
 public class SkillsController {
 

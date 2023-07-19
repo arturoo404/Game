@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.arturoo404.game.StartWindowController">
-   <Button fx:id="start" layoutX="860.0" layoutY="163.0" mnemonicParsing="false" onAction="#startGame" prefHeight="70.0" prefWidth="200.0" text="Start" />
-   <Button fx:id="startOptions" layoutX="862.0" layoutY="299.0" mnemonicParsing="false" onAction="#openOptions" prefHeight="70.0" prefWidth="200.0" text="Options" />
+<Pane maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" stylesheets="@style/start-window-style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.arturoo404.game.StartWindowController">
+   <ImageView fitHeight="720.0" fitWidth="1280.0" pickOnBounds="true" preserveRatio="true">
+      <Image url="@image/main_screen.png" />
+   </ImageView>
+   <Button fx:id="start" layoutX="490.0" layoutY="90.0" mnemonicParsing="false"  prefHeight="70.0" prefWidth="300.0" text="Start" />
+   <Button fx:id="save" layoutX="490.0" layoutY="200.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="300.0" text="Saved Game" />
+   <Button fx:id="options" layoutX="490.0" layoutY="310.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="300.0" text="Options" />
+   <Button fx:id="gameInfo" layoutX="490.0" layoutY="420.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="300.0" text="Info" />
+   <Button fx:id="exit" layoutX="490.0" layoutY="530.0" mnemonicParsing="false" prefHeight="70.0" prefWidth="300.0" text="Exit" />
 </Pane>

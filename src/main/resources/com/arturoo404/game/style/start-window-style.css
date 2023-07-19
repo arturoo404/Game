@@ -1,0 +1,24 @@
+
+
+.button{
+    -fx-background-color: #9d0505;
+    -fx-border-radius:3px;
+    -fx-display:inline-block;
+    -fx-cursor:pointer;
+    -fx-color:#000000;
+    -fx-font-family:Arial;
+    -fx-font-size:30px;
+    -fx-padding:9px 23px;
+    -fx-text-decoration:none;
+}
+
+.button:hover{
+    -fx-background-color: #f10b0b;
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-font-size:32px;
+}
+
+.button:pressed{
+    -fx-background-color: #ea4040;
+}
