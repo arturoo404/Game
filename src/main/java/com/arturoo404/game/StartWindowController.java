@@ -42,6 +42,8 @@ public class StartWindowController implements Initializable {
             } catch (IOException ignored) {}
         });
     }
+
+    //TODO Trzeba wydzielić do osobnej klasy
     private void openGameWindow(ActionEvent actionEvent) throws IOException, InterruptedException {
         FadeTransition fadeOut = new FadeTransition(Duration.millis(1500), ((Node) actionEvent.getSource()).getScene().getRoot());
         fadeOut.setFromValue(1.0);
