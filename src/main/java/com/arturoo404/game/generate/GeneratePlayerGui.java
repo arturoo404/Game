@@ -13,6 +13,7 @@ import java.io.IOException;
 public class GeneratePlayerGui {
 
     private final Initializable initializable;
+    private Stage stage;
 
     public GeneratePlayerGui(Initializable initializable) {
         this.initializable = initializable;
@@ -21,7 +22,7 @@ public class GeneratePlayerGui {
     public void init() throws IOException {
         FXMLLoader loader = new FXMLLoader(this.initializable.getClass().getResource("player-gui.fxml"));
         Parent root = loader.load();
-        Stage stage = new Stage();
+        stage = new Stage();
         stage.initModality(Modality.WINDOW_MODAL);
         Scene scene = new Scene(root, 1000, 200);
         stage.initStyle(StageStyle.UNDECORATED);
@@ -30,5 +31,9 @@ public class GeneratePlayerGui {
         stage.setAlwaysOnTop(true);
         stage.setX(540);
         stage.setY(960);
+    }
+
+    public Stage getStage() {
+        return stage;
     }
 }

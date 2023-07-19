@@ -15,6 +15,7 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -29,7 +30,7 @@ public class GameWindowController implements Initializable{
 
     //Niebezpieczne nie ruszać
     private static Player player;
-
+    private Stage guiStage;
 
     /**
      * Initializes the game window.
@@ -62,6 +63,7 @@ public class GameWindowController implements Initializable{
         try {
            GeneratePlayerGui generatePlayerGui = new GeneratePlayerGui(this);
            generatePlayerGui.init();
+           guiStage = generatePlayerGui.getStage();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -83,5 +85,9 @@ public class GameWindowController implements Initializable{
 
     public static Player getPlayer() {
         return player;
+    }
+
+    public Stage getGuiStage() {
+        return guiStage;
     }
 }

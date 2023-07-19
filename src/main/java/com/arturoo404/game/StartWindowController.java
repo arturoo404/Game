@@ -50,7 +50,8 @@ public class StartWindowController implements Initializable {
         fadeOut.setToValue(0.0);
         fadeOut.setOnFinished(actionEvent1 -> {
             try {
-                Parent  root = FXMLLoader.load(getClass().getResource("game-window.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("game-window.fxml"));
+                Parent root = loader.load();
                 Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                 Scene scene = new Scene(root, 1920, 1080);
                 stage.setMinWidth(1920);
@@ -58,6 +59,13 @@ public class StartWindowController implements Initializable {
                 stage.setMinHeight(1080);
                 stage.setMaxHeight(1080);
                 stage.setScene(scene);
+
+                stage.setOnCloseRequest(request ->{
+                    GameWindowController controller = loader.getController();
+                    final Stage guiStage = controller.getGuiStage();
+                    guiStage.close();
+                });
+
                 root.requestFocus();
                 FadeTransition fadein = new FadeTransition(Duration.seconds(2), scene.getRoot());
                 fadein.setFromValue(0.0);
