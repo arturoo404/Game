@@ -44,6 +44,9 @@ public class GenerateEntityModel {
         wolf.setRectangle(new Rectangle(entityPosition.posX(), entityPosition.posY(), entityModel.width(), entityModel.height()));
         wolf.setLivingEntities(livingEntities);
         pane.getChildren().add(wolf.getRectangle());
+        System.out.print("HP:" + wolf.getHealth() + "  ");
+        System.out.print("DAMAGE:" + wolf.getDamage() + "  ");
+        System.out.print("DEFENCE:" + wolf.getDefence() + "  ");
         return wolf;
     }
 }
