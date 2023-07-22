@@ -6,12 +6,16 @@ import com.arturoo404.game.file.EntityModel;
 import com.arturoo404.game.file.EntityPosition;
 import com.arturoo404.game.generate.difficulty.Difficulty;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.arturoo404.game.generate.difficulty.GameDifficulty.*;
+import static javafx.scene.shape.StrokeLineCap.ROUND;
+import static javafx.scene.shape.StrokeType.OUTSIDE;
 
 
 public class GenerateEntityModel {
@@ -44,9 +48,19 @@ public class GenerateEntityModel {
         wolf.setRectangle(new Rectangle(entityPosition.posX(), entityPosition.posY(), entityModel.width(), entityModel.height()));
         wolf.setLivingEntities(livingEntities);
         pane.getChildren().add(wolf.getRectangle());
-        System.out.print("HP:" + wolf.getHealth() + "  ");
-        System.out.print("DAMAGE:" + wolf.getDamage() + "  ");
-        System.out.print("DEFENCE:" + wolf.getDefence() + "  ");
+
+        Circle range = new Circle(entityModel.detectionRange());
+        range.setCenterX(entityPosition.posX() + 55);
+        range.setCenterY(entityPosition.posY() + 30);
+        range.setStrokeWidth(5);
+        range.setFill(Color.TRANSPARENT);
+        range.setStroke(Color.RED);
+        range.setStrokeType(OUTSIDE);
+        range.setStrokeLineCap(ROUND);
+
+        pane.getChildren().add(range);
+
+        wolf.setCircle(range);
         return wolf;
     }
 }

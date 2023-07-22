@@ -1,5 +1,6 @@
 package com.arturoo404.game.entity;
 
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 public class Entity {
@@ -17,6 +18,7 @@ public class Entity {
     private int detectionRange;
     private int defence;
     private Rectangle rectangle;
+    private Circle circle;
 
     private LivingEntities livingEntities;
 
@@ -134,5 +136,13 @@ public class Entity {
 
     public void setRectangle(Rectangle rectangle) {
         this.rectangle = rectangle;
+    }
+
+    public Circle getCircle() {
+        return circle;
+    }
+
+    public void setCircle(Circle circle) {
+        this.circle = circle;
     }
 }
