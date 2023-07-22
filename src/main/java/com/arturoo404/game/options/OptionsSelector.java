@@ -4,6 +4,7 @@ import com.arturoo404.game.file.EntityMainModel;
 import com.arturoo404.game.file.FileReader;
 import com.arturoo404.game.generate.difficulty.Difficulty;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
@@ -44,6 +45,7 @@ public class OptionsSelector {
             try {
                 EntityMainModel updatedEntityMainModel = new EntityMainModel(entityMainModel.entityModel(), difficulty);
                 ObjectMapper objectMapper = new ObjectMapper();
+                objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
                 objectMapper.writeValue(new File("src/main/resources/entity/entity_location.json"), updatedEntityMainModel);
             }catch (Exception ignored){}
             stage.close();
