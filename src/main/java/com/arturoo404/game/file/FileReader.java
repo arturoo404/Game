@@ -32,7 +32,7 @@ public class FileReader {
         ObjectMapper objectMapper = new ObjectMapper();
 
         try {
-            gameOptions = objectMapper.readValue(new File("src/main/resources/com/arturoo404/game/game_options.json"), GameOptions.class);
+            gameOptions = objectMapper.readValue(new File("src/main/resources/options/game_options.json"), GameOptions.class);
         } catch (IOException e) {
             e.printStackTrace();
         }

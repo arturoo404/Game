@@ -51,26 +51,28 @@ public class OptionsSelector {
 
     private void resolutionSelect(){
         resolutionSelector.getItems().addAll("720p", "1080p", "1440p");
-        resolutionSelector.setValue("1080p");
+        FileReader fileReader = new FileReader();
+        fileReader.gameOptionReader();
+        resolutionSelector.setValue(fileReader.getGameOptions().getResolutionV() + "p");
         // Trzeba zrobic szczytywanie z jsona, nie dzialalo getResolutionV to popierdolilem narazie i domyslnie jest 1080px
     }
 
     private void saveButtonEvent(){
         saveButton.setOnAction(actionEvent -> {
             String selectedResolution = resolutionSelector.getValue();
-            switch (selectedResolution){
-                case "720p":
+            switch (selectedResolution) {
+                case "720p" -> {
                     gameOptions.setResolutionV("720");
                     gameOptions.setResolutionH("1280");
-                    break;
-                case  "1080p":
+                }
+                case "1080p" -> {
                     gameOptions.setResolutionV("1080");
                     gameOptions.setResolutionH("1920");
-                    break;
-                case  "1440p":
+                }
+                case "1440p" -> {
                     gameOptions.setResolutionV("1440");
                     gameOptions.setResolutionH("2560");
-                    break;
+                }
             }
             try {
                 EntityMainModel updatedEntityMainModel = new EntityMainModel(entityMainModel.entityModel(), difficulty);
@@ -78,20 +80,18 @@ public class OptionsSelector {
                 objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
                 objectMapper.writeValue(new File("src/main/resources/entity/entity_location.json"), updatedEntityMainModel);
 
-                objectMapper.writeValue(new File("src/main/resources/com/arturoo404/game/game_options.json"), gameOptions);
+                objectMapper.writeValue(new File("src/main/resources/options/game_options.json"), gameOptions);
                 resolutionSelector.setValue(gameOptions.getResolutionV()+"p");
             } catch (IOException e) {
                 e.printStackTrace();
             }
             stage.close();
-            System.out.println(difficulty);
         });
     }
 
     private void closeButtonEvent(){
         closeButton.setOnAction(actionEvent -> {
             stage.close();
-            System.out.println(difficulty);
         });
     }
     public void setStage(Stage stage) {
