@@ -1,5 +1,7 @@
 package com.arturoo404.game;
 
+import com.arturoo404.game.file.FileReader;
+import com.arturoo404.game.file.GameOptions;
 import com.arturoo404.game.options.OptionWindowController;
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
@@ -48,16 +50,21 @@ public class StartWindowController implements Initializable {
         FadeTransition fadeOut = new FadeTransition(Duration.millis(1500), ((Node) actionEvent.getSource()).getScene().getRoot());
         fadeOut.setFromValue(1.0);
         fadeOut.setToValue(0.0);
+
+        FileReader fileReader = new FileReader();
+        fileReader.gameOptionReader();
+        GameOptions gameOptions = fileReader.getGameOptions();
+
         fadeOut.setOnFinished(actionEvent1 -> {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("game-window.fxml"));
                 Parent root = loader.load();
                 Stage stage = (Stage) ((Node) actionEvent.getSource()).getScene().getWindow();
                 Scene scene = new Scene(root, 1920, 1080);
-                stage.setMinWidth(1920);
-                stage.setMaxWidth(1920);
-                stage.setMinHeight(1080);
-                stage.setMaxHeight(1080);
+                stage.setMinWidth(Double.parseDouble(gameOptions.getResolutionH()));
+                stage.setMaxWidth(Double.parseDouble(gameOptions.getResolutionH()));
+                stage.setMinHeight(Double.parseDouble(gameOptions.getResolutionV()));
+                stage.setMaxHeight(Double.parseDouble(gameOptions.getResolutionV()));
                 stage.setScene(scene);
 
                 stage.setOnCloseRequest(request ->{
@@ -84,8 +91,10 @@ public class StartWindowController implements Initializable {
         controller.setStageOptionsSelector(optionsStage);
         optionsStage.initModality(Modality.WINDOW_MODAL);
         optionsStage.initOwner(((Node) event.getSource()).getScene().getWindow());
-        Scene scene = new Scene(root, 500, 400);
+        Scene scene = new Scene(root, 600, 650);
         optionsStage.initStyle(StageStyle.UNDECORATED);
+        optionsStage.initStyle(StageStyle.TRANSPARENT);
+        scene.setFill(null);
         optionsStage.setScene(scene);
         optionsStage.show();
     }

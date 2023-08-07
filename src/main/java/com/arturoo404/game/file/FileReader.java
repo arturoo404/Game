@@ -8,6 +8,7 @@ import java.io.*;
 import java.util.List;
 
 public class FileReader {
+    private GameOptions gameOptions;
 
     /**
      * Read csv file
@@ -24,5 +25,19 @@ public class FileReader {
         ObjectMapper objectMapper = new ObjectMapper();
         File file = new File("src/main/resources/entity/entity_location.json");
         return objectMapper.readValue(file, EntityMainModel.class);
+    }
+
+
+    public void gameOptionReader() {
+        ObjectMapper objectMapper = new ObjectMapper();
+
+        try {
+            gameOptions = objectMapper.readValue(new File("src/main/resources/com/arturoo404/game/game_options.json"), GameOptions.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+    public GameOptions getGameOptions() {
+        return gameOptions;
     }
 }
