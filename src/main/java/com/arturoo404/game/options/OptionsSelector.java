@@ -17,36 +17,31 @@ public class OptionsSelector {
 
     private Difficulty difficulty;
     private final EntityMainModel entityMainModel;
-    private final Button saveButton, easyButton, mediumButton, hardButton, nightmareButton, closeButton;
+    private final Button saveButton, closeButton;
     private Stage stage;
-    private ChoiceBox<String> resolutionSelector;
+    private ChoiceBox<String> resolutionSelector, difficultySelector;
     private GameOptions gameOptions;
 
-    public OptionsSelector(Button saveButton, Button easyButton, Button mediumButton, Button hardButton, Button nightmareButton, Button closeButton, ChoiceBox<String> resolutionSelector) throws IOException {
+    public OptionsSelector(Button saveButton, Button closeButton, ChoiceBox<String> resolutionSelector, ChoiceBox<String> difficultySelector) throws IOException {
         this.saveButton = saveButton;
-        this.easyButton = easyButton;
-        this.mediumButton = mediumButton;
-        this.hardButton = hardButton;
-        this.nightmareButton = nightmareButton;
         this.closeButton = closeButton;
         this.resolutionSelector = resolutionSelector;
+        this.difficultySelector = difficultySelector;
         entityMainModel = FileReader.entityModelFilesRead();
         gameOptions = new GameOptions();
     }
 
     public void init(){
         difficulty = entityMainModel.difficulty();
-        lvlButtonEvent();
         saveButtonEvent();
         closeButtonEvent();
         resolutionSelect();
+        dificultySelect();
     }
 
-    private void lvlButtonEvent(){
-        easyButton.setOnAction(a -> difficulty = Difficulty.EASY);
-        mediumButton.setOnAction(a -> difficulty = Difficulty.NORMAL);
-        hardButton.setOnAction(a -> difficulty = Difficulty.HARD);
-        nightmareButton.setOnAction(a -> difficulty = Difficulty.NIGHTMARE);
+    private void dificultySelect(){
+        difficultySelector.getItems().addAll("Easy", "Normal", "Hard", "Nightmare");
+        difficultySelector.setValue(String.valueOf(entityMainModel.difficulty()));
     }
 
     private void resolutionSelect(){
@@ -54,12 +49,14 @@ public class OptionsSelector {
         FileReader fileReader = new FileReader();
         fileReader.gameOptionReader();
         resolutionSelector.setValue(fileReader.getGameOptions().getResolutionV() + "p");
-        // Trzeba zrobic szczytywanie z jsona, nie dzialalo getResolutionV to popierdolilem narazie i domyslnie jest 1080px
+        // Trzeba sformatowac zapis na HxV np "720x1280"
     }
 
     private void saveButtonEvent(){
         saveButton.setOnAction(actionEvent -> {
             String selectedResolution = resolutionSelector.getValue();
+            String selectedDifficulty = difficultySelector.getValue();
+            // Ustawianie nowych opcji do zapisu, NIE PRZENOSIC TEGO!!!
             switch (selectedResolution) {
                 case "720p" -> {
                     gameOptions.setResolutionV("720");
@@ -74,6 +71,14 @@ public class OptionsSelector {
                     gameOptions.setResolutionH("2560");
                 }
             }
+            switch (selectedDifficulty){
+                case "Easy" -> difficulty = Difficulty.EASY;
+                case "Normal" -> difficulty = Difficulty.NORMAL;
+                case "Hard" -> difficulty = Difficulty.HARD;
+                case "Nightmare" -> difficulty = Difficulty.NIGHTMARE;
+            }
+
+            // Zapis zmienionych opcji do pliku json
             try {
                 EntityMainModel updatedEntityMainModel = new EntityMainModel(entityMainModel.entityModel(), difficulty);
                 ObjectMapper objectMapper = new ObjectMapper();

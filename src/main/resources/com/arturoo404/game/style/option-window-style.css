@@ -30,7 +30,7 @@
 
 .AnchorPane{
     -fx-background-color: transparent;
-    -fx-background-color: rgba(108, 175, 170, 0.9);
+    -fx-background-color: rgba(108, 175, 170, 0.95);
     -fx-border-color: rgb(4, 111, 135);
     -fx-border-width: 4;
     -fx-border-radius: 1;

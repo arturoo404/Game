@@ -12,16 +12,16 @@ import java.util.ResourceBundle;
 
 public class OptionWindowController implements Initializable {
     @FXML
-    private Button saveButton, closeButton, easyButton, mediumButton, hardButton, nightmareButton;
+    private Button saveButton, closeButton;
     @FXML
     private OptionsSelector optionsSelector;
     @FXML
-    private ChoiceBox resolutionSelector;
+    private ChoiceBox resolutionSelector, difficultySelector;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         try {
             optionsSelector = new OptionsSelector(
-                    saveButton, easyButton, mediumButton, hardButton, nightmareButton, closeButton, resolutionSelector);
+                    saveButton, closeButton, resolutionSelector, difficultySelector);
             optionsSelector.init();
         } catch (IOException ignored) {}
     }
