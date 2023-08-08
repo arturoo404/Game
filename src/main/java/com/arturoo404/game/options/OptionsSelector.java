@@ -45,11 +45,10 @@ public class OptionsSelector {
     }
 
     private void resolutionSelect(){
-        resolutionSelector.getItems().addAll("720p", "1080p", "1440p");
+        resolutionSelector.getItems().addAll("1280x720", "1920x1080", "2560x1440");
         FileReader fileReader = new FileReader();
         fileReader.gameOptionReader();
-        resolutionSelector.setValue(fileReader.getGameOptions().getResolutionV() + "p");
-        // Trzeba sformatowac zapis na HxV np "720x1280"
+        resolutionSelector.setValue(fileReader.getGameOptions().getResolutionH() + "x" + fileReader.getGameOptions().getResolutionV());
     }
 
     private void saveButtonEvent(){
@@ -57,20 +56,20 @@ public class OptionsSelector {
             String selectedResolution = resolutionSelector.getValue();
             String selectedDifficulty = difficultySelector.getValue();
             // Ustawianie nowych opcji do zapisu, NIE PRZENOSIC TEGO!!!
-            switch (selectedResolution) {
-                case "720p" -> {
-                    gameOptions.setResolutionV("720");
-                    gameOptions.setResolutionH("1280");
-                }
-                case "1080p" -> {
-                    gameOptions.setResolutionV("1080");
-                    gameOptions.setResolutionH("1920");
-                }
-                case "1440p" -> {
-                    gameOptions.setResolutionV("1440");
-                    gameOptions.setResolutionH("2560");
-                }
+            if (selectedResolution.contains("720")){
+                gameOptions.setResolutionV("720");
+                gameOptions.setResolutionH("1280");
+            }else if (selectedResolution.contains("1080")){
+                gameOptions.setResolutionV("1080");
+                gameOptions.setResolutionH("1920");
+            } else if (selectedResolution.contains("1440")) {
+                gameOptions.setResolutionV("1440");
+                gameOptions.setResolutionH("2560");
+            }else {
+                gameOptions.setResolutionV("720");
+                gameOptions.setResolutionH("1280");
             }
+
             switch (selectedDifficulty){
                 case "Easy" -> difficulty = Difficulty.EASY;
                 case "Normal" -> difficulty = Difficulty.NORMAL;
