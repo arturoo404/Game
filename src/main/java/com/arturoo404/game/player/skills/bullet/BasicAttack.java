@@ -44,7 +44,7 @@ public class BasicAttack {
         bulletSkillStatsController = new BulletSkillStatsController(this);
         skillsAnimationController = new BasicAttackSkillsAnimationController(this);
         skillsAnimationController.initBasicAttackAnimation();
-        skillsMapCollision = new SkillsMapCollision(player.getMovement().getRectangleList(), this);
+        skillsMapCollision = new SkillsMapCollision(player.getMovement().getBlocks(), this);
         skillsMapCollision.init();
         image = new Image(getClass().getResourceAsStream("/txt/skills/basicAttack.png"));
         Thread thread = new Thread(() -> {

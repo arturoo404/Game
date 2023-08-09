@@ -27,8 +27,6 @@ public class GameWindowController implements Initializable{
     @FXML
     private AnchorPane pane;
     private List<Rectangle> init;
-
-    //Niebezpieczne nie ruszać
     private static Player player;
     private Stage guiStage;
 
@@ -39,8 +37,7 @@ public class GameWindowController implements Initializable{
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        initGame();
-
+        initMap();
         Rectangle playerShape = new Rectangle(300,300,80, 120);
 
         Image image = new Image(getClass().getResourceAsStream("/txt/player/player.png"));
@@ -50,7 +47,7 @@ public class GameWindowController implements Initializable{
 
         pane.getChildren().add(playerShape);
         player = new Player(playerShape, this.pane);
-
+        initEntity();
         player.setSkillStats(new PlayerStats());
         Movement movement = new Movement(player, init);
         movement.init();
@@ -72,15 +69,20 @@ public class GameWindowController implements Initializable{
     /**
      * Initializes the map.
      */
-    private void initGame(){
+    private void initMap(){
         MapGenerator mapGenerator = new MapGenerator(pane);
-        EntityGenerator entityGenerator = new EntityGenerator(pane);
         try {
             init = mapGenerator.init();
-            entityGenerator.init();
         } catch (IOException | CsvException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private void initEntity(){
+        EntityGenerator entityGenerator = new EntityGenerator(pane, player);
+        try {
+            entityGenerator.init();
+        } catch (IOException ignored) {}
     }
 
     public static Player getPlayer() {

@@ -1,10 +1,24 @@
 package com.arturoo404.game.entity;
 
-import com.arturoo404.game.entity.wolf.Wolf;
+import com.arturoo404.game.player.Player;
+import lombok.AllArgsConstructor;
 
-import java.util.List;
-
+@AllArgsConstructor
 public class EntityController {
 
-    List<Wolf> wolves;
+    private LivingEntities livingEntities;
+
+    private EntityDetection entityDetection;
+
+    private Player player;
+
+    public EntityController(LivingEntities livingEntities, Player player) {
+        this.livingEntities = livingEntities;
+        this.player = player;
+        entityDetection = new EntityDetection(livingEntities, player);
+    }
+
+    public void init(){
+        entityDetection.init();
+    }
 }

@@ -20,15 +20,15 @@ public class Movement {
     private final BooleanProperty goLeft = new SimpleBooleanProperty();
     private final BooleanBinding keyPress = goUp.or(goDown).or(goLeft).or(goRight);
     private final Player player;
-    private final List<Rectangle> rectangleList;
+    private final List<Rectangle> blocks;
     private final MovementAnimation movementAnimation;
     private final CameraMovement cameraMovement;
     private PlayerBars playerBars;
     private PlayerResourceManagement playerResourceManagement;
 
-    public Movement(Player player, List<Rectangle> rectangleList) {
+    public Movement(Player player, List<Rectangle> blocks) {
         this.player = player;
-        this.rectangleList = rectangleList;
+        this.blocks = blocks;
         movementAnimation = new MovementAnimation(player.getRectangle());
         cameraMovement = new CameraMovement(player.getRectangle());
     }
@@ -36,7 +36,7 @@ public class Movement {
      * This method is used to initialize the movement of the player.
      */
     public void init(){
-        Thread thread = new Thread(new MapCollision(rectangleList, player));
+        Thread thread = new Thread(new MapCollision(blocks, player));
         thread.start();
         movementAnimation.init();
         playerBars = new PlayerBars(player);
@@ -125,8 +125,8 @@ public class Movement {
         return movementAnimation;
     }
 
-    public List<Rectangle> getRectangleList() {
-        return rectangleList;
+    public List<Rectangle> getBlocks() {
+        return blocks;
     }
 
     public PlayerBars getPlayerBars() {

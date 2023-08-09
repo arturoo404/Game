@@ -20,9 +20,9 @@ public class Entity {
     private int range;
     private double attackSpeed;
     private int detectionRange;
+    private boolean playerDetection;
     private int defence;
     private Rectangle rectangle;
     private Circle circle;
-
     private LivingEntities livingEntities;
 }
