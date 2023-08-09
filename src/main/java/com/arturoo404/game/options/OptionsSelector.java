@@ -36,12 +36,12 @@ public class OptionsSelector {
         saveButtonEvent();
         closeButtonEvent();
         resolutionSelect();
-        dificultySelect();
+        difficultySelect();
     }
 
-    private void dificultySelect(){
+    private void difficultySelect(){
         difficultySelector.getItems().addAll("Easy", "Normal", "Hard", "Nightmare");
-        difficultySelector.setValue(String.valueOf(entityMainModel.difficulty()));
+        difficultySelector.setValue(entityMainModel.difficulty().toString().substring(0, 1).toUpperCase() + entityMainModel.difficulty().toString().substring(1).toLowerCase());
     }
 
     private void resolutionSelect(){
