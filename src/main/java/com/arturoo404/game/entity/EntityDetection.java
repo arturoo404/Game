@@ -2,12 +2,10 @@ package com.arturoo404.game.entity;
 
 import com.arturoo404.game.entity.wolf.Wolf;
 import com.arturoo404.game.player.Player;
-import com.arturoo404.game.player.skills.bullet.BulletAttackObject;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.scene.paint.ImagePattern;
-import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import lombok.AllArgsConstructor;
@@ -28,7 +26,7 @@ public class EntityDetection {
         Thread thread = new Thread(() -> {
             Timeline entityDetection = new Timeline(new KeyFrame(Duration.millis(100), actionEvent -> {
                 for (Wolf wolf : livingEntities.getWolves()){
-                    wolf.setPlayerDetection(check(player.getRectangle(), wolf.getCircle()));
+                    wolf.setPlayerDetection(check(wolf));
                 }
             }));
             entityDetection.setCycleCount(Animation.INDEFINITE);
@@ -38,7 +36,21 @@ public class EntityDetection {
         thread.start();
     }
 
-    private boolean check(Rectangle player, Circle circle) {
-        return player.getBoundsInParent().intersects(circle.getBoundsInParent());
+    private boolean check(Wolf wolf) {
+        if (player.getRectangle().getBoundsInParent().intersects(wolf.getCircle().getBoundsInParent())){
+            Line line = new Line(wolf.getRectangle().getX() + 55, wolf.getRectangle().getY() + 30, player.getRectangle().getX() + 40, player.getRectangle().getY() + 80);
+            player.getAnchorPane().getChildren().add(line);
+            return detectBehindWallChecker(line);
+        }
+        return false;
+    }
+
+    private boolean detectBehindWallChecker(Line line){
+        for (Rectangle rectangle : player.getMovement().getBlocks()){
+            if (rectangle.getBoundsInParent().intersects(line.getBoundsInParent())){
+                return false;
+            }
+        }
+        return true;
     }
 }
