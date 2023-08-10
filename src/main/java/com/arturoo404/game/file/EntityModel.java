@@ -4,7 +4,7 @@ import com.arturoo404.game.entity.EntityType;
 
 public record EntityModel(int width, int height, EntityType entityType, int health, double damage,
                           int speed, EntityPosition[] entityPositions, int range, double attackSpeed,
-                          int detectionRange, int defence) {
+                          int detectionRange, int defence, int detectionTimer) {
 
     @Override
     public int width() {

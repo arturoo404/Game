@@ -1,5 +1,6 @@
 package com.arturoo404.game.generate;
 
+import com.arturoo404.game.entity.DetectionStatus;
 import com.arturoo404.game.entity.LivingEntities;
 import com.arturoo404.game.entity.wolf.Wolf;
 import com.arturoo404.game.file.EntityModel;
@@ -47,6 +48,9 @@ public class GenerateEntityModel {
         wolf.setDefence(defenceChanger(entityModel.defence(),difficulty));
         wolf.setRectangle(new Rectangle(entityPosition.posX(), entityPosition.posY(), entityModel.width(), entityModel.height()));
         wolf.setLivingEntities(livingEntities);
+        wolf.setDetectionStatus(DetectionStatus.IGNORE);
+        wolf.setDetectionTimerDefaultValue(entityModel.detectionTimer());
+        wolf.setDetectionTimer(entityModel.detectionTimer());
         pane.getChildren().add(wolf.getRectangle());
 
         Circle range = new Circle(entityModel.detectionRange());

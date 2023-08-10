@@ -6,6 +6,7 @@
     "health" : 150,
     "damage" : 10.0,
     "speed" : 1,
+    "detectionTimer" : 30,
     "entityPositions" : [ {
       "posX" : 1000,
       "posY" : 1000
@@ -18,5 +19,5 @@
     "detectionRange" : 300,
     "defence" : 30
   } ],
-  "difficulty" : "NORMAL"
+  "difficulty" : "NIGHTMARE"
 }

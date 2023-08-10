@@ -26,7 +26,22 @@ public class EntityDetection {
         Thread thread = new Thread(() -> {
             Timeline entityDetection = new Timeline(new KeyFrame(Duration.millis(100), actionEvent -> {
                 for (Wolf wolf : livingEntities.getWolves()){
-                    wolf.setPlayerDetection(check(wolf));
+                    if (check(wolf)){
+                        if (wolf.getDetectionStatus().equals(DetectionStatus.IGNORE) || wolf.getDetectionStatus().equals(DetectionStatus.OUT_OF_RANGE)){
+                            wolf.setDetectionStatus(DetectionStatus.IN_RANGE);
+                            wolf.setDetectionTimer(wolf.getDetectionTimerDefaultValue());
+                        }
+                    }else {
+                        if (wolf.getDetectionStatus().equals(DetectionStatus.IN_RANGE)){
+                            wolf.setDetectionStatus(DetectionStatus.OUT_OF_RANGE);
+                            wolf.setDetectionTimer(detectionTimerCalc(wolf));
+                        }else if (wolf.getDetectionStatus().equals(DetectionStatus.OUT_OF_RANGE)){
+                            wolf.setDetectionTimer(detectionTimerCalc(wolf));
+                            if (wolf.getDetectionTimer() == 0){
+                                wolf.setDetectionStatus(DetectionStatus.IGNORE);
+                            }
+                        }
+                    }
                 }
             }));
             entityDetection.setCycleCount(Animation.INDEFINITE);
@@ -34,6 +49,10 @@ public class EntityDetection {
         });
 
         thread.start();
+    }
+
+    private int detectionTimerCalc(Wolf wolf){
+        return wolf.getDetectionTimer() - 1;
     }
 
     private boolean check(Wolf wolf) {
