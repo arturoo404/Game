@@ -23,6 +23,7 @@ public class EntityDetection {
      detectEntityDetectRange();
     }
 
+    //TODO Clean this ifs
     private void detectEntityDetectRange(){
         Thread thread = new Thread(() -> {
             Timeline entityDetection = new Timeline(new KeyFrame(Duration.millis(100), actionEvent -> {
@@ -42,6 +43,10 @@ public class EntityDetection {
                                 wolf.setDetectionStatus(DetectionStatus.IGNORE);
                             }
                         }
+                    }
+
+                    if (wolf.getDetectionStatus().equals(DetectionStatus.IN_RANGE) || wolf.getDetectionStatus().equals(DetectionStatus.OUT_OF_RANGE)){
+                        moveEntityTowardsPlayer(wolf.getRectangle(), wolf.getCircle(), player.getPlayerShape(), wolf.getSpeed());
                     }
                 }
             }));
@@ -74,6 +79,20 @@ public class EntityDetection {
         double distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
 
         return distance <= circle.getRadius();
+    }
+
+
+    private void moveEntityTowardsPlayer(Rectangle entity, Circle entityRange, Rectangle player, double speed) {
+        double dx = player.getX() - entity.getX();
+        double dy = player.getY() - entity.getY();
+
+        if (Math.abs(dx) > Math.abs(dy)) {
+            entity.setX(entity.getX() + Math.signum(dx) * speed);
+            entityRange.setCenterX(entity.getX() + entity.getWidth() / 2);
+        } else {
+            entity.setY(entity.getY() + Math.signum(dy) * speed);
+            entityRange.setCenterY(entity.getY() + entity.getHeight() / 2);
+        }
     }
 
     private boolean detectBehindWallChecker(Line line){
