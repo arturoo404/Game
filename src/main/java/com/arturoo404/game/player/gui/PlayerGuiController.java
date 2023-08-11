@@ -1,6 +1,5 @@
 package com.arturoo404.game.player.gui;
 
-import com.arturoo404.game.generate.GeneratePlayerGui;
 import com.arturoo404.game.player.Player;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -18,7 +17,7 @@ import static com.arturoo404.game.GameWindowController.getPlayer;
 
 public class PlayerGuiController implements Initializable {
 
-    private GeneratePlayerGui controller;
+
     private Player player;
     @FXML
     private Label damage, attackSpeed, healthRegen, armor, manaRegen, cooldownReduction, hpText, manaText, experiance, money, playerLvl;

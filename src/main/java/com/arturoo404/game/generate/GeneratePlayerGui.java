@@ -1,5 +1,7 @@
 package com.arturoo404.game.generate;
 
+import com.arturoo404.game.file.FileReader;
+import com.arturoo404.game.file.GameOptions;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -20,6 +22,10 @@ public class GeneratePlayerGui {
     }
 
     public void init() throws IOException {
+        FileReader fileReader = new FileReader();
+        fileReader.gameOptionReader();
+        GameOptions gameOptions = fileReader.getGameOptions();
+
         FXMLLoader loader = new FXMLLoader(this.initializable.getClass().getResource("player-gui.fxml"));
         Parent root = loader.load();
         stage = new Stage();
@@ -30,9 +36,8 @@ public class GeneratePlayerGui {
         stage.show();
         stage.setAlwaysOnTop(true);
         stage.setX(540);
-        stage.setY(960);
+        stage.setY(Double.parseDouble(gameOptions.getResolutionV()) - 115);
     }
-
     public Stage getStage() {
         return stage;
     }

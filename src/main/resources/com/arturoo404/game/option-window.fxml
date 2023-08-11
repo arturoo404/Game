@@ -10,7 +10,7 @@
       <font>
          <Font size="11.0" />
       </font></Button>
-   <ChoiceBox fx:id="resolutionSelector" layoutX="424.0" layoutY="39.0" prefWidth="150.0" />
+   <ChoiceBox fx:id="resolutionSelector" layoutX="424.0" layoutY="39.0" prefWidth="150.0" styleClass="ChoiceBox" />
    <Button fx:id="closeButton" layoutX="359.0" layoutY="566.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="161.0" text="Close witchout saving" textAlignment="CENTER" wrapText="true">
       <font>
          <Font size="11.0" />
@@ -35,7 +35,7 @@
             </stops>
          </RadialGradient>
       </textFill></Label>
-   <ChoiceBox fx:id="difficultySelector" layoutX="129.0" layoutY="40.0" prefWidth="150.0" />
+   <ChoiceBox fx:id="difficultySelector" layoutX="129.0" layoutY="40.0" prefWidth="150.0" styleClass="ChoiceBox" />
    <Label layoutX="14.0" layoutY="35.0" prefHeight="34.0" prefWidth="121.0" text="Game Difficulty:">
       <font>
          <Font name="Arial Black" size="12.0" />
