@@ -29,8 +29,8 @@ public class Movement {
     public Movement(Player player, List<Rectangle> blocks) {
         this.player = player;
         this.blocks = blocks;
-        movementAnimation = new MovementAnimation(player.getRectangle());
-        cameraMovement = new CameraMovement(player.getRectangle());
+        movementAnimation = new MovementAnimation(player.getPlayerShape());
+        cameraMovement = new CameraMovement(player.getPlayerShape());
     }
     /**
      * This method is used to initialize the movement of the player.
@@ -63,25 +63,29 @@ public class Movement {
      */
     private void move(){
         if (goUp.get()){
-            player.getRectangle().setY(player.getRectangle().getY() - 2);
+            player.getPlayerShape().setY(player.getPlayerShape().getY() - 2);
+            player.getEntityHitBox().setY(player.getEntityHitBox().getY() - 2);
             movementAnimation.setKey(KeyCode.W);
             player.setDirection(KeyCode.W);
             cameraMovement.moveCamera(KeyCode.W);
             changeBarsPosition();
         } else if (goDown.get()) {
-            player.getRectangle().setY(player.getRectangle().getY() + 2);
+            player.getPlayerShape().setY(player.getPlayerShape().getY() + 2);
+            player.getEntityHitBox().setY(player.getEntityHitBox().getY() + 2);
             movementAnimation.setKey(KeyCode.S);
             player.setDirection(KeyCode.S);
             cameraMovement.moveCamera(KeyCode.S);
             changeBarsPosition();
         }else if (goLeft.get()) {
-            player.getRectangle().setX(player.getRectangle().getX() - 2);
+            player.getPlayerShape().setX(player.getPlayerShape().getX() - 2);
+            player.getEntityHitBox().setX(player.getEntityHitBox().getX() - 2);
             movementAnimation.setKey(KeyCode.A);
             player.setDirection(KeyCode.A);
             cameraMovement.moveCamera(KeyCode.A);
             changeBarsPosition();
         }else if (goRight.get()) {
-            player.getRectangle().setX(player.getRectangle().getX() + 2);
+            player.getPlayerShape().setX(player.getPlayerShape().getX() + 2);
+            player.getEntityHitBox().setX(player.getEntityHitBox().getX() + 2);
             movementAnimation.setKey(KeyCode.D);
             player.setDirection(KeyCode.D);
             cameraMovement.moveCamera(KeyCode.D);
@@ -90,10 +94,10 @@ public class Movement {
     }
 
     private void changeBarsPosition(){
-        playerBars.getPlayerHpBar().setLayoutY(player.getRectangle().getY() - 18);
-        playerBars.getPlayerHpBar().setLayoutX(player.getRectangle().getX() - 15);
-        playerBars.getPlayerManaBar().setLayoutY(player.getRectangle().getY() - 6);
-        playerBars.getPlayerManaBar().setLayoutX(player.getRectangle().getX() - 15);
+        playerBars.getPlayerHpBar().setLayoutY(player.getPlayerShape().getY() - 18);
+        playerBars.getPlayerHpBar().setLayoutX(player.getPlayerShape().getX() - 15);
+        playerBars.getPlayerManaBar().setLayoutY(player.getPlayerShape().getY() - 6);
+        playerBars.getPlayerManaBar().setLayoutX(player.getPlayerShape().getX() - 15);
     }
     /**
      * This method is used to start the movement of the player.

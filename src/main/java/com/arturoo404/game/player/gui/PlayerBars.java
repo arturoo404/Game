@@ -29,10 +29,10 @@ public class PlayerBars{
 
     private void barAppearance(){
         // ustawia pasek zdrowia nad graczom
-        playerManaBar.setLayoutX(player.getRectangle().getX() - 12);
-        playerManaBar.setLayoutY(player.getRectangle().getY() - 10);
-        playerHpBar.setLayoutY(player.getRectangle().getY() - 22);
-        playerHpBar.setLayoutX(player.getRectangle().getX() - 12);
+        playerManaBar.setLayoutX(player.getPlayerShape().getX() - 12);
+        playerManaBar.setLayoutY(player.getPlayerShape().getY() - 10);
+        playerHpBar.setLayoutY(player.getPlayerShape().getY() - 22);
+        playerHpBar.setLayoutX(player.getPlayerShape().getX() - 12);
         playerManaBar.setProgress((double) player.getSkillStats().getCurrentMana() / player.getSkillStats().getMaxMana());
         playerHpBar.setProgress((double) player.getSkillStats().getCurrentHealth() / player.getSkillStats().getMaxHealth()); // ustawia pasek zdrowia na obecne zdrowie gracza
         playerHpBar.setStyle("-fx-border-width: 1px; -fx-accent: red; -fx-control-inner-background: rgba(255,255,255,0); ");

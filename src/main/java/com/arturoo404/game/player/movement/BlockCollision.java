@@ -25,7 +25,7 @@ public class BlockCollision extends AnimationTimer {
      */
     @Override
     public void handle(long now) {
-        Rectangle playerRect = player.getRectangle();
+        Rectangle playerRect = player.getPlayerShape();
         for (Rectangle rectangle : rectangleList){
 
             final int block = 120;

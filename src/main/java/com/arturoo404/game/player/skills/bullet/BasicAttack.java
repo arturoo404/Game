@@ -67,7 +67,7 @@ public class BasicAttack {
     private void shot(){
         stack = false;
         BulletAttackObject bullet = basicAttack();
-        AnchorPane anchorPane = (AnchorPane) player.getRectangle().getParent();
+        AnchorPane anchorPane = (AnchorPane) player.getPlayerShape().getParent();
         anchorPane.getChildren().add(bullet.getSkill());
         skillAnimation(bullet);
         basickAttackList.add(bullet);
@@ -103,20 +103,20 @@ public class BasicAttack {
 
         switch (player.getDirection()){
             case S -> {
-                rectangle = new Rectangle(player.getRectangle().getX() + 30, player.getRectangle().getY() + 120, 40, 80);
+                rectangle = new Rectangle(player.getPlayerShape().getX() + 30, player.getPlayerShape().getY() + 120, 40, 80);
                 bullet.setKeyCode(KeyCode.S);
             }
             case A -> {
-                rectangle = new Rectangle(player.getRectangle().getX() - 40, player.getRectangle().getY() + 80, 80, 40);
+                rectangle = new Rectangle(player.getPlayerShape().getX() - 40, player.getPlayerShape().getY() + 80, 80, 40);
                 bullet.setKeyCode(KeyCode.A);
             }
             case D ->{
-                rectangle = new Rectangle(player.getRectangle().getX() + 60, player.getRectangle().getY() + 80, 80, 40);
+                rectangle = new Rectangle(player.getPlayerShape().getX() + 60, player.getPlayerShape().getY() + 80, 80, 40);
                 bullet.setKeyCode(KeyCode.D);
 
             }
             case W -> {
-                rectangle = new Rectangle(player.getRectangle().getX() + 30, player.getRectangle().getY() - 40, 40, 80);
+                rectangle = new Rectangle(player.getPlayerShape().getX() + 30, player.getPlayerShape().getY() - 40, 40, 80);
                 bullet.setKeyCode(KeyCode.W);
             }
         }

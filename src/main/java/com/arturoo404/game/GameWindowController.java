@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.PixelReader;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -39,14 +40,17 @@ public class GameWindowController implements Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initMap();
         Rectangle playerShape = new Rectangle(300,300,80, 120);
+        Rectangle playerHitBox = new Rectangle(320,350,40, 60);
 
         Image image = new Image(getClass().getResourceAsStream("/txt/player/player.png"));
         PixelReader reader = image.getPixelReader();
         WritableImage newImage = new WritableImage(reader, 320, 481, 80, 120);
         playerShape.setFill(new ImagePattern(newImage));
+        playerHitBox.setFill(Color.RED);
 
         pane.getChildren().add(playerShape);
-        player = new Player(playerShape, this.pane);
+        pane.getChildren().add(playerHitBox);
+        player = new Player(playerShape, playerHitBox, this.pane);
         initEntity();
         player.setSkillStats(new PlayerStats());
         Movement movement = new Movement(player, init);

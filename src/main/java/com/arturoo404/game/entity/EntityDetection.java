@@ -5,6 +5,7 @@ import com.arturoo404.game.player.Player;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
@@ -56,12 +57,23 @@ public class EntityDetection {
     }
 
     private boolean check(Wolf wolf) {
-        if (player.getRectangle().getBoundsInParent().intersects(wolf.getCircle().getBoundsInParent())){
-            Line line = new Line(wolf.getRectangle().getX() + 55, wolf.getRectangle().getY() + 30, player.getRectangle().getX() + 40, player.getRectangle().getY() + 80);
+        if (isRangeCollision(wolf.getCircle(), player.getEntityHitBox())){
+            Line line = new Line(wolf.getRectangle().getX() + 55, wolf.getRectangle().getY() + 30, player.getEntityHitBox().getX() + 20, player.getEntityHitBox().getY() + 30);
             player.getAnchorPane().getChildren().add(line);
             return detectBehindWallChecker(line);
         }
         return false;
+    }
+
+    private boolean isRangeCollision(Circle circle, Rectangle square) {
+        double closestX = Math.max(square.getX(), Math.min(circle.getCenterX(), square.getX() + square.getWidth()));
+        double closestY = Math.max(square.getY(), Math.min(circle.getCenterY(), square.getY() + square.getHeight()));
+
+        double distanceX = circle.getCenterX() - closestX;
+        double distanceY = circle.getCenterY() - closestY;
+        double distance = Math.sqrt(distanceX * distanceX + distanceY * distanceY);
+
+        return distance <= circle.getRadius();
     }
 
     private boolean detectBehindWallChecker(Line line){
