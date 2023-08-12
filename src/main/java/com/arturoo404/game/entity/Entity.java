@@ -11,8 +11,8 @@ public class Entity {
 
     private int posX;
     private int posY;
-    private int width;
-    private int height;
+    private double width;
+    private double height;
     private EntityType entityType;
     private int health;
     private double damage;
@@ -27,4 +27,5 @@ public class Entity {
     private Rectangle rectangle;
     private Circle circle;
     private LivingEntities livingEntities;
+    private EntityDirection direction;
 }
