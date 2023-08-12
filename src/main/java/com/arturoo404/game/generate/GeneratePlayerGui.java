@@ -36,7 +36,7 @@ public class GeneratePlayerGui {
         stage.show();
         stage.setAlwaysOnTop(true);
         stage.setX(540);
-        stage.setY(Double.parseDouble(gameOptions.getResolutionV()) - 115);
+        stage.setY(Double.parseDouble(gameOptions.getResolutionV()) - 244);
     }
     public Stage getStage() {
         return stage;

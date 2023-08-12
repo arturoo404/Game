@@ -63,8 +63,10 @@ public class StartWindowController implements Initializable {
                 Scene scene = new Scene(root, 1920, 1080);
                 stage.setMinWidth(Double.parseDouble(gameOptions.getResolutionH()));
                 stage.setMaxWidth(Double.parseDouble(gameOptions.getResolutionH()));
-                stage.setMinHeight(Double.parseDouble(gameOptions.getResolutionV()));
-                stage.setMaxHeight(Double.parseDouble(gameOptions.getResolutionV()));
+                stage.setMinHeight(Double.parseDouble(gameOptions.getResolutionV()) - 35);
+                stage.setMaxHeight(Double.parseDouble(gameOptions.getResolutionV()) - 35);
+                stage.setX(0);
+                stage.setY(0);
                 stage.setScene(scene);
 
                 stage.setOnCloseRequest(request ->{
