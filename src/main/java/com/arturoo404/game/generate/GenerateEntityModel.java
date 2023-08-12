@@ -51,6 +51,8 @@ public class GenerateEntityModel {
         wolf.setDetectionStatus(DetectionStatus.IGNORE);
         wolf.setDetectionTimerDefaultValue(entityModel.detectionTimer());
         wolf.setDetectionTimer(entityModel.detectionTimer());
+        wolf.setWidth(entityModel.width());
+        wolf.setHeight(entityModel.height());
         pane.getChildren().add(wolf.getRectangle());
 
         Circle range = new Circle(entityModel.detectionRange());
