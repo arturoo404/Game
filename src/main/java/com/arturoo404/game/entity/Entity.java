@@ -28,4 +28,5 @@ public class Entity {
     private Circle circle;
     private LivingEntities livingEntities;
     private EntityDirection direction;
+    private EntityMovementAnimation entityMovementAnimation;
 }

@@ -47,7 +47,12 @@ public class EntityDetection {
 
                     if (wolf.getDetectionStatus().equals(DetectionStatus.IN_RANGE) || wolf.getDetectionStatus().equals(DetectionStatus.OUT_OF_RANGE)){
                         moveEntityTowardsPlayer(wolf, wolf.getCircle(), player.getPlayerShape(), wolf.getSpeed());
+                        wolf.getEntityMovementAnimation().setPlay(true);
+                    }else {
+                        wolf.getEntityMovementAnimation().setPlay(false);
                     }
+
+                    System.out.println(wolf.getRectangle().getWidth() + " " + wolf.getRectangle().getHeight());
                 }
             }));
             entityDetection.setCycleCount(Animation.INDEFINITE);
@@ -92,30 +97,36 @@ public class EntityDetection {
                 entity.getRectangle().setX(entity.getRectangle().getX() + signum * speed);
                 entityRange.setCenterX(entity.getRectangle().getX() + entity.getWidth() / 2);
                 entity.setDirection(EntityDirection.RIGHT);
-                entity.getRectangle().setRotate(0);
             }else {
                 entity.getRectangle().setX(entity.getRectangle().getX() + signum * speed);
                 entityRange.setCenterX(entity.getRectangle().getX() + entity.getWidth() / 2);
                 entity.setDirection(EntityDirection.LEFT);
-                entity.getRectangle().setRotate(0);
             }
-
+            if (!entity.getDirection().equals(EntityDirection.RIGHT) && !entity.getDirection().equals(EntityDirection.LEFT)){
+                switchEntitySize(entity);
+            }
         } else {
             final double signum = Math.signum(dy);
             if (signum > 0){
                 entity.getRectangle().setY(entity.getRectangle().getY() + signum * speed);
                 entityRange.setCenterY(entity.getRectangle().getY() + entity.getHeight() / 2);
                 entity.setDirection(EntityDirection.DOWN);
-                entity.getRectangle().setRotate(90);
             }else {
                 entity.getRectangle().setY(entity.getRectangle().getY() + signum * speed);
                 entityRange.setCenterY(entity.getRectangle().getY() + entity.getHeight() / 2);
                 entity.setDirection(EntityDirection.UP);
-                entity.getRectangle().setRotate(90);
+            }
+            if (!entity.getDirection().equals(EntityDirection.DOWN) && !entity.getDirection().equals(EntityDirection.UP)){
+                switchEntitySize(entity);
             }
         }
     }
 
+    private synchronized void switchEntitySize(Entity entity){
+        double width = entity.getRectangle().getWidth(), height = entity.getRectangle().getHeight();
+        entity.getRectangle().setWidth(height);
+        entity.getRectangle().setHeight(width);
+    }
     private boolean detectBehindWallChecker(Line line){
         for (Rectangle rectangle : player.getMovement().getBlocks()){
             if (rectangle.getBoundsInParent().intersects(line.getBoundsInParent())){

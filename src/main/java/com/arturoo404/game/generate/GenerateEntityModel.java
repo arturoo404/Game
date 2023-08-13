@@ -1,11 +1,11 @@
 package com.arturoo404.game.generate;
 
-import com.arturoo404.game.entity.DetectionStatus;
-import com.arturoo404.game.entity.LivingEntities;
+import com.arturoo404.game.entity.*;
 import com.arturoo404.game.entity.wolf.Wolf;
 import com.arturoo404.game.file.EntityModel;
 import com.arturoo404.game.file.EntityPosition;
 import com.arturoo404.game.generate.difficulty.Difficulty;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
@@ -53,6 +53,9 @@ public class GenerateEntityModel {
         wolf.setDetectionTimer(entityModel.detectionTimer());
         wolf.setWidth(entityModel.width());
         wolf.setHeight(entityModel.height());
+        wolf.setDirection(EntityDirection.LEFT);
+        wolf.setEntityMovementAnimation(buildMovementAnimation(wolf, new Image(getClass().getResourceAsStream("/txt/entity/wolf.png"))));
+        wolf.getEntityMovementAnimation().init();
         pane.getChildren().add(wolf.getRectangle());
 
         Circle range = new Circle(entityModel.detectionRange());
@@ -68,5 +71,18 @@ public class GenerateEntityModel {
 
         wolf.setCircle(range);
         return wolf;
+    }
+
+    private EntityMovementAnimation buildMovementAnimation(Entity entity, Image image){
+        return EntityMovementAnimation.builder()
+                .entity(entity)
+                .image(image)
+                .imageWidth(32)
+                .imageHeight(32)
+                .imagePositionX(96)
+                .imagePositionY(1)
+                .pixelReaderMoveX(32)
+                .pixelReaderMoveY(32)
+                .build();
     }
 }
