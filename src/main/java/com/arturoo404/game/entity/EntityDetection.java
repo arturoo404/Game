@@ -52,7 +52,6 @@ public class EntityDetection {
                         wolf.getEntityMovementAnimation().setPlay(false);
                     }
 
-                    System.out.println(wolf.getRectangle().getWidth() + " " + wolf.getRectangle().getHeight());
                 }
             }));
             entityDetection.setCycleCount(Animation.INDEFINITE);
