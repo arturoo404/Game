@@ -29,13 +29,15 @@ public class GeneratePlayerGui {
         FXMLLoader loader = new FXMLLoader(this.initializable.getClass().getResource("player-gui.fxml"));
         Parent root = loader.load();
         stage = new Stage();
-        stage.initModality(Modality.WINDOW_MODAL);
-        Scene scene = new Scene(root, 1000, 200);
+        stage.initModality(Modality.NONE);
+        Scene scene = new Scene(root, 1904, 200);
         stage.initStyle(StageStyle.UNDECORATED);
+        stage.initStyle(StageStyle.TRANSPARENT);
+        scene.setFill(null);
         stage.setScene(scene);
         stage.show();
         stage.setAlwaysOnTop(true);
-        stage.setX(540);
+        stage.setX(8);
         stage.setY(Double.parseDouble(gameOptions.getResolutionV()) - 244);
     }
     public Stage getStage() {
