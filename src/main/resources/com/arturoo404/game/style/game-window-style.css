@@ -3,3 +3,11 @@
     -fx-background-color: transparent;
     -fx-background-color: rgba(108, 175, 170, 0);
 }
+
+.Pane{
+    -fx-background-color: rgba(108, 175, 170);
+}
+
+.skillPane{
+    -fx-background-color: rgba(102, 175, 170);
+}

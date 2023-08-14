@@ -30,7 +30,7 @@ public class GeneratePlayerGui {
         Parent root = loader.load();
         stage = new Stage();
         stage.initModality(Modality.NONE);
-        Scene scene = new Scene(root, 1904, 200);
+        Scene scene = new Scene(root, 1904, 180);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.initStyle(StageStyle.TRANSPARENT);
         scene.setFill(null);
@@ -38,7 +38,7 @@ public class GeneratePlayerGui {
         stage.show();
         stage.setAlwaysOnTop(true);
         stage.setX(8);
-        stage.setY(Double.parseDouble(gameOptions.getResolutionV()) - 244);
+        stage.setY(Double.parseDouble(gameOptions.getResolutionV()) - 223);
     }
     public Stage getStage() {
         return stage;
