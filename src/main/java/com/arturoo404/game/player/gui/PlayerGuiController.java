@@ -7,6 +7,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.control.Tooltip;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -23,11 +26,16 @@ public class PlayerGuiController implements Initializable {
     private Label damage, attackSpeed, healthRegen, armor, manaRegen, cooldownReduction, hpText, manaText, experiance, money, playerLvl;
     @FXML
     private ProgressBar hpBar, manaBar;
+    @FXML
+    private ImageView aaIcon;
+    @FXML
+    private Tooltip aaTooltip;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         player = getPlayer();
         statHandler();
+        Tooltip.install(aaIcon, aaTooltip);
     }
 
 
@@ -41,8 +49,8 @@ public class PlayerGuiController implements Initializable {
                     manaRegen.setText(String.valueOf(player.getSkillStats().getManaRegen()));
                     cooldownReduction.setText(String.valueOf(player.getSkillStats().getCooldownReduction()));
                     hpBar.setProgress((double) player.getSkillStats().getCurrentHealth() / player.getSkillStats().getMaxHealth());
-                    hpText.setText(player.getSkillStats().getCurrentHealth()+"/"+player.getSkillStats().getMaxHealth()+" Hp");
-                    manaText.setText(player.getSkillStats().getCurrentMana()+"/"+player.getSkillStats().getMaxMana()+" Mana");
+                    hpText.setText(player.getSkillStats().getCurrentHealth()+"/"+player.getSkillStats().getMaxHealth());
+                    manaText.setText(player.getSkillStats().getCurrentMana()+"/"+player.getSkillStats().getMaxMana());
                     manaBar.setProgress((double) player.getSkillStats().getCurrentMana() / player.getSkillStats().getMaxMana());
                     experiance.setText(player.getSkillStats().getCurrentExp()+"/"+player.getSkillStats().getNextLvlExp()+" Exp");
                     playerLvl.setText(player.getSkillStats().getPlayerLvl()+" Level");
@@ -52,4 +60,18 @@ public class PlayerGuiController implements Initializable {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }
+
+    @FXML
+    private void showTooltip(MouseEvent event) {
+        double x = aaIcon.localToScreen(aaIcon.getBoundsInLocal()).getMaxX();
+        double y = aaIcon.localToScreen(aaIcon.getBoundsInLocal()).getMinY();
+        aaTooltip.setText("Opis");
+        aaTooltip.show(aaIcon, x, y);
+    }
+
+    @FXML
+    private void hideTooltip(MouseEvent event) {
+        aaTooltip.hide();
+    }
+
 }
