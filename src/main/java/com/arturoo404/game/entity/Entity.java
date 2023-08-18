@@ -29,4 +29,5 @@ public class Entity {
     private LivingEntities livingEntities;
     private EntityDirection direction;
     private EntityMovementAnimation entityMovementAnimation;
+    private EntityAiValue aiValue;
 }

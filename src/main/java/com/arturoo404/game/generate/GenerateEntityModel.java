@@ -53,6 +53,7 @@ public class GenerateEntityModel {
         wolf.setDetectionTimer(entityModel.detectionTimer());
         wolf.setWidth(entityModel.width());
         wolf.setHeight(entityModel.height());
+        wolf.setAiValue(new EntityAiValue());
         wolf.setDirection(EntityDirection.LEFT);
         wolf.setEntityMovementAnimation(buildMovementAnimation(wolf, new Image(getClass().getResourceAsStream("/txt/entity/wolf.png"))));
         wolf.getEntityMovementAnimation().init();

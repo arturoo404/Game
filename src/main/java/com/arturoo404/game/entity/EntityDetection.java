@@ -11,6 +11,12 @@ import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import lombok.AllArgsConstructor;
 
+import java.util.Comparator;
+import java.util.List;
+import java.util.Random;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
 
 @AllArgsConstructor
 public class EntityDetection {
@@ -87,8 +93,9 @@ public class EntityDetection {
 
 
     private void moveEntityTowardsPlayer(Wolf entity, Circle entityRange, Rectangle player, double speed) {
-        double dx = player.getX() - entity.getRectangle().getX();
-        double dy = player.getY() - entity.getRectangle().getY();
+        calculateCloseAttackPoint(entity);
+        double dx = entity.getAiValue().getDx();
+        double dy = entity.getAiValue().getDy();
 
         if (Math.abs(dx) > Math.abs(dy)) {
             final double signum = Math.signum(dx);
@@ -133,5 +140,28 @@ public class EntityDetection {
             }
         }
         return true;
+    }
+
+    private void calculateCloseAttackPoint(Entity entity){
+        EntityPointValue integers = Stream.of(
+                calculateValue(entity, 0, -60),
+                calculateValue(entity, 0, 140),
+                calculateValue(entity, -120, 40),
+                calculateValue(entity, 100, 40)
+        ).min(Comparator.comparingDouble(EntityPointValue::getValue)).orElseThrow();
+
+        entity.getAiValue().setDx(integers.getDx());
+        entity.getAiValue().setDy(integers.getDy());
+        entity.getAiValue().setSignumY(integers.getYMove());
+        entity.getAiValue().setSignumX(integers.getXMove());
+    }
+
+    private EntityPointValue calculateValue(Entity entity, double x, double y){
+        double dx = player.getPlayerShape().getX() + x - entity.getRectangle().getX();
+        double dy = player.getPlayerShape().getY() + y - entity.getRectangle().getY();
+
+        return new EntityPointValue(
+                (int) dx, (int) dy, (Math.abs(dx) + Math.abs(dy)), (int) x, (int) y
+        );
     }
 }
