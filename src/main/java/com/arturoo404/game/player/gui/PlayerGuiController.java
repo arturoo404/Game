@@ -28,14 +28,11 @@ public class PlayerGuiController implements Initializable {
     private ProgressBar hpBar, manaBar;
     @FXML
     private ImageView aaIcon;
-    @FXML
-    private Tooltip aaTooltip;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         player = getPlayer();
         statHandler();
-        Tooltip.install(aaIcon, aaTooltip);
     }
 
 
@@ -59,19 +56,6 @@ public class PlayerGuiController implements Initializable {
         );
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
-    }
-
-    @FXML
-    private void showTooltip(MouseEvent event) {
-        double x = aaIcon.localToScreen(aaIcon.getBoundsInLocal()).getMaxX();
-        double y = aaIcon.localToScreen(aaIcon.getBoundsInLocal()).getMinY();
-        aaTooltip.setText("Opis");
-        aaTooltip.show(aaIcon, x, y);
-    }
-
-    @FXML
-    private void hideTooltip(MouseEvent event) {
-        aaTooltip.hide();
     }
 
 }

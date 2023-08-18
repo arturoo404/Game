@@ -74,7 +74,7 @@
             <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="116.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
                <Image url="@../../../txt/icons/cd-icon.png" />
             </ImageView>
-            <ImageView fx:id="aaIcon" fitHeight="90.0" fitWidth="90.0" layoutX="207.0" layoutY="86.0" onMouseEntered="#showTooltip" onMouseExited="#hideTooltip" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="aaIcon" fitHeight="90.0" fitWidth="90.0" layoutX="207.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../txt/icons/aa1-icon.png" />
                </image>

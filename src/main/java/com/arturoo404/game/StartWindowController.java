@@ -50,7 +50,6 @@ public class StartWindowController implements Initializable {
         FadeTransition fadeOut = new FadeTransition(Duration.millis(1500), ((Node) actionEvent.getSource()).getScene().getRoot());
         fadeOut.setFromValue(1.0);
         fadeOut.setToValue(0.0);
-
         FileReader fileReader = new FileReader();
         fileReader.gameOptionReader();
         GameOptions gameOptions = fileReader.getGameOptions();
