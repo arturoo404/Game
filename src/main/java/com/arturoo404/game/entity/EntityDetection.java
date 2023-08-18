@@ -12,9 +12,7 @@ import javafx.util.Duration;
 import lombok.AllArgsConstructor;
 
 import java.util.Comparator;
-import java.util.List;
 import java.util.Random;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 
@@ -93,11 +91,15 @@ public class EntityDetection {
 
 
     private void moveEntityTowardsPlayer(Wolf entity, Circle entityRange, Rectangle player, double speed) {
-        calculateCloseAttackPoint(entity);
+        if (entity.getAiValue().getRepeating() == 0 || entity.getAiValue().getRepeating() == 4){
+            calculateCloseAttackPoint(entity);
+            entity.getAiValue().setRepeating(0);
+        }
+
         double dx = entity.getAiValue().getDx();
         double dy = entity.getAiValue().getDy();
 
-        if (Math.abs(dx) > Math.abs(dy)) {
+        if (entity.getAiValue().isXMoveRepeating()) {
             final double signum = Math.signum(dx);
             if (signum > 0){
                 entity.getRectangle().setX(entity.getRectangle().getX() + signum * speed);
@@ -111,7 +113,7 @@ public class EntityDetection {
             if (!entity.getDirection().equals(EntityDirection.RIGHT) && !entity.getDirection().equals(EntityDirection.LEFT)){
                 switchEntitySize(entity);
             }
-        } else {
+        } else if (entity.getAiValue().isYMoveRepeating()){
             final double signum = Math.signum(dy);
             if (signum > 0){
                 entity.getRectangle().setY(entity.getRectangle().getY() + signum * speed);
@@ -126,6 +128,8 @@ public class EntityDetection {
                 switchEntitySize(entity);
             }
         }
+
+        entity.getAiValue().setRepeating(entity.getAiValue().getRepeating() + 1);
     }
 
     private synchronized void switchEntitySize(Entity entity){
@@ -154,6 +158,7 @@ public class EntityDetection {
         entity.getAiValue().setDy(integers.getDy());
         entity.getAiValue().setSignumY(integers.getYMove());
         entity.getAiValue().setSignumX(integers.getXMove());
+        calculateChanceToMove(entity);
     }
 
     private EntityPointValue calculateValue(Entity entity, double x, double y){
@@ -163,5 +168,32 @@ public class EntityDetection {
         return new EntityPointValue(
                 (int) dx, (int) dy, (Math.abs(dx) + Math.abs(dy)), (int) x, (int) y
         );
+    }
+
+    private void calculateChanceToMove(Entity entity){
+        if (randomNumber(entity) < Math.abs(entity.getAiValue().getDx()) || randomNumber(entity) > Math.abs(entity.getAiValue().getDy())){
+            entity.getAiValue().setYMoveRepeating(false);
+            entity.getAiValue().setXMoveRepeating(true);
+        }else {
+            entity.getAiValue().setXMoveRepeating(false);
+            entity.getAiValue().setYMoveRepeating(true);
+        }
+
+        if (entity.getAiValue().getDx() < 35 && entity.getAiValue().getDx() > -35 && entity.getAiValue().getDy() < 35 && entity.getAiValue().getDy() > -35){
+            entity.getAiValue().setXMoveRepeating(false);
+            entity.getAiValue().setYMoveRepeating(false);
+        } else if (entity.getAiValue().getDx() < 35 && entity.getAiValue().getDx() > -35) {
+            entity.getAiValue().setXMoveRepeating(false);
+            entity.getAiValue().setYMoveRepeating(true);
+        }else if (entity.getAiValue().getDy() < 35 && entity.getAiValue().getDy() > -35){
+            entity.getAiValue().setYMoveRepeating(false);
+            entity.getAiValue().setXMoveRepeating(true);
+        }
+
+    }
+
+    private int randomNumber(Entity entity){
+        Random random = new Random();
+        return random.nextInt(Math.abs(entity.getAiValue().getDx()) + Math.abs(entity.getAiValue().getDy()) + 1);
     }
 }

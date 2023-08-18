@@ -2,9 +2,11 @@ package com.arturoo404.game.entity;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 public class EntityAiValue {
 
     private boolean xMoveRepeating;
