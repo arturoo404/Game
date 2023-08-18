@@ -17,11 +17,26 @@
 }
 
 .manaBar{
-    -fx-background-color: rgba(102, 175, 170);
+    -fx-control-inner-background: rgba(0,0,0,0.8);
+}
+.manaBar .bar{
+    -fx-background-color: transparent, linear-gradient(to right, royalblue, aquamarine );
+}
+.manaBar .track{
+    -fx-background-radius: 3;
+    -fx-background-color: rgba(0,0,0,0.9);
+
 }
 
 .healthBar{
-    -fx-background-color: rgba(102, 175, 170);
+    -fx-control-inner-background: rgba(0,0,0,0.8);
+}
+.healthBar .bar{
+    -fx-background-color: transparent, linear-gradient(to right, darkred, lightcoral);
+}
+.healthBar .track{
+    -fx-background-radius: 3;
+    -fx-background-color: rgba(0,0,0,0.9);
 }
 
 .aaPane{
@@ -32,4 +47,9 @@
     -fx-border-color: rgb(4, 111, 135);
     -fx-border-width: 2;
     -fx-border-radius: 1;
+}
+
+.textOutline{
+    -fx-stroke: black;
+    -fx-stroke-width: 4px;
 }

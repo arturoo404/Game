@@ -7,15 +7,15 @@
 
 <AnchorPane prefHeight="180.0" prefWidth="1904.0" styleClass="AnchorPane" stylesheets="@style/game-window-style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.arturoo404.game.player.gui.PlayerGuiController">
    <children>
-      <ProgressBar fx:id="hpBar" layoutX="687.0" layoutY="48.0" prefHeight="25.0" prefWidth="530.0" progress="0.0" styleClass="healthBar" />
+      <ProgressBar fx:id="hpBar" layoutX="687.0" layoutY="52.0" prefHeight="25.0" prefWidth="530.0" progress="0.0" styleClass="healthBar" />
       <ProgressBar fx:id="manaBar" layoutX="687.0" layoutY="77.0" prefHeight="25.0" prefWidth="530.0" progress="0.0" styleClass="manaBar" />
-      <Label fx:id="hpText" layoutX="934.0" layoutY="51.0" prefHeight="19.0" prefWidth="94.0" text="Label" textAlignment="CENTER">
+      <Label fx:id="hpText" layoutX="691.0" layoutY="52.0" prefHeight="25.0" prefWidth="90.0" styleClass="textOutline" text="0" textAlignment="CENTER" textFill="#e1ff37">
          <font>
-            <Font size="13.0" />
+            <Font name="System Bold" size="15.0" />
          </font></Label>
-      <Label fx:id="manaText" layoutX="934.0" layoutY="80.0" prefHeight="19.0" prefWidth="94.0" text="Label" textAlignment="CENTER">
+      <Label fx:id="manaText" layoutX="691.0" layoutY="76.0" prefHeight="25.0" prefWidth="90.0" styleClass="textOutline" text="0" textAlignment="CENTER" textFill="#e1ff37">
          <font>
-            <Font size="13.0" />
+            <Font name="System Bold" size="15.0" />
          </font></Label>
       <Pane layoutX="680.0" layoutY="111.0" prefHeight="60.0" prefWidth="60.0" styleClass="skillPane" />
       <Pane layoutX="749.0" layoutY="111.0" prefHeight="60.0" prefWidth="60.0" styleClass="skillPane" />
@@ -72,11 +72,9 @@
                </image>
             </ImageView>
             <ImageView fitHeight="32.0" fitWidth="32.0" layoutX="116.0" layoutY="58.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../txt/icons/cd-icon.png" />
-               </image>
+               <Image url="@../../../txt/icons/cd-icon.png" />
             </ImageView>
-            <ImageView fitHeight="90.0" fitWidth="90.0" layoutX="207.0" layoutY="86.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="aaIcon" fitHeight="90.0" fitWidth="90.0" layoutX="207.0" layoutY="86.0" onMouseEntered="#showTooltip" onMouseExited="#hideTooltip" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../txt/icons/aa1-icon.png" />
                </image>
