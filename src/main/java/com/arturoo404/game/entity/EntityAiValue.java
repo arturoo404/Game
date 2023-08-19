@@ -14,15 +14,15 @@ public class EntityAiValue {
     private int repeating = 0;
     private int dx;
     private int dy;
-    private float signumY;
-    private float signumX;
+    private double signumY;
+    private double signumX;
 
 
-    public void setSignumY(int signumY) {
+    public void setSignumY(double signumY) {
         this.signumY = Math.signum(signumY);
     }
 
-    public void setSignumX(int signumX) {
+    public void setSignumX(double signumX) {
         this.signumX = Math.signum(signumX);
     }
 }

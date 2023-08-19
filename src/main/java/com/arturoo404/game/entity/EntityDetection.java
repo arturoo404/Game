@@ -96,36 +96,45 @@ public class EntityDetection {
             entity.getAiValue().setRepeating(0);
         }
 
-        double dx = entity.getAiValue().getDx();
-        double dy = entity.getAiValue().getDy();
-
         if (entity.getAiValue().isXMoveRepeating()) {
-            final double signum = Math.signum(dx);
-            if (signum > 0){
-                entity.getRectangle().setX(entity.getRectangle().getX() + signum * speed);
+            if (isCollisionWithWall(entity)){
+                entity.getAiValue().setSignumX(entity.getAiValue().getSignumX() * -1);
+            }
+
+            if (entity.getAiValue().getSignumX() > 0){
+                entity.getRectangle().setX(entity.getRectangle().getX() + entity.getAiValue().getSignumX() * speed);
                 entityRange.setCenterX(entity.getRectangle().getX() + entity.getWidth() / 2);
                 entity.setDirection(EntityDirection.RIGHT);
             }else {
-                entity.getRectangle().setX(entity.getRectangle().getX() + signum * speed);
+                entity.getRectangle().setX(entity.getRectangle().getX() + entity.getAiValue().getSignumX() * speed);
                 entityRange.setCenterX(entity.getRectangle().getX() + entity.getWidth() / 2);
                 entity.setDirection(EntityDirection.LEFT);
             }
+
             if (!entity.getDirection().equals(EntityDirection.RIGHT) && !entity.getDirection().equals(EntityDirection.LEFT)){
-                switchEntitySize(entity);
+                if (isNotCollisionWithWallSwitchEntity(entity)){
+                    switchEntitySize(entity);
+                }
             }
         } else if (entity.getAiValue().isYMoveRepeating()){
-            final double signum = Math.signum(dy);
-            if (signum > 0){
-                entity.getRectangle().setY(entity.getRectangle().getY() + signum * speed);
+            if (isCollisionWithWall(entity)){
+                entity.getAiValue().setSignumY(entity.getAiValue().getSignumY() * -1);
+            }
+
+            if (entity.getAiValue().getSignumY() > 0){
+                entity.getRectangle().setY(entity.getRectangle().getY() + entity.getAiValue().getSignumY() * speed);
                 entityRange.setCenterY(entity.getRectangle().getY() + entity.getHeight() / 2);
                 entity.setDirection(EntityDirection.DOWN);
             }else {
-                entity.getRectangle().setY(entity.getRectangle().getY() + signum * speed);
+                entity.getRectangle().setY(entity.getRectangle().getY() + entity.getAiValue().getSignumY() * speed);
                 entityRange.setCenterY(entity.getRectangle().getY() + entity.getHeight() / 2);
                 entity.setDirection(EntityDirection.UP);
             }
+
             if (!entity.getDirection().equals(EntityDirection.DOWN) && !entity.getDirection().equals(EntityDirection.UP)){
-                switchEntitySize(entity);
+                if (isNotCollisionWithWallSwitchEntity(entity)){
+                    switchEntitySize(entity);
+                }
             }
         }
 
@@ -156,8 +165,8 @@ public class EntityDetection {
 
         entity.getAiValue().setDx(integers.getDx());
         entity.getAiValue().setDy(integers.getDy());
-        entity.getAiValue().setSignumY(integers.getYMove());
-        entity.getAiValue().setSignumX(integers.getXMove());
+        entity.getAiValue().setSignumY(integers.getDy());
+        entity.getAiValue().setSignumX(integers.getDx());
         calculateChanceToMove(entity);
     }
 
@@ -195,5 +204,33 @@ public class EntityDetection {
     private int randomNumber(Entity entity){
         Random random = new Random();
         return random.nextInt(Math.abs(entity.getAiValue().getDx()) + Math.abs(entity.getAiValue().getDy()) + 1);
+    }
+
+    private boolean isNotCollisionWithWallSwitchEntity(Entity entity){
+        for (Rectangle rectangle : player.getMovement().getBlocks()){
+            if (checkCollisionSwitch(rectangle, entity.getRectangle())){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private boolean isCollisionWithWall(Entity entity){
+        for (Rectangle rectangle : player.getMovement().getBlocks()){
+            if (checkCollision(rectangle, entity.getRectangle(), 10 * entity.getAiValue().getSignumX(), 10 * entity.getAiValue().getSignumY())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean checkCollisionSwitch(Rectangle rect1, Rectangle rect2) {
+        rect2 = new Rectangle(rect2.getY(), rect2.getX(), rect2.getHeight() + 10, rect2.getWidth() + 10);
+        return rect1.getBoundsInParent().intersects(rect2.getBoundsInParent());
+    }
+
+    private boolean checkCollision(Rectangle rect1, Rectangle rect2, double dx, double dy) {
+        rect2 = new Rectangle(rect2.getX() + dx, rect2.getY() + dy, rect2.getWidth(), rect2.getHeight());
+        return rect1.getBoundsInParent().intersects(rect2.getBoundsInParent());
     }
 }
