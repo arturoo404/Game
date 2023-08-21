@@ -18,9 +18,11 @@ public class Player {
     private PlayerStats skillStats;
     private KeyCode direction;
     private AnchorPane anchorPane;
-    public Player(Rectangle playerShape, Rectangle entityHitBox, AnchorPane anchorPane) {
+    private KeyAction keyAction;
+    public Player(Rectangle playerShape, Rectangle entityHitBox, AnchorPane anchorPane, KeyAction keyAction) {
         this.playerShape = playerShape;
         this.entityHitBox = entityHitBox;
         this.anchorPane = anchorPane;
+        this.keyAction = keyAction;
     }
 }

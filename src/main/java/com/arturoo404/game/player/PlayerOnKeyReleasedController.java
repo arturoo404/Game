@@ -10,9 +10,12 @@ public class PlayerOnKeyReleasedController implements EventHandler<KeyEvent> {
     private final Movement movement;
 
     private final SkillsController skillsController;
-    public PlayerOnKeyReleasedController(Movement movement, SkillsController skillsController) {
+
+    private final KeyAction keyAction;
+    public PlayerOnKeyReleasedController(Movement movement, SkillsController skillsController, KeyAction keyAction) {
         this.movement = movement;
         this.skillsController = skillsController;
+        this.keyAction = keyAction;
     }
 
     /**

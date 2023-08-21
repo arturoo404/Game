@@ -11,9 +11,12 @@ public class PlayerOnKeyPressedController implements EventHandler<KeyEvent> {
 
     private final SkillsController skillsController;
 
-    public PlayerOnKeyPressedController(Movement movement, SkillsController skillsController) {
+    private final KeyAction keyAction;
+
+    public PlayerOnKeyPressedController(Movement movement, SkillsController skillsController, KeyAction keyAction) {
         this.movement = movement;
         this.skillsController = skillsController;
+        this.keyAction = keyAction;
     }
 
     /**
@@ -31,6 +34,16 @@ public class PlayerOnKeyPressedController implements EventHandler<KeyEvent> {
 
         switch (keyEvent.getCode()) {
             case SPACE -> skillsController.setBasicAttack(true);
+        }
+
+        switch (keyEvent.getCode()){
+            case I -> {
+                if (keyAction.isOpenInventory()){
+                    keyAction.setOpenInventory(false);
+                }else {
+                    keyAction.setOpenInventory(true);
+                }
+            }
         }
     }
 }

@@ -48,10 +48,11 @@ public class GameWindowController implements Initializable{
         WritableImage newImage = new WritableImage(reader, 320, 481, 80, 120);
         playerShape.setFill(new ImagePattern(newImage));
         playerHitBox.setFill(Color.RED);
+        KeyAction keyAction = new KeyAction();
 
         pane.getChildren().add(playerShape);
         pane.getChildren().add(playerHitBox);
-        player = new Player(playerShape, playerHitBox, this.pane);
+        player = new Player(playerShape, playerHitBox, this.pane, keyAction);
         initEntity();
         player.setSkillStats(new PlayerStats());
         Movement movement = new Movement(player, init);
@@ -59,8 +60,8 @@ public class GameWindowController implements Initializable{
         player.setMovement(movement);
         SkillsController skillsController = new SkillsController(player);
         skillsController.init();
-        pane.setOnKeyPressed(new PlayerOnKeyPressedController(movement, skillsController));
-        pane.setOnKeyReleased(new PlayerOnKeyReleasedController(movement, skillsController));
+        pane.setOnKeyPressed(new PlayerOnKeyPressedController(movement, skillsController, keyAction));
+        pane.setOnKeyReleased(new PlayerOnKeyReleasedController(movement, skillsController, keyAction));
         pane.requestFocus();
 
 
