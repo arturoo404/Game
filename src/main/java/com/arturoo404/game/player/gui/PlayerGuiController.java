@@ -5,11 +5,10 @@ import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Tooltip;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -27,12 +26,14 @@ public class PlayerGuiController implements Initializable {
     @FXML
     private ProgressBar hpBar, manaBar;
     @FXML
-    private ImageView aaIcon;
+    private Button iconTooltip;
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         player = getPlayer();
         statHandler();
+        showTooltips();
     }
 
 
@@ -56,6 +57,10 @@ public class PlayerGuiController implements Initializable {
         );
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
+    }
+    private void showTooltips(){
+        Tooltip tooltipI = new Tooltip("aaaaaaa");
+        iconTooltip.setTooltip(tooltipI);
     }
 
 }

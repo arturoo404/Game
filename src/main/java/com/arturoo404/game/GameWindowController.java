@@ -29,7 +29,7 @@ public class GameWindowController implements Initializable{
     private AnchorPane pane;
     private List<Rectangle> init;
     private static Player player;
-    private Stage guiStage;
+    private Stage guiStage, inventoryStage;
 
     /**
      * Initializes the game window.
@@ -38,6 +38,7 @@ public class GameWindowController implements Initializable{
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         initMap();
         Rectangle playerShape = new Rectangle(300,300,80, 120);
         Rectangle playerHitBox = new Rectangle(320,350,40, 60);
@@ -61,6 +62,8 @@ public class GameWindowController implements Initializable{
         pane.setOnKeyPressed(new PlayerOnKeyPressedController(movement, skillsController));
         pane.setOnKeyReleased(new PlayerOnKeyReleasedController(movement, skillsController));
         pane.requestFocus();
+
+
         try {
            GeneratePlayerGui generatePlayerGui = new GeneratePlayerGui(this);
            generatePlayerGui.init();
