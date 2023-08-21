@@ -1,7 +1,7 @@
 package com.arturoo404.game.player.movement;
 
 import com.arturoo404.game.player.Player;
-import com.arturoo404.game.player.gui.PlayerBars;
+import com.arturoo404.game.player.gui.bar.PlayerBars;
 import com.arturoo404.game.player.skills.PlayerResourceManagement;
 import javafx.animation.AnimationTimer;
 import javafx.beans.binding.BooleanBinding;

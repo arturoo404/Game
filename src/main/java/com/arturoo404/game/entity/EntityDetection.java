@@ -50,7 +50,7 @@ public class EntityDetection {
                     }
 
                     if (wolf.getDetectionStatus().equals(DetectionStatus.IN_RANGE) || wolf.getDetectionStatus().equals(DetectionStatus.OUT_OF_RANGE)){
-                        moveEntityTowardsPlayer(wolf, wolf.getCircle(), player.getPlayerShape(), wolf.getSpeed());
+                        moveEntityTowardsPlayer(wolf, wolf.getCircle(), wolf.getSpeed());
                         wolf.getEntityMovementAnimation().setPlay(true);
                     }else {
                         wolf.getEntityMovementAnimation().setPlay(false);
@@ -90,7 +90,7 @@ public class EntityDetection {
     }
 
 
-    private void moveEntityTowardsPlayer(Wolf entity, Circle entityRange, Rectangle player, double speed) {
+    private void moveEntityTowardsPlayer(Wolf entity, Circle entityRange, double speed) {
         if (entity.getAiValue().getRepeating() == 0 || entity.getAiValue().getRepeating() == 4){
             calculateCloseAttackPoint(entity);
             entity.getAiValue().setRepeating(0);
@@ -217,7 +217,7 @@ public class EntityDetection {
 
     private boolean isCollisionWithWall(Entity entity){
         for (Rectangle rectangle : player.getMovement().getBlocks()){
-            if (checkCollision(rectangle, entity.getRectangle(), 10 * entity.getAiValue().getSignumX(), 10 * entity.getAiValue().getSignumY())){
+            if (checkCollision(rectangle, entity.getRectangle(), 12 * entity.getAiValue().getSignumX(), 12 * entity.getAiValue().getSignumY())){
                 return true;
             }
         }

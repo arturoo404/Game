@@ -1,4 +1,4 @@
-package com.arturoo404.game.player.gui;
+package com.arturoo404.game.player.gui.bar;
 
 import com.arturoo404.game.player.Player;
 import javafx.scene.control.ProgressBar;
