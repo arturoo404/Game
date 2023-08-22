@@ -1,11 +1,27 @@
 package com.arturoo404.game.player;
 
+import javafx.beans.binding.BooleanBinding;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import lombok.Getter;
-import lombok.Setter;
+
 
 @Getter
-@Setter
 public class KeyAction {
-    private boolean openInventory;
+    private BooleanProperty openInventory = new SimpleBooleanProperty();
+    private final BooleanBinding keyPress = openInventory.or(openInventory);
 
+    public void init(){
+        keyPress.addListener(((observableValue, aBoolean, t1) -> {
+//            if (aBoolean){
+//                openInventory
+//            }else {
+//                closeInventory
+//            }
+        }));
+    }
+
+    public void setOpenInventory(boolean openInventory) {
+        this.openInventory.set(openInventory);
+    }
 }

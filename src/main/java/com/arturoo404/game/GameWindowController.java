@@ -49,6 +49,7 @@ public class GameWindowController implements Initializable{
         playerShape.setFill(new ImagePattern(newImage));
         playerHitBox.setFill(Color.RED);
         KeyAction keyAction = new KeyAction();
+        keyAction.init();
 
         pane.getChildren().add(playerShape);
         pane.getChildren().add(playerHitBox);

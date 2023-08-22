@@ -37,13 +37,7 @@ public class PlayerOnKeyPressedController implements EventHandler<KeyEvent> {
         }
 
         switch (keyEvent.getCode()){
-            case I -> {
-                if (keyAction.isOpenInventory()){
-                    keyAction.setOpenInventory(false);
-                }else {
-                    keyAction.setOpenInventory(true);
-                }
-            }
+            case I -> keyAction.setOpenInventory(!keyAction.getKeyPress().get());
         }
     }
 }

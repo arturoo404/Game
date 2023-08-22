@@ -31,7 +31,6 @@ public class EntityDetection {
     private void detectEntityDetectRange(){
         Thread thread = new Thread(() -> {
             Timeline entityDetection = new Timeline(new KeyFrame(Duration.millis(100), actionEvent -> {
-                System.out.println(player.getKeyAction().isOpenInventory());
                 for (Wolf wolf : livingEntities.getWolves()){
                     if (check(wolf)){
                         if (wolf.getDetectionStatus().equals(DetectionStatus.IGNORE) || wolf.getDetectionStatus().equals(DetectionStatus.OUT_OF_RANGE)){
