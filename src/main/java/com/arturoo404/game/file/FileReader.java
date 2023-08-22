@@ -1,11 +1,14 @@
 package com.arturoo404.game.file;
 
+import com.arturoo404.game.item.Item;
+import com.arturoo404.game.item.ItemName;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 
 import java.io.*;
 import java.util.List;
+import java.util.Map;
 
 public class FileReader {
     private GameOptions gameOptions;
@@ -27,6 +30,11 @@ public class FileReader {
         return objectMapper.readValue(file, EntityMainModel.class);
     }
 
+    public static Map<ItemName, Item> readItems() throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        File file = new File("src/main/resources/item/basic.json");
+        return objectMapper.readValue(file, Map.class);
+    }
 
     public void gameOptionReader() {
         ObjectMapper objectMapper = new ObjectMapper();

@@ -1,0 +1,14 @@
+{
+  "items" : {
+    "TEST" : {
+      "attackSpeed": 1.5,
+      "armor": 30,
+      "cooldownReduction": 10,
+      "damage": 50,
+      "health": 200,
+      "mana": 100,
+      "txtPath": "txt.txt",
+      "itemType": "WEAPON"
+    }
+  }
+}

@@ -3,6 +3,7 @@ package com.arturoo404.game;
 import com.arturoo404.game.generate.EntityGenerator;
 import com.arturoo404.game.generate.GeneratePlayerGui;
 import com.arturoo404.game.generate.MapGenerator;
+import com.arturoo404.game.item.ItemAction;
 import com.arturoo404.game.player.*;
 import com.arturoo404.game.player.movement.Movement;
 import com.arturoo404.game.player.skills.SkillsController;
@@ -40,6 +41,7 @@ public class GameWindowController implements Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         initMap();
+        initItems();
         Rectangle playerShape = new Rectangle(300,300,80, 120);
         Rectangle playerHitBox = new Rectangle(320,350,40, 60);
 
@@ -92,6 +94,15 @@ public class GameWindowController implements Initializable{
         try {
             entityGenerator.init();
         } catch (IOException ignored) {}
+    }
+
+    private void initItems(){
+        ItemAction action = new ItemAction();
+        try {
+            action.init();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public static Player getPlayer() {
