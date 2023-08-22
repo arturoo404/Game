@@ -14,4 +14,5 @@ public class EntityPointValue {
     private double value;
     private int xMove;
     private int yMove;
+    private EntityDirection entityDirection;
 }

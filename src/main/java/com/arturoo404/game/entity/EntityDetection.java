@@ -157,25 +157,26 @@ public class EntityDetection {
 
     private void calculateCloseAttackPoint(Entity entity){
         EntityPointValue integers = Stream.of(
-                calculateValue(entity, 0, -60),
-                calculateValue(entity, 0, 140),
-                calculateValue(entity, -120, 40),
-                calculateValue(entity, 100, 40)
+                calculateValue(entity, 0, -60, EntityDirection.UP),
+                calculateValue(entity, 0, 140, EntityDirection.DOWN),
+                calculateValue(entity, -120, 40, EntityDirection.LEFT),
+                calculateValue(entity, 100, 40, EntityDirection.RIGHT)
         ).min(Comparator.comparingDouble(EntityPointValue::getValue)).orElseThrow();
 
         entity.getAiValue().setDx(integers.getDx());
         entity.getAiValue().setDy(integers.getDy());
         entity.getAiValue().setSignumY(integers.getDy());
         entity.getAiValue().setSignumX(integers.getDx());
+        entity.getAiValue().setDetectionDirection(integers.getEntityDirection());
         calculateChanceToMove(entity);
     }
 
-    private EntityPointValue calculateValue(Entity entity, double x, double y){
+    private EntityPointValue calculateValue(Entity entity, double x, double y, EntityDirection entityDirection){
         double dx = player.getPlayerShape().getX() + x - entity.getRectangle().getX();
         double dy = player.getPlayerShape().getY() + y - entity.getRectangle().getY();
 
         return new EntityPointValue(
-                (int) dx, (int) dy, (Math.abs(dx) + Math.abs(dy)), (int) x, (int) y
+                (int) dx, (int) dy, (Math.abs(dx) + Math.abs(dy)), (int) x, (int) y, entityDirection
         );
     }
 
@@ -191,6 +192,8 @@ public class EntityDetection {
         if (entity.getAiValue().getDx() < 35 && entity.getAiValue().getDx() > -35 && entity.getAiValue().getDy() < 35 && entity.getAiValue().getDy() > -35){
             entity.getAiValue().setXMoveRepeating(false);
             entity.getAiValue().setYMoveRepeating(false);
+            entity.setAttack(true);
+            return;
         } else if (entity.getAiValue().getDx() < 35 && entity.getAiValue().getDx() > -35) {
             entity.getAiValue().setXMoveRepeating(false);
             entity.getAiValue().setYMoveRepeating(true);
@@ -199,6 +202,7 @@ public class EntityDetection {
             entity.getAiValue().setXMoveRepeating(true);
         }
 
+        entity.setAttack(false);
     }
 
     private int randomNumber(Entity entity){

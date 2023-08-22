@@ -16,6 +16,7 @@ public class EntityAiValue {
     private int dy;
     private double signumY;
     private double signumX;
+    private EntityDirection detectionDirection = EntityDirection.LEFT;
 
 
     public void setSignumY(double signumY) {

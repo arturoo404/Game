@@ -2,6 +2,7 @@ package com.arturoo404.game.generate;
 
 import com.arturoo404.game.entity.*;
 import com.arturoo404.game.entity.wolf.Wolf;
+import com.arturoo404.game.entity.wolf.skills.WolfAttack;
 import com.arturoo404.game.file.EntityModel;
 import com.arturoo404.game.file.EntityPosition;
 import com.arturoo404.game.generate.difficulty.Difficulty;

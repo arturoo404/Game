@@ -30,4 +30,5 @@ public class Entity {
     private EntityDirection direction;
     private EntityMovementAnimation entityMovementAnimation;
     private EntityAiValue aiValue;
+    private boolean attack = false;
 }

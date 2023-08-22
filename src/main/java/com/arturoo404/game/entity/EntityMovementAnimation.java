@@ -29,10 +29,11 @@ public class EntityMovementAnimation {
     public void init(){
         Thread thread = new Thread(() -> {
             Timeline playerAnimation = new Timeline(new KeyFrame(Duration.millis(100), actionEvent -> {
-                if (play){
+                if (play && !entity.isAttack()){
                     entity.getRectangle().setFill(new ImagePattern(entityTexturePlay()));
                 }else {
                     animationCount = 1;
+                    entityStopDirection(entity);
                     entity.getRectangle().setFill(new ImagePattern(writableImage(imagePositionX, directionYValue())));
                 }
             }));
@@ -73,6 +74,15 @@ public class EntityMovementAnimation {
             default -> {
                 return imagePositionY;
             }
+        }
+    }
+
+    private void entityStopDirection(Entity entity){
+        switch (entity.getAiValue().getDetectionDirection()){
+            case UP -> entity.setDirection(EntityDirection.DOWN);
+            case DOWN -> entity.setDirection(EntityDirection.UP);
+            case LEFT -> entity.setDirection(EntityDirection.RIGHT);
+            case RIGHT -> entity.setDirection(EntityDirection.LEFT);
         }
     }
 
