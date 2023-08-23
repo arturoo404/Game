@@ -59,6 +59,7 @@ public class PlayerGuiController implements Initializable {
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }
+
     private void showTooltips(){
         tooltipI.setShowDelay(Duration.millis(1));
         tooltipI.setHideDelay(Duration.millis(1));
