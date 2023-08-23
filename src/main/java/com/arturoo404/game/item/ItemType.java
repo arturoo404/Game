@@ -5,8 +5,10 @@ public enum ItemType {
     SHOES,
     HELMET,
     GLOVES,
+    NECKLACE,
     BELT,
     EARRING,
     RING,
-    WEAPON
+    WEAPON,
+    INGREDIENTS
 }

@@ -7,6 +7,7 @@ import com.opencsv.CSVReader;
 import com.opencsv.exceptions.CsvException;
 
 import java.io.*;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -30,10 +31,15 @@ public class FileReader {
         return objectMapper.readValue(file, EntityMainModel.class);
     }
 
-    public static Map<ItemName, Item> readItems() throws IOException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        File file = new File("src/main/resources/item/basic.json");
-        return objectMapper.readValue(file, Map.class);
+    //
+    public static Map<ItemName, Item> readItems(String... urls) throws IOException {
+        Map<ItemName, Item>  map = new HashMap<>();
+        for (String url : urls){
+            ObjectMapper objectMapper = new ObjectMapper();
+            File file = new File("src/main/resources/item/" + url + "/"+ url + ".json");
+            map = objectMapper.readValue(file, Map.class);
+        }
+        return map;
     }
 
     public void gameOptionReader() {

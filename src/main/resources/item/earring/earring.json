@@ -1,6 +1,6 @@
 {
   "items" : {
-    "BASIC_ARMOR" : {
+    "BASIC_EARRING" : {
       "name": "Test",
       "description": "Description",
       "attackSpeed": 1.5,
@@ -14,7 +14,7 @@
       "tier": "COMMON",
       "itemSet": "NONE",
       "txtPath": "txt.txt",
-      "itemType": "ARMOR"
+      "itemType": "EARRING"
     }
   }
 }
