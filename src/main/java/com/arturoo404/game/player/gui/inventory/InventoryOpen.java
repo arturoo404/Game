@@ -27,7 +27,7 @@ public class InventoryOpen {
     }
 
         public void closeInventory() throws IOException {
-
+            inventoryStage.close();
         }
 
     public InventoryOpen(Initializable initializable) {
