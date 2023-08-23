@@ -27,13 +27,13 @@ public class PlayerGuiController implements Initializable {
     private ProgressBar hpBar, manaBar;
     @FXML
     private Button iconTooltip;
-
+    Tooltip tooltipI = new Tooltip();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         player = getPlayer();
-        statHandler();
         showTooltips();
+        statHandler();
     }
 
 
@@ -53,14 +53,25 @@ public class PlayerGuiController implements Initializable {
                     experiance.setText(player.getSkillStats().getCurrentExp()+"/"+player.getSkillStats().getNextLvlExp()+" Exp");
                     playerLvl.setText(player.getSkillStats().getPlayerLvl()+" Level");
                     money.setText("Money: "+player.getSkillStats().getMoney());
+                    tooltipI.setText(iconTooltipFormat());
                 })
         );
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }
     private void showTooltips(){
-        Tooltip tooltipI = new Tooltip("aaaaaaa");
+        tooltipI.setShowDelay(Duration.millis(1));
+        tooltipI.setHideDelay(Duration.millis(1));
         iconTooltip.setTooltip(tooltipI);
+        iconTooltip.getStyleClass().add("tooltip");
     }
 
+    private String iconTooltipFormat() {
+        String iconText = """
+                   Fire bolt
+                   Shoot a fire bolt in direction you facing
+                   dealing\s""" + player.getSkillStats().getCurrentMana() + " damage"
+                + "\nand...";
+        return iconText;
+    }
 }
