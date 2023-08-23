@@ -4,6 +4,7 @@ module com.arturoo404.game {
     requires com.opencsv;
     requires com.fasterxml.jackson.databind;
     requires lombok;
+    requires javafx.web;
 
     opens com.arturoo404.game to javafx.fxml;
     exports com.arturoo404.game;
