@@ -61,18 +61,17 @@ public class PlayerGuiController implements Initializable {
     }
 
     private void showTooltips(){
-        tooltipI.setShowDelay(Duration.millis(1));
-        tooltipI.setHideDelay(Duration.millis(1));
+        tooltipI.setShowDelay(Duration.ZERO);
+        tooltipI.setHideDelay(Duration.ZERO);
         iconTooltip.setTooltip(tooltipI);
         iconTooltip.getStyleClass().add("tooltip");
     }
 
     private String iconTooltipFormat() {
-        String iconText = """
+        return """
                    Fire bolt
                    Shoot a fire bolt in direction you facing
                    dealing\s""" + player.getSkillStats().basicAttackDamage() + " damage"
                 + "\nand...";
-        return iconText;
     }
 }

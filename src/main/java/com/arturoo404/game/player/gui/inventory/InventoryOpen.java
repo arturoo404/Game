@@ -1,20 +1,21 @@
 package com.arturoo404.game.player.gui.inventory;
 
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import lombok.Getter;
 
 import java.io.IOException;
 
 public class InventoryOpen {
-    @Getter
     private Stage inventoryStage;
+    private Initializable initializable;
+
     public void openInventory() throws IOException {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("inventory-window.fxml"));
+            FXMLLoader loader = new FXMLLoader(initializable.getClass().getResource("inventory-window.fxml"));
             Parent root = loader.load();
             inventoryStage = new Stage();
             inventoryStage.initModality(Modality.WINDOW_MODAL);
@@ -28,5 +29,9 @@ public class InventoryOpen {
         public void closeInventory() throws IOException {
 
         }
+
+    public InventoryOpen(Initializable initializable) {
+        this.initializable = initializable;
+    }
 }
 
