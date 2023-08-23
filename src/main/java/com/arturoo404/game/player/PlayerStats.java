@@ -23,4 +23,9 @@ public class PlayerStats {
     private int currentExp = 0;
     private int nextLvlExp = 20;
     private int playerLvl = 1;
+    private int currentLvl = 1;
+
+    public Integer basicAttackDamage(){
+        return damage + currentLvl;
+    }
 }

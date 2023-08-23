@@ -70,7 +70,7 @@ public class PlayerGuiController implements Initializable {
         String iconText = """
                    Fire bolt
                    Shoot a fire bolt in direction you facing
-                   dealing\s""" + player.getSkillStats().getCurrentMana() + " damage"
+                   dealing\s""" + player.getSkillStats().basicAttackDamage() + " damage"
                 + "\nand...";
         return iconText;
     }
