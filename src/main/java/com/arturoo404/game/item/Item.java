@@ -1,5 +1,10 @@
 package com.arturoo404.game.item;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class Item {
 
     private String name = "N/A";
@@ -10,6 +15,8 @@ public class Item {
     private int damage = 0;
     private int health = 0;
     private int mana = 0;
+    private int manaRegen = 0;
+    private int hpRegen = 0;
     private int lvlRequirement = 0;
     private int marketPrice = 0;
     private ItemTier tier = ItemTier.COMMON;

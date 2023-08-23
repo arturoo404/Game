@@ -31,7 +31,6 @@ public class FileReader {
         return objectMapper.readValue(file, EntityMainModel.class);
     }
 
-    //
     public static Map<ItemName, Item> readItems(String... urls) throws IOException {
         Map<ItemName, Item>  map = new HashMap<>();
         for (String url : urls){
