@@ -31,4 +31,9 @@ public class Entity {
     private EntityMovementAnimation entityMovementAnimation;
     private EntityAiValue aiValue;
     private boolean attack = false;
+    private boolean attackAnimation = false;
+
+    public double calculateAttackSpeedTime(){
+        return 1000 / this.attackSpeed / 2;
+    }
 }

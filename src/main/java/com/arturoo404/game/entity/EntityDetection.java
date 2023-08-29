@@ -1,7 +1,9 @@
 package com.arturoo404.game.entity;
 
 import com.arturoo404.game.entity.wolf.Wolf;
+import com.arturoo404.game.entity.wolf.skills.WolfAttack;
 import com.arturoo404.game.player.Player;
+import com.arturoo404.game.player.movement.MapCollision;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -96,7 +98,7 @@ public class EntityDetection {
             entity.getAiValue().setRepeating(0);
         }
 
-        if (entity.getAiValue().isXMoveRepeating()) {
+        if (entity.getAiValue().isXMoveRepeating() && !entity.isAttackAnimation()) {
             if (isCollisionWithWall(entity)){
                 entity.getAiValue().setSignumX(entity.getAiValue().getSignumX() * -1);
             }
@@ -116,7 +118,7 @@ public class EntityDetection {
                     switchEntitySize(entity);
                 }
             }
-        } else if (entity.getAiValue().isYMoveRepeating()){
+        } else if (entity.getAiValue().isYMoveRepeating() && !entity.isAttackAnimation()){
             if (isCollisionWithWall(entity)){
                 entity.getAiValue().setSignumY(entity.getAiValue().getSignumY() * -1);
             }
@@ -193,6 +195,12 @@ public class EntityDetection {
             entity.getAiValue().setXMoveRepeating(false);
             entity.getAiValue().setYMoveRepeating(false);
             entity.setAttack(true);
+            if (entity instanceof Wolf && !entity.isAttackAnimation()){
+                System.out.println("a");
+                entity.setAttackAnimation(true);
+                Thread thread = new Thread(new WolfAttack(entity, player));
+                thread.start();
+            }
             return;
         } else if (entity.getAiValue().getDx() < 35 && entity.getAiValue().getDx() > -35) {
             entity.getAiValue().setXMoveRepeating(false);

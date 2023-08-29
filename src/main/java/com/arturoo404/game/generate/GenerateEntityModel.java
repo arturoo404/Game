@@ -39,7 +39,7 @@ public class GenerateEntityModel {
 
     private Wolf generateWolf(EntityModel entityModel, EntityPosition entityPosition, LivingEntities livingEntities, Difficulty difficulty){
         Wolf wolf = new Wolf();
-        wolf.setAttackSpeed(entityModel.width());
+        wolf.setAttackSpeed(entityModel.attackSpeed());
         wolf.setEntityType(entityModel.entityType());
         wolf.setHealth(healthChanger(entityModel.health(),difficulty));
         wolf.setDamage(damageChanger((int) entityModel.damage(),difficulty));

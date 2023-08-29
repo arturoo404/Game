@@ -9,7 +9,7 @@ public class PlayerStats {
 
     private double attackSpeed = 1;
     private int maxHealth = 100;
-    private int currentHealth = 20;
+    private double currentHealth = 100;
     private int maxMana = 100;
     private int currentMana = 40;
     private double healthRegen = 5;
