@@ -39,17 +39,17 @@ public class PlayerGuiController implements Initializable {
 
     private void statHandler(){
         Timeline timeline = new Timeline(
-                new KeyFrame(Duration.seconds(0.5), event -> {
+                new KeyFrame(Duration.seconds(0.1), event -> {
                     damage.setText(String.valueOf(player.getSkillStats().getDamage()));
                     attackSpeed.setText(String.valueOf(player.getSkillStats().getAttackSpeed()));
                     armor.setText(String.valueOf(player.getSkillStats().getArmor()));
                     healthRegen.setText(String.valueOf(player.getSkillStats().getHealthRegen()));
                     manaRegen.setText(String.valueOf(player.getSkillStats().getManaRegen()));
                     cooldownReduction.setText(String.valueOf(player.getSkillStats().getCooldownReduction()));
-                    hpBar.setProgress((double) player.getSkillStats().getCurrentHealth() / player.getSkillStats().getMaxHealth());
+                    hpBar.setProgress(player.getSkillStats().getCurrentHealth() / player.getSkillStats().getMaxHealth());
                     hpText.setText(player.getSkillStats().getCurrentHealth()+"/"+player.getSkillStats().getMaxHealth());
                     manaText.setText(player.getSkillStats().getCurrentMana()+"/"+player.getSkillStats().getMaxMana());
-                    manaBar.setProgress((double) player.getSkillStats().getCurrentMana() / player.getSkillStats().getMaxMana());
+                    manaBar.setProgress(player.getSkillStats().getCurrentMana() / player.getSkillStats().getMaxMana());
                     experiance.setText(player.getSkillStats().getCurrentExp()+"/"+player.getSkillStats().getNextLvlExp()+" Exp");
                     playerLvl.setText(player.getSkillStats().getPlayerLvl()+" Level");
                     money.setText("Money: "+player.getSkillStats().getMoney());

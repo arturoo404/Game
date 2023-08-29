@@ -22,7 +22,6 @@ public class PlayerResourceManagement {
                     if (player.getSkillStats().getCurrentHealth() < player.getSkillStats().getMaxHealth()) {
                         double healthRegain = player.getSkillStats().getCurrentHealth() + player.getSkillStats().getHealthRegen() + player.getSkillStats().getPercentHealthRegen();
                         player.getSkillStats().setCurrentHealth((int) healthRegain);
-                        player.getMovement().getPlayerBars().getPlayerHpBar().setProgress((double) player.getSkillStats().getCurrentHealth() / player.getSkillStats().getMaxHealth());
                     } else {
                         player.getSkillStats().setCurrentHealth(player.getSkillStats().getMaxHealth());
                     }
@@ -30,12 +29,20 @@ public class PlayerResourceManagement {
                     if (player.getSkillStats().getCurrentMana() < player.getSkillStats().getMaxMana()) {
                         double manaRegain = player.getSkillStats().getCurrentMana() + player.getSkillStats().getManaRegen() + player.getSkillStats().getPercentManaRegen();
                         player.getSkillStats().setCurrentMana((int) manaRegain);
-                        player.getMovement().getPlayerBars().getPlayerManaBar().setProgress((double) player.getSkillStats().getCurrentMana() / player.getSkillStats().getMaxMana());
                     } else {
                         player.getSkillStats().setCurrentMana(player.getSkillStats().getMaxMana());
                     }
                 })
         );
+        Timeline refreshStats = new Timeline(
+                new KeyFrame(Duration.seconds(0.1), event -> {
+                    player.getMovement().getPlayerBars().getPlayerHpBar().setProgress(player.getSkillStats().getCurrentHealth() / player.getSkillStats().getMaxHealth());
+                    player.getMovement().getPlayerBars().getPlayerManaBar().setProgress(player.getSkillStats().getCurrentMana() / player.getSkillStats().getMaxMana());
+                })
+        );
+        refreshStats.setCycleCount(Timeline.INDEFINITE);
+        refreshStats.play();
+
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
     }

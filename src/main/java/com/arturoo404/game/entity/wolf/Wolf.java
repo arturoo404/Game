@@ -5,6 +5,4 @@ import com.arturoo404.game.entity.wolf.skills.WolfAttack;
 import lombok.AllArgsConstructor;
 
 public class Wolf extends Entity {
-
-    private WolfAttack wolfAttack;
 }

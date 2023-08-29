@@ -196,7 +196,6 @@ public class EntityDetection {
             entity.getAiValue().setYMoveRepeating(false);
             entity.setAttack(true);
             if (entity instanceof Wolf && !entity.isAttackAnimation()){
-                System.out.println("a");
                 entity.setAttackAnimation(true);
                 Thread thread = new Thread(new WolfAttack(entity, player));
                 thread.start();

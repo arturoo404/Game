@@ -11,12 +11,12 @@ public class PlayerStats {
     private int maxHealth = 100;
     private double currentHealth = 100;
     private int maxMana = 100;
-    private int currentMana = 40;
+    private double currentMana = 40;
     private double healthRegen = 5;
     private double percentHealthRegen = (double) maxHealth / 200;
     private double manaRegen = 10;
     private double percentManaRegen = (double) maxMana / 200;
-    private int armor = 0;
+    private int armor = 50;
     private int cooldownReduction = 0;
     private int damage = 10;
     private int money = 10;

@@ -14,7 +14,7 @@
       "posY" : 600
     } ],
     "range" : 20,
-    "attackSpeed" : 1.0,
+    "attackSpeed" : 2.0,
     "detectionRange" : 300,
     "defence" : 30,
     "detectionTimer" : 30

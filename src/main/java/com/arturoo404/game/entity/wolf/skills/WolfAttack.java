@@ -24,7 +24,7 @@ public class WolfAttack implements Runnable{
         forwardTransition.setOnFinished(v ->{
             if (checkWolfCollision()){
                 player.getSkillStats().setCurrentHealth(
-                        player.getSkillStats().getCurrentHealth() - (calcDamageAfterReduction(player.getSkillStats().getDamage(), player.getSkillStats().getArmor()))
+                        player.getSkillStats().getCurrentHealth() - (calcDamageAfterReduction(entity.getDamage(), player.getSkillStats().getArmor()))
                 );
             }
         });
