@@ -23,4 +23,14 @@ public class EntityBars {
     public EntityBars(Entity entity) {
         this.entity = entity;
     }
+
+    public void statsBarPositionAttack(EntityDirection entityDirection){
+        switch (entityDirection){
+            case UP, DOWN -> healthBar.setLayoutY(entity.getRectangle().getY() - ((entity.getRectangle().getWidth() - entity.getRectangle().getHeight()) / 2) - 10);
+            case LEFT, RIGHT -> {
+                healthBar.setLayoutX(entity.getRectangle().getX());
+                healthBar.setLayoutY(entity.getRectangle().getY() - 10);
+            }
+        }
+    }
 }

@@ -107,10 +107,12 @@ public class EntityDetection {
                 entity.getRectangle().setX(entity.getRectangle().getX() + entity.getAiValue().getSignumX() * speed);
                 entityRange.setCenterX(entity.getRectangle().getX() + entity.getWidth() / 2);
                 entity.setDirection(EntityDirection.RIGHT);
+                entity.getEntityBars().statsBarPositionAttack(entity.getDirection());
             }else {
                 entity.getRectangle().setX(entity.getRectangle().getX() + entity.getAiValue().getSignumX() * speed);
                 entityRange.setCenterX(entity.getRectangle().getX() + entity.getWidth() / 2);
                 entity.setDirection(EntityDirection.LEFT);
+                entity.getEntityBars().statsBarPositionAttack(entity.getDirection());
             }
 
             if (!entity.getDirection().equals(EntityDirection.RIGHT) && !entity.getDirection().equals(EntityDirection.LEFT)){
@@ -127,10 +129,12 @@ public class EntityDetection {
                 entity.getRectangle().setY(entity.getRectangle().getY() + entity.getAiValue().getSignumY() * speed);
                 entityRange.setCenterY(entity.getRectangle().getY() + entity.getHeight() / 2);
                 entity.setDirection(EntityDirection.DOWN);
+                entity.getEntityBars().statsBarPositionAttack(entity.getDirection());
             }else {
                 entity.getRectangle().setY(entity.getRectangle().getY() + entity.getAiValue().getSignumY() * speed);
                 entityRange.setCenterY(entity.getRectangle().getY() + entity.getHeight() / 2);
                 entity.setDirection(EntityDirection.UP);
+                entity.getEntityBars().statsBarPositionAttack(entity.getDirection());
             }
 
             if (!entity.getDirection().equals(EntityDirection.DOWN) && !entity.getDirection().equals(EntityDirection.UP)){
@@ -195,6 +199,7 @@ public class EntityDetection {
             entity.getAiValue().setXMoveRepeating(false);
             entity.getAiValue().setYMoveRepeating(false);
             entity.setAttack(true);
+            entity.getEntityBars().statsBarPositionAttack(entity.getAiValue().getDetectionDirection());
             if (entity instanceof Wolf && !entity.isAttackAnimation()){
                 entity.setAttackAnimation(true);
                 Thread thread = new Thread(new WolfAttack(entity, player));
