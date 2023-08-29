@@ -18,10 +18,14 @@ public class WolfAttack implements Runnable{
 
     @Override
     public void run() {
-        TranslateTransition forwardTransition = new TranslateTransition(Duration.millis(entity.calculateAttackSpeedTime()),  entity.getRectangle());
-        TranslateTransition backwardTransition = new TranslateTransition(Duration.millis(entity.calculateAttackSpeedTime()),  entity.getRectangle());
-        calculateAttackDirection(forwardTransition, backwardTransition);
-        forwardTransition.setOnFinished(v ->{
+        TranslateTransition forwardPlayer = new TranslateTransition(Duration.millis(entity.calculateAttackSpeedTime()),  entity.getRectangle());
+        TranslateTransition backwardPlayer = new TranslateTransition(Duration.millis(entity.calculateAttackSpeedTime()),  entity.getRectangle());
+        TranslateTransition forwardHpBar = new TranslateTransition(Duration.millis(entity.calculateAttackSpeedTime()),  entity.getEntityBars().getHealthBar());
+        TranslateTransition backwardHpBar = new TranslateTransition(Duration.millis(entity.calculateAttackSpeedTime()),  entity.getEntityBars().getHealthBar());
+        calculateAttackDirection(forwardPlayer, backwardPlayer);
+        calculateAttackDirection(forwardHpBar, backwardHpBar);
+        
+        forwardPlayer.setOnFinished(v ->{
             if (checkWolfCollision()){
                 player.getSkillStats().setCurrentHealth(
                         player.getSkillStats().getCurrentHealth() - (calcDamageAfterReduction(entity.getDamage(), player.getSkillStats().getArmor()))
@@ -29,11 +33,14 @@ public class WolfAttack implements Runnable{
             }
         });
 
-        SequentialTransition sequence = new SequentialTransition(forwardTransition, backwardTransition);
-
-        sequence.setAutoReverse(true);
-        sequence.play();
-        sequence.setOnFinished(f -> entity.setAttackAnimation(false));
+        SequentialTransition sequencePlayer = new SequentialTransition(forwardPlayer, backwardPlayer);
+        sequencePlayer.setAutoReverse(true);
+        sequencePlayer.play();
+        sequencePlayer.setOnFinished(f -> entity.setAttackAnimation(false));
+        SequentialTransition sequenceHpBar = new SequentialTransition(forwardHpBar, backwardHpBar);
+        sequenceHpBar.setAutoReverse(true);
+        sequenceHpBar.play();
+        sequenceHpBar.setOnFinished(f -> entity.setAttackAnimation(false));
     }
 
     private boolean checkWolfCollision(){
