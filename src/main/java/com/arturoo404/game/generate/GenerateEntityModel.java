@@ -2,7 +2,6 @@ package com.arturoo404.game.generate;
 
 import com.arturoo404.game.entity.*;
 import com.arturoo404.game.entity.wolf.Wolf;
-import com.arturoo404.game.entity.wolf.skills.WolfAttack;
 import com.arturoo404.game.file.EntityModel;
 import com.arturoo404.game.file.EntityPosition;
 import com.arturoo404.game.generate.difficulty.Difficulty;
@@ -41,7 +40,8 @@ public class GenerateEntityModel {
         Wolf wolf = new Wolf();
         wolf.setAttackSpeed(entityModel.attackSpeed());
         wolf.setEntityType(entityModel.entityType());
-        wolf.setHealth(healthChanger(entityModel.health(),difficulty));
+        wolf.setMaxHealth(healthChanger(entityModel.health(),difficulty));
+        wolf.setCurrentHealth(wolf.getMaxHealth());
         wolf.setDamage(damageChanger((int) entityModel.damage(),difficulty));
         wolf.setSpeed(entityModel.speed());
         wolf.setRange(entityModel.range());
@@ -58,7 +58,13 @@ public class GenerateEntityModel {
         wolf.setDirection(EntityDirection.LEFT);
         wolf.setEntityMovementAnimation(buildMovementAnimation(wolf, new Image(getClass().getResourceAsStream("/txt/entity/wolf.png"))));
         wolf.getEntityMovementAnimation().init();
+        wolf.setPane(pane);
         pane.getChildren().add(wolf.getRectangle());
+
+        //TODO Naprawic
+        EntityBars entityBars = new EntityBars(wolf);
+        entityBars.createProgresBar();
+        wolf.setEntityBars(entityBars);
 
         Circle range = new Circle(entityModel.detectionRange());
         range.setCenterX(entityPosition.posX() + 55);

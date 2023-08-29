@@ -1,5 +1,6 @@
 package com.arturoo404.game.entity;
 
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import lombok.Getter;
@@ -14,7 +15,8 @@ public class Entity {
     private double width;
     private double height;
     private EntityType entityType;
-    private int health;
+    private double maxHealth;
+    private double currentHealth;
     private double damage;
     private int speed;
     private int range;
@@ -32,6 +34,8 @@ public class Entity {
     private EntityAiValue aiValue;
     private boolean attack = false;
     private boolean attackAnimation = false;
+    private EntityBars entityBars;
+    private AnchorPane pane;
 
     public double calculateAttackSpeedTime(){
         return 1000 / this.attackSpeed / 2;

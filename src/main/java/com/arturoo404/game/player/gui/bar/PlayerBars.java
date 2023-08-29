@@ -25,7 +25,9 @@ public class PlayerBars{
     public ProgressBar getPlayerHpBar() {
         return playerHpBar;
     }
-    public ProgressBar getPlayerManaBar() {return  playerManaBar;}
+    public ProgressBar getPlayerManaBar() {
+        return  playerManaBar;
+    }
 
     private void barAppearance(){
         // ustawia pasek zdrowia nad graczom
@@ -33,8 +35,8 @@ public class PlayerBars{
         playerManaBar.setLayoutY(player.getPlayerShape().getY() - 10);
         playerHpBar.setLayoutY(player.getPlayerShape().getY() - 22);
         playerHpBar.setLayoutX(player.getPlayerShape().getX() - 12);
-        playerManaBar.setProgress((double) player.getSkillStats().getCurrentMana() / player.getSkillStats().getMaxMana());
-        playerHpBar.setProgress((double) player.getSkillStats().getCurrentHealth() / player.getSkillStats().getMaxHealth()); // ustawia pasek zdrowia na obecne zdrowie gracza
+        playerManaBar.setProgress(player.getSkillStats().getCurrentMana() / player.getSkillStats().getMaxMana());
+        playerHpBar.setProgress(player.getSkillStats().getCurrentHealth() / player.getSkillStats().getMaxHealth()); // ustawia pasek zdrowia na obecne zdrowie gracza
         playerHpBar.setStyle("-fx-border-width: 1px; -fx-accent: red; -fx-control-inner-background: rgba(255,255,255,0); ");
         playerManaBar.setStyle("-fx-border-width: 1px; -fx-accent: blue; -fx-control-inner-background: rgba(255,255,255,0); ");
         playerHpBar.setMaxHeight(12);
