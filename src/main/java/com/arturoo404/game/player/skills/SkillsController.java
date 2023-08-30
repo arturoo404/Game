@@ -8,7 +8,7 @@ import javafx.beans.property.SimpleBooleanProperty;
 
 public class SkillsController {
 
-    private Player player;
+    private final Player player;
 
     private final BooleanProperty basicAttack = new SimpleBooleanProperty();
 
@@ -20,6 +20,7 @@ public class SkillsController {
      * Initialize the player skills
      */
     public void init(){
+        player.setSkillsController(this);
         basic.init();
         keyPress.addListener(((observableValue, aBoolean, t1) -> {
             basic.setPlay(!aBoolean);

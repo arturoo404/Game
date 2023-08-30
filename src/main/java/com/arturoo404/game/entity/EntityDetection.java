@@ -3,7 +3,6 @@ package com.arturoo404.game.entity;
 import com.arturoo404.game.entity.wolf.Wolf;
 import com.arturoo404.game.entity.wolf.skills.WolfAttack;
 import com.arturoo404.game.player.Player;
-import com.arturoo404.game.player.movement.MapCollision;
 import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -33,31 +32,30 @@ public class EntityDetection {
     private void detectEntityDetectRange(){
         Thread thread = new Thread(() -> {
             Timeline entityDetection = new Timeline(new KeyFrame(Duration.millis(100), actionEvent -> {
-                for (Wolf wolf : livingEntities.getWolves()){
-                    if (check(wolf)){
-                        if (wolf.getDetectionStatus().equals(DetectionStatus.IGNORE) || wolf.getDetectionStatus().equals(DetectionStatus.OUT_OF_RANGE)){
-                            wolf.setDetectionStatus(DetectionStatus.IN_RANGE);
-                            wolf.setDetectionTimer(wolf.getDetectionTimerDefaultValue());
+                for (Entity entity : livingEntities.getWolves()){
+                    if (check(entity)){
+                        if (entity.getDetectionStatus().equals(DetectionStatus.IGNORE) || entity.getDetectionStatus().equals(DetectionStatus.OUT_OF_RANGE)){
+                            entity.setDetectionStatus(DetectionStatus.IN_RANGE);
+                            entity.setDetectionTimer(entity.getDetectionTimerDefaultValue());
                         }
                     }else {
-                        if (wolf.getDetectionStatus().equals(DetectionStatus.IN_RANGE)){
-                            wolf.setDetectionStatus(DetectionStatus.OUT_OF_RANGE);
-                            wolf.setDetectionTimer(detectionTimerCalc(wolf));
-                        }else if (wolf.getDetectionStatus().equals(DetectionStatus.OUT_OF_RANGE)){
-                            wolf.setDetectionTimer(detectionTimerCalc(wolf));
-                            if (wolf.getDetectionTimer() == 0){
-                                wolf.setDetectionStatus(DetectionStatus.IGNORE);
+                        if (entity.getDetectionStatus().equals(DetectionStatus.IN_RANGE)){
+                            entity.setDetectionStatus(DetectionStatus.OUT_OF_RANGE);
+                            entity.setDetectionTimer(detectionTimerCalc(entity));
+                        }else if (entity.getDetectionStatus().equals(DetectionStatus.OUT_OF_RANGE)){
+                            entity.setDetectionTimer(detectionTimerCalc(entity));
+                            if (entity.getDetectionTimer() == 0){
+                                entity.setDetectionStatus(DetectionStatus.IGNORE);
                             }
                         }
                     }
 
-                    if (wolf.getDetectionStatus().equals(DetectionStatus.IN_RANGE) || wolf.getDetectionStatus().equals(DetectionStatus.OUT_OF_RANGE)){
-                        moveEntityTowardsPlayer(wolf, wolf.getCircle(), wolf.getSpeed());
-                        wolf.getEntityMovementAnimation().setPlay(true);
+                    if (entity.getDetectionStatus().equals(DetectionStatus.IN_RANGE) || entity.getDetectionStatus().equals(DetectionStatus.OUT_OF_RANGE)){
+                        moveEntityTowardsPlayer(entity, entity.getCircle(), entity.getSpeed());
+                        entity.getEntityMovementAnimation().setPlay(true);
                     }else {
-                        wolf.getEntityMovementAnimation().setPlay(false);
+                        entity.getEntityMovementAnimation().setPlay(false);
                     }
-
                 }
             }));
             entityDetection.setCycleCount(Animation.INDEFINITE);
@@ -67,13 +65,13 @@ public class EntityDetection {
         thread.start();
     }
 
-    private int detectionTimerCalc(Wolf wolf){
-        return wolf.getDetectionTimer() - 1;
+    private int detectionTimerCalc(Entity entity){
+        return entity.getDetectionTimer() - 1;
     }
 
-    private boolean check(Wolf wolf) {
-        if (isRangeCollision(wolf.getCircle(), player.getEntityHitBox())){
-            Line line = new Line(wolf.getRectangle().getX() + 55, wolf.getRectangle().getY() + 30, player.getEntityHitBox().getX() + 20, player.getEntityHitBox().getY() + 30);
+    private boolean check(Entity entity) {
+        if (isRangeCollision(entity.getCircle(), player.getEntityHitBox())){
+            Line line = new Line(entity.getRectangle().getX() + 55, entity.getRectangle().getY() + 30, player.getEntityHitBox().getX() + 20, player.getEntityHitBox().getY() + 30);
             player.getAnchorPane().getChildren().add(line);
             return detectBehindWallChecker(line);
         }
@@ -92,7 +90,7 @@ public class EntityDetection {
     }
 
 
-    private void moveEntityTowardsPlayer(Wolf entity, Circle entityRange, double speed) {
+    private void moveEntityTowardsPlayer(Entity entity, Circle entityRange, double speed) {
         if (entity.getAiValue().getRepeating() == 0 || entity.getAiValue().getRepeating() == 4){
             calculateCloseAttackPoint(entity);
             entity.getAiValue().setRepeating(0);

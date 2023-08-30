@@ -63,8 +63,8 @@ public class GameWindowController implements Initializable{
         player.setMovement(movement);
         SkillsController skillsController = new SkillsController(player);
         skillsController.init();
-        pane.setOnKeyPressed(new PlayerOnKeyPressedController(movement, skillsController, keyAction));
-        pane.setOnKeyReleased(new PlayerOnKeyReleasedController(movement, skillsController, keyAction));
+        pane.setOnKeyPressed(new PlayerOnKeyPressedController(movement, player, keyAction));
+        pane.setOnKeyReleased(new PlayerOnKeyReleasedController(movement, player, keyAction));
         pane.requestFocus();
 
 
@@ -93,7 +93,9 @@ public class GameWindowController implements Initializable{
         EntityGenerator entityGenerator = new EntityGenerator(pane, player);
         try {
             entityGenerator.init();
-        } catch (IOException ignored) {}
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     private void initItems(){

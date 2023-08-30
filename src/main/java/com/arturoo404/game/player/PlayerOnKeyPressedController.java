@@ -13,9 +13,9 @@ public class PlayerOnKeyPressedController implements EventHandler<KeyEvent> {
 
     private final KeyAction keyAction;
 
-    public PlayerOnKeyPressedController(Movement movement, SkillsController skillsController, KeyAction keyAction) {
+    public PlayerOnKeyPressedController(Movement movement, Player player, KeyAction keyAction) {
         this.movement = movement;
-        this.skillsController = skillsController;
+        this.skillsController = player.getSkillsController();
         this.keyAction = keyAction;
     }
 

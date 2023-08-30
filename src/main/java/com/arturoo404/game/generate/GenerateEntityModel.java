@@ -46,7 +46,7 @@ public class GenerateEntityModel {
         wolf.setSpeed(entityModel.speed());
         wolf.setRange(entityModel.range());
         wolf.setDetectionRange(entityModel.detectionRange());
-        wolf.setDefence(defenceChanger(entityModel.defence(),difficulty));
+        wolf.setArmor(defenceChanger(entityModel.defence(),difficulty));
         wolf.setRectangle(new Rectangle(entityPosition.posX(), entityPosition.posY(), entityModel.width(), entityModel.height()));
         wolf.setLivingEntities(livingEntities);
         wolf.setDetectionStatus(DetectionStatus.IGNORE);

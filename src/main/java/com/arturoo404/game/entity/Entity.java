@@ -25,7 +25,7 @@ public class Entity {
     private DetectionStatus detectionStatus;
     private int detectionTimerDefaultValue;
     private int detectionTimer;
-    private int defence;
+    private int armor;
     private Rectangle rectangle;
     private Circle circle;
     private LivingEntities livingEntities;

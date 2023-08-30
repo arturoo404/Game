@@ -18,7 +18,7 @@ public class PlayerStats {
     private double percentManaRegen = (double) maxMana / 200;
     private int armor = 50;
     private int cooldownReduction = 0;
-    private int damage = 10;
+    private int damage = 100;
     private int money = 10;
     private int currentExp = 0;
     private int nextLvlExp = 20;
