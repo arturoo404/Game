@@ -25,7 +25,6 @@ public class StartWindowController implements Initializable {
 
     @FXML
     private Button start, options;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         initButtons();

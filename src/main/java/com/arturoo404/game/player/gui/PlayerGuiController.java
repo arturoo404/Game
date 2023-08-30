@@ -43,6 +43,7 @@ public class PlayerGuiController implements Initializable {
                     damage.setText(String.valueOf(player.getSkillStats().getDamage()));
                     attackSpeed.setText(String.valueOf(player.getSkillStats().getAttackSpeed()));
                     armor.setText(String.valueOf(player.getSkillStats().getArmor()));
+                    // TODO zrobic wyswitlanie wartosci przeliczonej z % i flata
                     healthRegen.setText(String.valueOf(player.getSkillStats().getHealthRegen()));
                     manaRegen.setText(String.valueOf(player.getSkillStats().getManaRegen()));
                     cooldownReduction.setText(String.valueOf(player.getSkillStats().getCooldownReduction()));

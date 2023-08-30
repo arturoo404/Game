@@ -14,14 +14,16 @@ public class InventoryOpen {
     private Stage inventoryStage;
     private Initializable initializable;
 
+
     public void openInventory() throws IOException {
             FXMLLoader loader = new FXMLLoader(initializable.getClass().getResource("inventory-window.fxml"));
             Parent root = loader.load();
             inventoryStage = new Stage();
             inventoryStage.initModality(Modality.WINDOW_MODAL);
-            Scene scene = new Scene(root, 600, 650);
+            Scene scene = new Scene(root, 1400, 800);
             inventoryStage.initStyle(StageStyle.UNDECORATED);
             inventoryStage.initStyle(StageStyle.TRANSPARENT);
+            scene.setFill(null);
             inventoryStage.setScene(scene);
             inventoryStage.show();
     }
@@ -33,5 +35,6 @@ public class InventoryOpen {
     public InventoryOpen(Initializable initializable) {
         this.initializable = initializable;
     }
+
 }
 

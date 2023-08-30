@@ -4,6 +4,7 @@ import com.arturoo404.game.player.gui.inventory.InventoryOpen;
 import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import lombok.Getter;
 

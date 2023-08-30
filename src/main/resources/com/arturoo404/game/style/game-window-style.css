@@ -64,3 +64,11 @@
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.5) , 10, 0.0 , 0 , 3 );
     -fx-font-size: 0.85em;
 }
+
+.inventoryBackground{
+    -fx-background-color: transparent;
+    -fx-background-color: rgba(108, 175, 170, 0.8);
+}
+.inventoryItemSlot{
+    -fx-background-color: rgba(30,30,30,0.8);
+}
