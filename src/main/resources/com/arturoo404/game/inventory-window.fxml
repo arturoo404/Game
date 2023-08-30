@@ -4,10 +4,29 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="1400.0" styleClass="inventoryBackground" stylesheets="@style/game-window-style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.arturoo404.game.player.gui.inventory.InventoryController">
    <children>
-      <Pane layoutX="14.0" layoutY="636.0" prefHeight="150.0" prefWidth="150.0" styleClass="inventoryItemSlot" />
-      <Pane layoutX="14.0" layoutY="480.0" prefHeight="150.0" prefWidth="150.0" styleClass="inventoryItemSlot" />
-      <Pane layoutX="14.0" layoutY="325.0" prefHeight="150.0" prefWidth="150.0" styleClass="inventoryItemSlot" />
-      <Pane layoutX="14.0" layoutY="167.0" prefHeight="150.0" prefWidth="150.0" styleClass="inventoryItemSlot" />
-      <Pane layoutX="14.0" layoutY="14.0" prefHeight="150.0" prefWidth="150.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot0" layoutX="14.0" layoutY="14.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot1" layoutX="101.0" layoutY="14.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot2" layoutX="186.0" layoutY="14.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot3" layoutX="272.0" layoutY="14.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot4" layoutX="14.0" layoutY="100.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot5" layoutX="101.0" layoutY="100.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot6" layoutX="186.0" layoutY="100.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot7" layoutX="272.0" layoutY="100.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot8" layoutX="14.0" layoutY="188.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot9" layoutX="101.0" layoutY="188.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot10" layoutX="186.0" layoutY="188.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot11" layoutX="272.0" layoutY="188.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot12" layoutX="14.0" layoutY="275.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot13" layoutX="101.0" layoutY="275.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot14" layoutX="186.0" layoutY="275.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot15" layoutX="272.0" layoutY="275.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot16" layoutX="14.0" layoutY="360.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot17" layoutX="101.0" layoutY="360.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot18" layoutX="186.0" layoutY="360.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot19" layoutX="272.0" layoutY="360.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot20" layoutX="14.0" layoutY="447.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot21" layoutX="101.0" layoutY="447.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot22" layoutX="186.0" layoutY="447.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot23" layoutX="272.0" layoutY="447.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
    </children>
 </AnchorPane>
