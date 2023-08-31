@@ -28,5 +28,16 @@
       <Pane fx:id="itemSlot21" layoutX="101.0" layoutY="447.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
       <Pane fx:id="itemSlot22" layoutX="186.0" layoutY="447.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
       <Pane fx:id="itemSlot23" layoutX="272.0" layoutY="447.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot24" layoutX="463.0" layoutY="54.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot25" layoutX="463.0" layoutY="140.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot26" layoutX="383.0" layoutY="228.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot27" layoutX="463.0" layoutY="315.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot28" layoutX="463.0" layoutY="400.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot29" layoutX="700.0" layoutY="54.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot30" layoutX="700.0" layoutY="140.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot31" layoutX="780.0" layoutY="228.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot32" layoutX="700.0" layoutY="315.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot33" layoutX="700.0" layoutY="400.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot34" layoutX="585.0" layoutY="480.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
    </children>
 </AnchorPane>
