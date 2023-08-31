@@ -1,0 +1,8 @@
+
+.inventoryBackground{
+    -fx-background-color: transparent;
+    -fx-background-color: rgba(108, 175, 170, 0.8);
+}
+.inventoryItemSlot{
+    -fx-background-color: rgba(30,30,30,0.8);
+}

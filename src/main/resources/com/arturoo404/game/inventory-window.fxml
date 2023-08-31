@@ -2,7 +2,7 @@
 
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1400.0" styleClass="inventoryBackground" stylesheets="@style/game-window-style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.arturoo404.game.player.gui.inventory.InventoryController">
+<AnchorPane prefHeight="800.0" prefWidth="1400.0" styleClass="inventoryBackground" stylesheets="@style/inventory-window-style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.arturoo404.game.player.gui.inventory.InventoryController">
    <children>
       <Pane fx:id="itemSlot0" layoutX="14.0" layoutY="14.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
       <Pane fx:id="itemSlot1" layoutX="101.0" layoutY="14.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
