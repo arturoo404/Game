@@ -1,5 +1,6 @@
 package com.arturoo404.game.entity;
 
+import com.arturoo404.game.entity.wolf.Wolf;
 import com.arturoo404.game.player.Player;
 import com.arturoo404.game.player.skills.bullet.BulletAttackObject;
 import javafx.animation.Animation;
@@ -9,6 +10,7 @@ import javafx.util.Duration;
 import lombok.AllArgsConstructor;
 
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.List;
 
 import static com.arturoo404.game.utils.StatsUtils.calcDamageAfterReduction;
@@ -27,9 +29,11 @@ public class EntityDamageDetection {
     private void detectEntityReceivedDamage(){
         Thread thread = new Thread(() -> {
             Timeline entityDetection = new Timeline(new KeyFrame(Duration.millis(50), actionEvent -> {
-                for (Entity entity : livingEntities.getWolves()){
-                    detectHitBySkill(entity);
-                }
+                try {
+                    for (Entity entity : livingEntities.getWolves()){
+                        detectHitBySkill(entity);
+                    }
+                }catch (ConcurrentModificationException ignored){}
             }));
             entityDetection.setCycleCount(Animation.INDEFINITE);
             entityDetection.play();
@@ -45,8 +49,9 @@ public class EntityDamageDetection {
                 if (checkHit(entity, bulletAttackObject)){
                     toDelete.add(bulletAttackObject);
                     entity.setCurrentHealth(entity.getCurrentHealth() - calcDamageAfterReduction(player.getSkillStats().getDamage(), entity.getArmor()));
+                    entity.getEntityBars().getHealthBar().setProgress(entity.getCurrentHealth() / entity.getMaxHealth());
                     if (entity.getCurrentHealth() <= 0){
-                        System.out.println("AA");
+                        deleteEntity(entity);
                     }
                 }
             }
@@ -56,5 +61,12 @@ public class EntityDamageDetection {
 
     private boolean checkHit(Entity entity, BulletAttackObject bullet){
         return entity.getRectangle().getBoundsInParent().intersects(bullet.getSkill().getBoundsInParent());
+    }
+
+    private void deleteEntity(Entity entity){
+        entity.getPane().getChildren().remove(entity.getRectangle());
+        entity.getPane().getChildren().remove(entity.getCircle());
+        entity.getPane().getChildren().remove(entity.getEntityBars().getHealthBar());
+        livingEntities.getWolves().remove((Wolf) entity);
     }
 }

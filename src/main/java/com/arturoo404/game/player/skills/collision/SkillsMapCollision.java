@@ -32,8 +32,9 @@ public class SkillsMapCollision {
 
                 for (BulletAttackObject bullet : bulletAttackObjects){
                     for (Rectangle block : mapBlock) {
-                        if (check(block, bullet))
+                        if (check(block, bullet)){
                             toDelete.add(bullet);
+                        }
                     }
                 }
                 basicAttack.update(toDelete);
