@@ -12,6 +12,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static com.arturoo404.game.generate.difficulty.GameDifficulty.*;
@@ -59,6 +60,7 @@ public class GenerateEntityModel {
         wolf.setEntityMovementAnimation(buildMovementAnimation(wolf, new Image(getClass().getResourceAsStream("/txt/entity/wolf.png"))));
         wolf.getEntityMovementAnimation().init();
         wolf.setPane(pane);
+        wolf.setDropItems(dropItems(entityModel));
         pane.getChildren().add(wolf.getRectangle());
 
         //TODO Naprawic
@@ -81,6 +83,9 @@ public class GenerateEntityModel {
         return wolf;
     }
 
+    private List<EntityDropItem> dropItems(EntityModel entityModel){
+        return Arrays.stream(entityModel.dropItems()).toList();
+    }
     private EntityMovementAnimation buildMovementAnimation(Entity entity, Image image){
         return EntityMovementAnimation.builder()
                 .entity(entity)

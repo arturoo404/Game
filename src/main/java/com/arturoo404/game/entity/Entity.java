@@ -6,6 +6,8 @@ import javafx.scene.shape.Rectangle;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 public class Entity {
@@ -32,6 +34,7 @@ public class Entity {
     private EntityDirection direction;
     private EntityMovementAnimation entityMovementAnimation;
     private EntityAiValue aiValue;
+    private List<EntityDropItem> dropItems;
     private boolean attack = false;
     private boolean attackAnimation = false;
     private EntityBars entityBars;

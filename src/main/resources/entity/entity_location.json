@@ -13,6 +13,11 @@
       "posX" : 1000,
       "posY" : 600
     } ],
+    "dropItems" : [{
+      "itemName" : "BASIC_INGREDIENTS",
+      "dropChance" : 50,
+      "dropQuantity" : 1
+    }],
     "range" : 20,
     "attackSpeed" : 2.0,
     "detectionRange" : 300,

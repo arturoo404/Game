@@ -47,6 +47,7 @@ public class EntityDamageDetection {
             List<BulletAttackObject> toDelete = new ArrayList<>();
             for (BulletAttackObject bulletAttackObject : player.getSkillsController().getBasic().getBasickAttackList()){
                 if (checkHit(entity, bulletAttackObject)){
+                    System.out.println(entity.getDropItems().toString());
                     toDelete.add(bulletAttackObject);
                     entity.setCurrentHealth(entity.getCurrentHealth() - calcDamageAfterReduction(player.getSkillStats().getDamage(), entity.getArmor()));
                     entity.getEntityBars().getHealthBar().setProgress(entity.getCurrentHealth() / entity.getMaxHealth());

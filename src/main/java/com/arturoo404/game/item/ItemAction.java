@@ -1,5 +1,6 @@
 package com.arturoo404.game.item;
 
+import com.arturoo404.game.entity.Entity;
 import com.arturoo404.game.file.FileReader;
 import javafx.scene.image.Image;
 
@@ -22,6 +23,10 @@ public class ItemAction {
 
     public Image getItemImageByName(ItemName itemName){
         return new Image(Objects.requireNonNull(getClass().getResourceAsStream(itemMap.get(itemName).getTxtPath())));
+    }
+
+    public void createItemAtMap(Entity entity, ItemName itemName){
+
     }
 
 }

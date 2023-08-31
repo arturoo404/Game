@@ -1,9 +1,10 @@
 package com.arturoo404.game.file;
 
+import com.arturoo404.game.entity.EntityDropItem;
 import com.arturoo404.game.entity.EntityType;
 
 public record EntityModel(int width, int height, EntityType entityType, int health, double damage,
-                          int speed, EntityPosition[] entityPositions, int range, double attackSpeed,
+                          int speed, EntityPosition[] entityPositions, EntityDropItem [] dropItems, int range, double attackSpeed,
                           int detectionRange, int defence, int detectionTimer) {
 
     @Override
@@ -59,5 +60,10 @@ public record EntityModel(int width, int height, EntityType entityType, int heal
     @Override
     public int defence() {
         return defence;
+    }
+
+    @Override
+    public EntityDropItem[] dropItems() {
+        return dropItems;
     }
 }
