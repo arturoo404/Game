@@ -30,7 +30,7 @@ public class GameWindowController implements Initializable{
     private AnchorPane pane;
     private List<Rectangle> init;
     private static Player player;
-    private Stage guiStage, inventoryStage;
+    private Stage inventoryStage;
 
     /**
      * Initializes the game window.
@@ -69,9 +69,8 @@ public class GameWindowController implements Initializable{
 
 
         try {
-           GeneratePlayerGui generatePlayerGui = new GeneratePlayerGui(this);
+           GeneratePlayerGui generatePlayerGui = new GeneratePlayerGui(this, pane);
            generatePlayerGui.init();
-           guiStage = generatePlayerGui.getStage();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -109,9 +108,5 @@ public class GameWindowController implements Initializable{
 
     public static Player getPlayer() {
         return player;
-    }
-
-    public Stage getGuiStage() {
-        return guiStage;
     }
 }

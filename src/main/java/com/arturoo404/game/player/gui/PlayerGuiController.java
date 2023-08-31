@@ -1,5 +1,7 @@
 package com.arturoo404.game.player.gui;
 
+import com.arturoo404.game.file.FileReader;
+import com.arturoo404.game.file.GameOptions;
 import com.arturoo404.game.player.Player;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -9,7 +11,9 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Tooltip;
+import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
+import lombok.Getter;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -19,7 +23,6 @@ import static com.arturoo404.game.GameWindowController.getPlayer;
 
 public class PlayerGuiController implements Initializable {
 
-
     private Player player;
     @FXML
     private Label damage, attackSpeed, healthRegen, armor, manaRegen, cooldownReduction, hpText, manaText, experiance, money, playerLvl;
@@ -27,11 +30,15 @@ public class PlayerGuiController implements Initializable {
     private ProgressBar hpBar, manaBar;
     @FXML
     private Button iconTooltip;
+    @FXML
+    @Getter
+    private AnchorPane pane;
     Tooltip tooltipI = new Tooltip();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         player = getPlayer();
+        guiSetup();
         showTooltips();
         statHandler();
     }
@@ -59,6 +66,15 @@ public class PlayerGuiController implements Initializable {
         );
         timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.play();
+    }
+
+    private void guiSetup(){
+        FileReader fileReader = new FileReader();
+        fileReader.gameOptionReader();
+        GameOptions gameOptions = fileReader.getGameOptions();
+        pane.setLayoutX(10);
+        pane.setLayoutY(Double.parseDouble(gameOptions.getResolutionV()) - 260);
+        player.setPlayerGuiController(this);
     }
 
     private void showTooltips(){

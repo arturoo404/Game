@@ -67,12 +67,6 @@ public class StartWindowController implements Initializable {
                 stage.setY(0);
                 stage.setScene(scene);
 
-                stage.setOnCloseRequest(request ->{
-                    GameWindowController controller = loader.getController();
-                    final Stage guiStage = controller.getGuiStage();
-                    guiStage.close();
-                });
-
                 root.requestFocus();
                 FadeTransition fadein = new FadeTransition(Duration.seconds(2), scene.getRoot());
                 fadein.setFromValue(0.0);

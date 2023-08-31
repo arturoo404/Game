@@ -30,7 +30,7 @@ public class Movement {
         this.player = player;
         this.blocks = blocks;
         movementAnimation = new MovementAnimation(player.getPlayerShape());
-        cameraMovement = new CameraMovement(player.getPlayerShape());
+        cameraMovement = new CameraMovement(player);
     }
     /**
      * This method is used to initialize the movement of the player.
