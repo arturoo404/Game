@@ -25,11 +25,9 @@ public class PlayerGuiController implements Initializable {
 
     private Player player;
     @FXML
-    private Label damage, attackSpeed, healthRegen, armor, manaRegen, cooldownReduction, hpText, manaText, experiance, money, playerLvl;
+    private Label damage, attackSpeed, healthRegen, armor, manaRegen, cooldownReduction, hpText, manaText, experiance, money, playerLvl, iconTooltip;
     @FXML
     private ProgressBar hpBar, manaBar;
-    @FXML
-    private Button iconTooltip;
     @FXML
     @Getter
     private AnchorPane pane;

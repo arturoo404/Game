@@ -7,7 +7,7 @@
 
 <AnchorPane fx:id="pane" prefHeight="180.0" prefWidth="1904.0" styleClass="AnchorPane" stylesheets="@style/game-window-style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.arturoo404.game.player.gui.PlayerGuiController">
    <children>
-      <Button fx:id="iconTooltip" layoutX="207.0" layoutY="86.0" mnemonicParsing="false" opacity="0.0" prefHeight="90.0" prefWidth="90.0" text="Button" />
+      <Label fx:id="iconTooltip" layoutX="207.0" layoutY="86.0" mnemonicParsing="false" opacity="0.0" prefHeight="90.0" prefWidth="90.0" text="Button" />
       <ProgressBar fx:id="hpBar" layoutX="687.0" layoutY="52.0" prefHeight="25.0" prefWidth="530.0" progress="0.0" styleClass="healthBar" />
       <ProgressBar fx:id="manaBar" layoutX="687.0" layoutY="77.0" prefHeight="25.0" prefWidth="530.0" progress="0.0" styleClass="manaBar" />
       <Label fx:id="hpText" layoutX="691.0" layoutY="52.0" prefHeight="25.0" prefWidth="90.0" styleClass="textOutline" text="0" textAlignment="CENTER" textFill="#e1ff37">
