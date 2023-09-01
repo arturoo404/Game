@@ -60,6 +60,8 @@ public class GenerateEntityModel {
         wolf.setEntityMovementAnimation(buildMovementAnimation(wolf, new Image(getClass().getResourceAsStream("/txt/entity/wolf.png"))));
         wolf.getEntityMovementAnimation().init();
         wolf.setPane(pane);
+        wolf.setDropExp(entityModel.exp());
+        wolf.setDropMoney(entityModel.money());
         wolf.setDropItems(dropItems(entityModel));
         pane.getChildren().add(wolf.getRectangle());
 

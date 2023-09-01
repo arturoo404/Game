@@ -6,6 +6,8 @@
     "health" : 150,
     "damage" : 10.0,
     "speed" : 12,
+    "money" : 100,
+    "exp" : 30,
     "entityPositions" : [ {
       "posX" : 1000,
       "posY" : 1000
