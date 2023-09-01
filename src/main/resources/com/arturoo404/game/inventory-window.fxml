@@ -3,7 +3,7 @@
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="600.0" prefWidth="1000.0" styleClass="inventoryBackground" stylesheets="@style/inventory-window-style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.arturoo404.game.player.gui.inventory.InventoryController">
+<AnchorPane disable="true" prefHeight="520.0" prefWidth="900.0" styleClass="inventoryBackground" stylesheets="@style/inventory-window-style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.arturoo404.game.player.gui.inventory.InventoryController">
    <children>
       <Pane fx:id="itemSlot0" layoutX="14.0" layoutY="31.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
       <Pane fx:id="itemSlot1" layoutX="94.0" layoutY="31.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
@@ -29,18 +29,19 @@
       <Pane fx:id="itemSlot21" layoutX="94.0" layoutY="431.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
       <Pane fx:id="itemSlot22" layoutX="174.0" layoutY="431.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
       <Pane fx:id="itemSlot23" layoutX="254.0" layoutY="431.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
-      <Pane fx:id="itemSlot24" layoutX="463.0" layoutY="54.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
-      <Pane fx:id="itemSlot25" layoutX="463.0" layoutY="140.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
-      <Pane fx:id="itemSlot26" layoutX="383.0" layoutY="220.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
-      <Pane fx:id="itemSlot27" layoutX="463.0" layoutY="315.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
-      <Pane fx:id="itemSlot28" layoutX="463.0" layoutY="400.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
-      <Pane fx:id="itemSlot29" layoutX="700.0" layoutY="54.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
-      <Pane fx:id="itemSlot30" layoutX="700.0" layoutY="140.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
-      <Pane fx:id="itemSlot31" layoutX="780.0" layoutY="220.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
-      <Pane fx:id="itemSlot32" layoutX="700.0" layoutY="315.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
-      <Pane fx:id="itemSlot33" layoutX="700.0" layoutY="400.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
-      <Pane fx:id="itemSlot34" layoutX="585.0" layoutY="480.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
-      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="570.0" layoutY="205.0" pickOnBounds="true" preserveRatio="true">
+      <Pane fx:id="itemSlot24" layoutX="460.0" layoutY="31.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot25" layoutX="423.0" layoutY="111.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot26" layoutX="383.0" layoutY="191.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot27" layoutX="420.0" layoutY="271.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot28" layoutX="460.0" layoutY="351.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot29" layoutX="700.0" layoutY="31.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot30" layoutX="740.0" layoutY="111.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot31" layoutX="780.0" layoutY="191.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot32" layoutX="740.0" layoutY="271.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot33" layoutX="700.0" layoutY="351.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane fx:id="itemSlot34" layoutX="584.0" layoutY="431.0" prefHeight="80.0" prefWidth="80.0" styleClass="inventoryItemSlot" />
+      <Pane layoutX="554.0" layoutY="134.0" prefHeight="197.0" prefWidth="139.0" styleClass="spritePane" />
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="570.0" layoutY="156.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../txt/player/player-mage-standing.png" />
          </image>

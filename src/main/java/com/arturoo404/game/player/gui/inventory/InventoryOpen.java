@@ -20,7 +20,7 @@ public class InventoryOpen {
             Parent root = loader.load();
             inventoryStage = new Stage();
             inventoryStage.initModality(Modality.WINDOW_MODAL);
-            Scene scene = new Scene(root, 1000, 600);
+            Scene scene = new Scene(root, 900, 520);
             inventoryStage.initStyle(StageStyle.UNDECORATED);
             inventoryStage.initStyle(StageStyle.TRANSPARENT);
             scene.setFill(null);

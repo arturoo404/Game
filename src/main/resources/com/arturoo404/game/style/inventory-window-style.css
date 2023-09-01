@@ -2,12 +2,19 @@
 .inventoryBackground{
     -fx-background-color: transparent;
     -fx-background-color: rgba(108, 175, 170, 0.8);
+    -fx-border-color: rgb(4, 111, 135);
+    -fx-border-width: 5;
 }
 .inventoryItemSlot{
     -fx-background-color: rgba(30,30,30,0.8);
     -fx-border-color: rgb(4, 111, 135);
-    -fx-border-width: 4;
+    -fx-border-width: 2;
     -fx-border-radius: 1;
 }
 .spritePane{
+    -fx-background-color: rgba(0, 0, 0, 0.8);
 }
+
+
+
+
