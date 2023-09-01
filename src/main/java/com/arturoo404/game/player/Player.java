@@ -22,8 +22,12 @@ public class Player {
     private KeyAction keyAction;
     private SkillsController skillsController;
     private PlayerGuiController playerGuiController;
+    private PlayerExperiences playerExperiences;
+    private PlayerMoney playerMoney;
 
     public Player(Rectangle playerShape, Rectangle entityHitBox, AnchorPane anchorPane, KeyAction keyAction) {
+        playerExperiences = new PlayerExperiences();
+        playerMoney = new PlayerMoney();
         this.playerShape = playerShape;
         this.entityHitBox = entityHitBox;
         this.anchorPane = anchorPane;

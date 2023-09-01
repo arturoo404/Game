@@ -24,6 +24,8 @@ public class Entity {
     private int range;
     private double attackSpeed;
     private int detectionRange;
+    private int dropMoney;
+    private int dropExp;
     private DetectionStatus detectionStatus;
     private int detectionTimerDefaultValue;
     private int detectionTimer;

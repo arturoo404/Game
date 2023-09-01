@@ -53,12 +53,12 @@ public class PlayerGuiController implements Initializable {
                     manaRegen.setText(String.valueOf(player.getSkillStats().getManaRegen()));
                     cooldownReduction.setText(String.valueOf(player.getSkillStats().getCooldownReduction()));
                     hpBar.setProgress(player.getSkillStats().getCurrentHealth() / player.getSkillStats().getMaxHealth());
-                    hpText.setText(player.getSkillStats().getCurrentHealth()+"/"+player.getSkillStats().getMaxHealth());
-                    manaText.setText(player.getSkillStats().getCurrentMana()+"/"+player.getSkillStats().getMaxMana());
+                    hpText.setText(player.getSkillStats().getCurrentHealth() + "/" + player.getSkillStats().getMaxHealth());
+                    manaText.setText(player.getSkillStats().getCurrentMana() + "/" + player.getSkillStats().getMaxMana());
                     manaBar.setProgress(player.getSkillStats().getCurrentMana() / player.getSkillStats().getMaxMana());
-                    experiance.setText(player.getSkillStats().getCurrentExp()+"/"+player.getSkillStats().getNextLvlExp()+" Exp");
+                    experiance.setText(player.getPlayerExperiences().getCurrentExp() + "/" +player.getPlayerExperiences().getNextLvlExp() + " Exp");
                     playerLvl.setText(player.getSkillStats().getPlayerLvl()+" Level");
-                    money.setText("Money: "+player.getSkillStats().getMoney());
+                    money.setText("Money: "+player.getPlayerMoney().getMoney());
                     tooltipI.setText(iconTooltipFormat());
                 })
         );

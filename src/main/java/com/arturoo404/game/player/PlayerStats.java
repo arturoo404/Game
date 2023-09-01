@@ -19,9 +19,6 @@ public class PlayerStats {
     private int armor = 50;
     private int cooldownReduction = 0;
     private int damage = 100;
-    private int money = 10;
-    private int currentExp = 0;
-    private int nextLvlExp = 20;
     private int playerLvl = 1;
     private int currentLvl = 1;
 
