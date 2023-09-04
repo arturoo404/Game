@@ -20,37 +20,53 @@ public class CameraMovement {
      * @param keyCode
      */
 
-    public void moveCamera(KeyCode keyCode){
+    public void moveCamera(KeyCode keyCode) {
         double playerX = player.getPlayerShape().getX();
         double playerY = player.getPlayerShape().getY();
 
-        switch (keyCode){
+        switch (keyCode) {
             case D -> {
-                if (playerX > 920 && playerX < 2920){
+                if (playerX > 920 && playerX < 2920) {
                     pane.setLayoutX(pane.getLayoutX() - 2);
                     player.getPlayerGuiController().getPane().setLayoutX(
                             player.getPlayerGuiController().getPane().getLayoutX() + 2);
+                    if (player.getKeyAction().getKeyPress().get()) {
+                        player.getKeyAction().getInventoryOpen().getRoot().setLayoutX(
+                                player.getKeyAction().getInventoryOpen().getRoot().getLayoutX() + 2);
+                    }
                 }
             }
             case A -> {
-                if (playerX > 920 && playerX < 2920){
+                if (playerX > 920 && playerX < 2920) {
                     pane.setLayoutX(pane.getLayoutX() + 2);
                     player.getPlayerGuiController().getPane().setLayoutX(
                             player.getPlayerGuiController().getPane().getLayoutX() - 2);
+                    if (player.getKeyAction().getKeyPress().get()) {
+                        player.getKeyAction().getInventoryOpen().getRoot().setLayoutX(
+                                player.getKeyAction().getInventoryOpen().getRoot().getLayoutX() - 2);
+                    }
                 }
             }
             case S -> {
-                if (playerY > 480 && playerY < 1560){
+                if (playerY > 480 && playerY < 1560) {
                     pane.setLayoutY(pane.getLayoutY() - 2);
                     player.getPlayerGuiController().getPane().setLayoutY(
                             player.getPlayerGuiController().getPane().getLayoutY() + 2);
+                    if (player.getKeyAction().getKeyPress().get()) {
+                        player.getKeyAction().getInventoryOpen().getRoot().setLayoutY(
+                                player.getKeyAction().getInventoryOpen().getRoot().getLayoutY() + 2);
+                    }
                 }
             }
             case W -> {
-                if (playerY > 480 && playerY < 1560){
+                if (playerY > 480 && playerY < 1560) {
                     pane.setLayoutY(pane.getLayoutY() + 2);
                     player.getPlayerGuiController().getPane().setLayoutY(
                             player.getPlayerGuiController().getPane().getLayoutY() - 2);
+                    if (player.getKeyAction().getKeyPress().get()) {
+                        player.getKeyAction().getInventoryOpen().getRoot().setLayoutY(
+                                player.getKeyAction().getInventoryOpen().getRoot().getLayoutY() - 2);
+                    }
                 }
             }
         }

@@ -5,7 +5,6 @@ import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.Initializable;
-import javafx.scene.layout.AnchorPane;
 import lombok.Getter;
 
 import java.io.IOException;
