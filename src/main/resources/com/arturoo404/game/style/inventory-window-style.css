@@ -8,13 +8,16 @@
 .inventoryItemSlot{
     -fx-background-color: rgba(30,30,30,0.8);
     -fx-border-color: rgb(4, 111, 135);
-    -fx-border-width: 2;
+    -fx-border-width: 1;
     -fx-border-radius: 1;
+    -fx-fill: rgba(30,30,30,0.8);
 }
 .spritePane{
     -fx-background-color: rgba(0, 0, 0, 0.8);
 }
-
+.inventoryEquipmentSlot{
+    -fx-background-color: rgba(30,30,30,0.8);
+}
 
 
 

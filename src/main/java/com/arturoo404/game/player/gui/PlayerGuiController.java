@@ -79,7 +79,7 @@ public class PlayerGuiController implements Initializable {
         tooltipI.setShowDelay(Duration.ZERO);
         tooltipI.setHideDelay(Duration.ZERO);
         iconTooltip.setTooltip(tooltipI);
-        iconTooltip.getStyleClass().add("tooltip");
+        iconTooltip.getStyleClass().add("tooltipIcon");
     }
 
     private String iconTooltipFormat() {
