@@ -5,6 +5,7 @@ import javafx.beans.binding.BooleanBinding;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.fxml.Initializable;
+import javafx.scene.layout.AnchorPane;
 import lombok.Getter;
 
 import java.io.IOException;
@@ -15,24 +16,16 @@ public class KeyAction {
     private InventoryOpen inventoryOpen;
     private final Initializable initializable;
 
-    private final BooleanProperty openInventory = new SimpleBooleanProperty(true);
+    private final BooleanProperty openInventory = new SimpleBooleanProperty(false);
     private final BooleanBinding keyPress = openInventory.or(openInventory);
 
-    public void init(){
-        inventoryOpen = new InventoryOpen(initializable);
+    public void init(Player player){
+        inventoryOpen = new InventoryOpen(initializable, player);
         keyPress.addListener(((observableValue, aBoolean, t1) -> {
-            if (aBoolean){
-                try {
-                    inventoryOpen.openInventory();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
-            }else {
-                try {
-                    inventoryOpen.closeInventory();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+            try {
+                inventoryOpen.inventoryAction(aBoolean);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
             }
         }));
     }

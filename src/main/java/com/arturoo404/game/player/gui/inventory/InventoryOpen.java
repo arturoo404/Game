@@ -1,39 +1,30 @@
 package com.arturoo404.game.player.gui.inventory;
 
+import com.arturoo404.game.player.Player;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
 public class InventoryOpen {
-    private Stage inventoryStage;
     private Initializable initializable;
+    private Player player;
+    private  Parent root;
 
-
-    public void openInventory() throws IOException {
+    public void inventoryAction(boolean isOpen) throws IOException {
+        if (!isOpen){
             FXMLLoader loader = new FXMLLoader(initializable.getClass().getResource("inventory-window.fxml"));
-            Parent root = loader.load();
-            inventoryStage = new Stage();
-            inventoryStage.initModality(Modality.WINDOW_MODAL);
-            Scene scene = new Scene(root, 900, 520);
-            inventoryStage.initStyle(StageStyle.UNDECORATED);
-            inventoryStage.initStyle(StageStyle.TRANSPARENT);
-            scene.setFill(null);
-            inventoryStage.setScene(scene);
-            inventoryStage.show();
+            root = loader.load();
+            player.getAnchorPane().getChildren().addAll(root);
+        }else {
+            player.getAnchorPane().getChildren().remove(root);
+        }
     }
 
-        public void closeInventory() throws IOException {
-            inventoryStage.close();
-        }
-
-    public InventoryOpen(Initializable initializable) {
+    public InventoryOpen(Initializable initializable, Player player) {
         this.initializable = initializable;
+        this.player = player;
     }
 
 }
