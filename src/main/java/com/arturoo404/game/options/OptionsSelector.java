@@ -1,7 +1,7 @@
 package com.arturoo404.game.options;
 
 import com.arturoo404.game.file.EntityMainModel;
-import com.arturoo404.game.file.FileReader;
+import com.arturoo404.game.file.CustomFileReader;
 import com.arturoo404.game.file.GameOptions;
 import com.arturoo404.game.generate.difficulty.Difficulty;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -27,7 +27,7 @@ public class OptionsSelector {
         this.closeButton = closeButton;
         this.resolutionSelector = resolutionSelector;
         this.difficultySelector = difficultySelector;
-        entityMainModel = FileReader.entityModelFilesRead();
+        entityMainModel = CustomFileReader.entityModelFilesRead();
         gameOptions = new GameOptions();
     }
 
@@ -46,7 +46,7 @@ public class OptionsSelector {
 
     private void resolutionSelect(){
         resolutionSelector.getItems().addAll("1280x720", "1920x1080", "2560x1440");
-        FileReader fileReader = new FileReader();
+        CustomFileReader fileReader = new CustomFileReader();
         fileReader.gameOptionReader();
         resolutionSelector.setValue(fileReader.getGameOptions().getResolutionH() + "x" + fileReader.getGameOptions().getResolutionV());
     }

@@ -1,5 +1,6 @@
 package com.arturoo404.game.player;
 
+import com.arturoo404.game.item.ItemAction;
 import com.arturoo404.game.player.gui.PlayerGuiController;
 import com.arturoo404.game.player.movement.Movement;
 import com.arturoo404.game.player.skills.SkillsController;
@@ -24,8 +25,9 @@ public class Player {
     private PlayerGuiController playerGuiController;
     private PlayerExperiences playerExperiences;
     private PlayerMoney playerMoney;
+    private ItemAction itemAction;
 
-    public Player(Rectangle playerShape, Rectangle entityHitBox, AnchorPane anchorPane, KeyAction keyAction) {
+    public Player(Rectangle playerShape, Rectangle entityHitBox, AnchorPane anchorPane, KeyAction keyAction, ItemAction itemAction) {
         playerExperiences = new PlayerExperiences();
         playerMoney = new PlayerMoney();
         keyAction.init(this);
@@ -33,6 +35,7 @@ public class Player {
         this.entityHitBox = entityHitBox;
         this.anchorPane = anchorPane;
         this.keyAction = keyAction;
+        this.itemAction = itemAction;
     }
 
     public void setSkillsController(SkillsController skillsController) {

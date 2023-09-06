@@ -18,6 +18,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
+import lombok.Getter;
 
 import java.io.IOException;
 import java.net.URL;
@@ -30,8 +31,6 @@ public class GameWindowController implements Initializable{
     private AnchorPane pane;
     private List<Rectangle> init;
     private static Player player;
-    private Stage inventoryStage;
-
     /**
      * Initializes the game window.
      * @param url
@@ -41,7 +40,7 @@ public class GameWindowController implements Initializable{
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         initMap();
-        initItems();
+        final ItemAction itemAction = initItems();
         Rectangle playerShape = new Rectangle(300,300,80, 120);
         Rectangle playerHitBox = new Rectangle(320,350,40, 60);
 
@@ -54,8 +53,8 @@ public class GameWindowController implements Initializable{
 
         pane.getChildren().add(playerShape);
         pane.getChildren().add(playerHitBox);
-        player = new Player(playerShape, playerHitBox, this.pane, keyAction);
-        initEntity();
+        player = new Player(playerShape, playerHitBox, this.pane, keyAction, itemAction);
+        initEntity(itemAction);
         player.setSkillStats(new PlayerStats());
         Movement movement = new Movement(player, init);
         movement.init();
@@ -87,8 +86,8 @@ public class GameWindowController implements Initializable{
         }
     }
 
-    private void initEntity(){
-        EntityGenerator entityGenerator = new EntityGenerator(pane, player);
+    private void initEntity(ItemAction itemAction){
+        EntityGenerator entityGenerator = new EntityGenerator(pane, player, itemAction);
         try {
             entityGenerator.init();
         } catch (IOException e) {
@@ -96,13 +95,11 @@ public class GameWindowController implements Initializable{
         }
     }
 
-    private void initItems(){
-        ItemAction action = new ItemAction();
-        try {
-            action.init();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+    private ItemAction initItems(){
+        ItemAction itemAction = new ItemAction();
+        itemAction.init();
+
+        return itemAction;
     }
 
     public static Player getPlayer() {

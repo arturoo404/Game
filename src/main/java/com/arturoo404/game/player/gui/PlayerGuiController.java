@@ -1,13 +1,12 @@
 package com.arturoo404.game.player.gui;
 
-import com.arturoo404.game.file.FileReader;
+import com.arturoo404.game.file.CustomFileReader;
 import com.arturoo404.game.file.GameOptions;
 import com.arturoo404.game.player.Player;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.control.Tooltip;
@@ -67,7 +66,7 @@ public class PlayerGuiController implements Initializable {
     }
 
     private void guiSetup(){
-        FileReader fileReader = new FileReader();
+        CustomFileReader fileReader = new CustomFileReader();
         fileReader.gameOptionReader();
         GameOptions gameOptions = fileReader.getGameOptions();
         pane.setLayoutX(10);

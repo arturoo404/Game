@@ -1,10 +1,13 @@
 package com.arturoo404.game.item;
 
-import lombok.Getter;
-import lombok.Setter;
+import javafx.scene.shape.Rectangle;
+import lombok.*;
 
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
 public class Item {
 
     private String name = "N/A";
@@ -23,4 +26,5 @@ public class Item {
     private ItemSet itemSet = ItemSet.NONE;
     private String txtPath = "txt.txt";
     private ItemType itemType = ItemType.INGREDIENTS;
+  //  private Rectangle itemAtMap = new Rectangle();
 }

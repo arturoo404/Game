@@ -64,9 +64,14 @@ public class EntityDamageDetection {
     }
 
     private void deleteEntity(Entity entity){
+        dropItem(entity);
         entity.getPane().getChildren().remove(entity.getRectangle());
         entity.getPane().getChildren().remove(entity.getCircle());
         entity.getPane().getChildren().remove(entity.getEntityBars().getHealthBar());
         livingEntities.getWolves().remove((Wolf) entity);
+    }
+
+    private void dropItem(Entity entity){
+        livingEntities.getItemAction().createItemAtMap(entity);
     }
 }

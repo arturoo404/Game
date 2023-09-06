@@ -5,6 +5,8 @@ module com.arturoo404.game {
     requires com.fasterxml.jackson.databind;
     requires lombok;
     requires javafx.web;
+    requires java.sql;
+    requires gson;
 
     opens com.arturoo404.game to javafx.fxml;
     exports com.arturoo404.game;

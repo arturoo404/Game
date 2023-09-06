@@ -1,6 +1,6 @@
 package com.arturoo404.game;
 
-import com.arturoo404.game.file.FileReader;
+import com.arturoo404.game.file.CustomFileReader;
 import com.arturoo404.game.file.GameOptions;
 import com.arturoo404.game.options.OptionWindowController;
 import javafx.animation.FadeTransition;
@@ -49,7 +49,7 @@ public class StartWindowController implements Initializable {
         FadeTransition fadeOut = new FadeTransition(Duration.millis(1500), ((Node) actionEvent.getSource()).getScene().getRoot());
         fadeOut.setFromValue(1.0);
         fadeOut.setToValue(0.0);
-        FileReader fileReader = new FileReader();
+        CustomFileReader fileReader = new CustomFileReader();
         fileReader.gameOptionReader();
         GameOptions gameOptions = fileReader.getGameOptions();
 

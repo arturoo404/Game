@@ -4,7 +4,8 @@ import com.arturoo404.game.entity.EntityType;
 import com.arturoo404.game.entity.LivingEntities;
 import com.arturoo404.game.file.EntityMainModel;
 import com.arturoo404.game.file.EntityModel;
-import com.arturoo404.game.file.FileReader;
+import com.arturoo404.game.file.CustomFileReader;
+import com.arturoo404.game.item.ItemAction;
 import com.arturoo404.game.player.Player;
 import javafx.scene.layout.AnchorPane;
 import lombok.Getter;
@@ -17,19 +18,18 @@ public class EntityGenerator {
     private final AnchorPane pane;
     private final LivingEntities livingEntities;
     private final Player player;
+    private final EntityController entityController;
 
-    private EntityController entityController;
-
-    public EntityGenerator(AnchorPane pane, Player player) {
+    public EntityGenerator(AnchorPane pane, Player player, ItemAction itemAction) {
         this.pane = pane;
         this.player = player;
-        livingEntities = new LivingEntities();
+        livingEntities = new LivingEntities(itemAction);
         entityController = new EntityController(livingEntities, player);
     }
 
 
     public void init() throws IOException {
-        final EntityMainModel entityModelFile = FileReader.entityModelFilesRead();
+        final EntityMainModel entityModelFile = CustomFileReader.entityModelFilesRead();
         createList(entityModelFile);
     }
 
