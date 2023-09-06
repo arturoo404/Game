@@ -8,5 +8,5 @@ import lombok.Setter;
 public class PlayerExperiences {
 
     private int currentExp = 0;
-    private int nextLvlExp = 20;
+    private int nextLvlExp = 10;
 }

@@ -7,7 +7,7 @@
     "damage" : 10.0,
     "speed" : 12,
     "money" : 100,
-    "exp" : 30,
+    "exp" : 20,
     "entityPositions" : [ {
       "posX" : 1000,
       "posY" : 1000

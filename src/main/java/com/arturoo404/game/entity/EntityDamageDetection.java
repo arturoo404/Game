@@ -1,6 +1,7 @@
 package com.arturoo404.game.entity;
 
 import com.arturoo404.game.entity.wolf.Wolf;
+import com.arturoo404.game.player.Level;
 import com.arturoo404.game.player.Player;
 import com.arturoo404.game.player.skills.bullet.BulletAttackObject;
 import javafx.animation.Animation;
@@ -19,7 +20,6 @@ import static com.arturoo404.game.utils.StatsUtils.calcDamageAfterReduction;
 public class EntityDamageDetection {
 
     private LivingEntities livingEntities;
-
     private Player player;
 
     public void init(){
@@ -53,6 +53,7 @@ public class EntityDamageDetection {
                     if (entity.getCurrentHealth() <= 0){
                         deleteEntity(entity);
                         player.getPlayerExperiences().setCurrentExp(entity.getDropExp());
+                        levelUp();
                     }
                 }
             }
@@ -70,4 +71,14 @@ public class EntityDamageDetection {
         entity.getPane().getChildren().remove(entity.getEntityBars().getHealthBar());
         livingEntities.getWolves().remove((Wolf) entity);
     }
+
+    private void levelUp() {
+            if (player.getPlayerExperiences().getCurrentExp() >= player.getPlayerExperiences().getNextLvlExp()) {
+                player.getPlayerExperiences().setCurrentExp(player.getPlayerExperiences().getCurrentExp() - player.getPlayerExperiences().getNextLvlExp());
+                player.getSkillStats().setPlayerLvl(player.getSkillStats().getPlayerLvl() + 1);
+                levelUp();
+            }
+        }
+
+
 }
