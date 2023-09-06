@@ -52,6 +52,7 @@ public class EntityDamageDetection {
                     entity.getEntityBars().getHealthBar().setProgress(entity.getCurrentHealth() / entity.getMaxHealth());
                     if (entity.getCurrentHealth() <= 0){
                         deleteEntity(entity);
+                        player.getPlayerExperiences().setCurrentExp(entity.getDropExp());
                     }
                 }
             }
