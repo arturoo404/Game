@@ -52,6 +52,8 @@ public class EntityDamageDetection {
                     entity.getEntityBars().getHealthBar().setProgress(entity.getCurrentHealth() / entity.getMaxHealth());
                     if (entity.getCurrentHealth() <= 0){
                         deleteEntity(entity);
+                        player.getPlayerExperiences().setCurrentExp(entity.getDropExp());
+                        levelUp();
                     }
                 }
             }
@@ -64,14 +66,19 @@ public class EntityDamageDetection {
     }
 
     private void deleteEntity(Entity entity){
-        dropItem(entity);
         entity.getPane().getChildren().remove(entity.getRectangle());
         entity.getPane().getChildren().remove(entity.getCircle());
         entity.getPane().getChildren().remove(entity.getEntityBars().getHealthBar());
         livingEntities.getWolves().remove((Wolf) entity);
     }
 
-    private void dropItem(Entity entity){
-        livingEntities.getItemAction().createItemAtMap(entity);
-    }
+    private void levelUp() {
+            if (player.getPlayerExperiences().getCurrentExp() >= player.getPlayerExperiences().getNextLvlExp()) {
+                player.getPlayerExperiences().setCurrentExp(player.getPlayerExperiences().getCurrentExp() - player.getPlayerExperiences().getNextLvlExp());
+                player.getSkillStats().setPlayerLvl(player.getSkillStats().getPlayerLvl() + 1);
+                levelUp();
+            }
+        }
+
+
 }

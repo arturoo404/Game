@@ -1,5 +1,6 @@
 package com.arturoo404.game.entity;
 
+import com.arturoo404.game.player.Level;
 import com.arturoo404.game.player.Player;
 import lombok.AllArgsConstructor;
 
