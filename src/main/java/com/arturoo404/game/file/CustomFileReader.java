@@ -1,6 +1,6 @@
 package com.arturoo404.game.file;
 
-import com.arturoo404.game.item.Item;
+import com.arturoo404.game.item.ItemBasic;
 import com.arturoo404.game.item.ItemName;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -31,15 +31,15 @@ public class CustomFileReader {
         return objectMapper.readValue(file, EntityMainModel.class);
     }
 
-    public static Map<ItemName, Item> readItems(String... urls) throws IOException {
-        Map<ItemName, Item> map = new HashMap<>();
+    public static Map<ItemName, ItemBasic> readItems(String... urls) throws IOException {
+        Map<ItemName, ItemBasic> map = new HashMap<>();
         for (String url : urls){
             ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, true);
             File file = new File("src/main/resources/item/" + url + "/"+ url + ".json");
             Map<String, Object> tempMap = objectMapper.readValue(file, new TypeReference<>() {});
             for (Map.Entry<String, Object> entry : tempMap.entrySet()) {
                 ItemName key = ItemName.valueOf(entry.getKey());
-                Item value = objectMapper.convertValue(entry.getValue(), Item.class);
+                ItemBasic value = objectMapper.convertValue(entry.getValue(), ItemBasic.class);
                 map.put(key, value);
             }
         }

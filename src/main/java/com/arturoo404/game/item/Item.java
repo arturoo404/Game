@@ -1,30 +1,24 @@
 package com.arturoo404.game.item;
 
 import javafx.scene.shape.Rectangle;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
 
 @Getter
 @Setter
+@ToString
 @AllArgsConstructor
-@NoArgsConstructor
-@Builder
-public class Item {
+public class Item extends ItemBasic{
+    private Rectangle itemAtMap;
 
-    private String name = "N/A";
-    private String description = "N/A";
-    private double attackSpeed = 0;
-    private int armor = 0;
-    private int cooldownReduction = 0;
-    private int damage = 0;
-    private int health = 0;
-    private int mana = 0;
-    private int manaRegen = 0;
-    private int hpRegen = 0;
-    private int lvlRequirement = 0;
-    private int marketPrice = 0;
-    private ItemTier tier = ItemTier.COMMON;
-    private ItemSet itemSet = ItemSet.NONE;
-    private String txtPath = "txt.txt";
-    private ItemType itemType = ItemType.INGREDIENTS;
-  //  private Rectangle itemAtMap = new Rectangle();
+    public Item(ItemBasic itemBasic, Rectangle itemAtMap) {
+        super(itemBasic.getName(), itemBasic.getDescription(), itemBasic.getAttackSpeed(),
+                itemBasic.getArmor(), itemBasic.getCooldownReduction(), itemBasic.getDamage(),
+                itemBasic.getHealth(), itemBasic.getMana(), itemBasic.getManaRegen(),
+                itemBasic.getHpRegen(), itemBasic.getLvlRequirement(), itemBasic.getMarketPrice(),
+                itemBasic.getTier(), itemBasic.getItemSet(), itemBasic.getTxtPath(), itemBasic.getItemType());
+        this.itemAtMap = itemAtMap;
+    }
 }

@@ -4,12 +4,14 @@ import com.arturoo404.game.entity.Entity;
 import com.arturoo404.game.file.CustomFileReader;
 import com.google.gson.internal.LinkedTreeMap;
 import javafx.scene.image.Image;
+import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 
 import java.util.*;
 
 public class ItemAction {
 
-    private Map<ItemName, Item> itemsMap = new LinkedTreeMap<>();
+    private Map<ItemName, ItemBasic> itemsMap = new LinkedTreeMap<>();
     private List<Item> itemsAtMap = new ArrayList<>();
 
     public void init() {
@@ -22,7 +24,7 @@ public class ItemAction {
 
     }
 
-    public Item getItemByName(ItemName itemName){
+    public ItemBasic getItemByName(ItemName itemName){
         return itemsMap.get(itemName);
     }
 
@@ -31,10 +33,15 @@ public class ItemAction {
     }
 
     public void createItemAtMap(Entity entity){
-        entity.getDropItems().stream()
-                .forEach(dropItem -> {
-                    Item item = getItemByName(dropItem.getItemName());
-                });
+        entity.getDropItems()
+                .forEach(dropItem -> itemsAtMap
+                        .add(new Item(getItemByName(dropItem.getItemName()), generateItemAtMapRect(entity))));
     }
 
+    private Rectangle generateItemAtMapRect(Entity entity){
+        Rectangle item = new Rectangle(entity.getRectangle().getX(), entity.getRectangle().getY(), 60, 60);
+        item.setFill(Color.AQUA);
+        entity.getPane().getChildren().add(item);
+        return item;
+    }
 }
