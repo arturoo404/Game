@@ -51,9 +51,8 @@ public class EntityDamageDetection {
                     entity.setCurrentHealth(entity.getCurrentHealth() - calcDamageAfterReduction(player.getSkillStats().getDamage(), entity.getArmor()));
                     entity.getEntityBars().getHealthBar().setProgress(entity.getCurrentHealth() / entity.getMaxHealth());
                     if (entity.getCurrentHealth() <= 0){
+                        entityDrop(entity);
                         deleteEntity(entity);
-                        player.getPlayerExperiences().setCurrentExp(entity.getDropExp());
-                        levelUp();
                     }
                 }
             }
@@ -72,13 +71,8 @@ public class EntityDamageDetection {
         livingEntities.getWolves().remove((Wolf) entity);
     }
 
-    private void levelUp() {
-            if (player.getPlayerExperiences().getCurrentExp() >= player.getPlayerExperiences().getNextLvlExp()) {
-                player.getPlayerExperiences().setCurrentExp(player.getPlayerExperiences().getCurrentExp() - player.getPlayerExperiences().getNextLvlExp());
-                player.getSkillStats().setPlayerLvl(player.getSkillStats().getPlayerLvl() + 1);
-                levelUp();
-            }
-        }
-
-
+    private void entityDrop(Entity entity){
+        player.getLevel().levelUp(entity.getDropExp());
+        player.getItemAction().createItemAtMap(entity);
+    }
 }
