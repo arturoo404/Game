@@ -19,8 +19,6 @@ public class Level {
             player.getSkillStats().setSkillPoint(player.getSkillStats().getSkillPoint() + 2);
             player.getPlayerExperiences().setNextLvlExp((int) (player.getPlayerExperiences().getNextLvlExp() * 1.5));
             levelScript();
-            System.out.println(player.getSkillStats().getAbilityPoint());
-            System.out.println(player.getSkillStats().getSkillPoint());
         }
     }
 }

@@ -27,8 +27,10 @@ public class Player {
     private PlayerMoney playerMoney;
     private ItemAction itemAction;
     private Level level;
+    private PlayerMastery playerMastery;
 
     public Player(Rectangle playerShape, Rectangle entityHitBox, AnchorPane anchorPane, KeyAction keyAction, ItemAction itemAction) {
+        playerMastery = new PlayerMastery();
         playerExperiences = new PlayerExperiences();
         playerMoney = new PlayerMoney();
         level = new Level(this);
