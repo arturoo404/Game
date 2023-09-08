@@ -25,4 +25,6 @@ module com.arturoo404.game {
     opens com.arturoo404.game.player.gui.inventory to javafx.fxml;
     exports com.arturoo404.game.player.gui.bar;
     opens com.arturoo404.game.player.gui.bar to javafx.fxml;
+    exports com.arturoo404.game.player.gui.mastery;
+    opens com.arturoo404.game.player.gui.mastery to javafx.fxml;
 }

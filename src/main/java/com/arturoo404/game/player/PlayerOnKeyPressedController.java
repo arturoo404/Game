@@ -39,5 +39,9 @@ public class PlayerOnKeyPressedController implements EventHandler<KeyEvent> {
         switch (keyEvent.getCode()){
             case I -> keyAction.setOpenInventory(!keyAction.getKeyPress().get());
         }
+
+        switch (keyEvent.getCode()){
+            case O -> keyAction.setOpenMastery(!keyAction.getKeyPress().get());
+        }
     }
 }
