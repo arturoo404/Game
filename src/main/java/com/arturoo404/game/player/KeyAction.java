@@ -20,7 +20,7 @@ public class KeyAction {
     private final BooleanProperty openMastery = new SimpleBooleanProperty(false);
     private final BooleanProperty openInventory = new SimpleBooleanProperty(false);
     private final BooleanBinding keyPress = openInventory.or(openInventory);
-    private final BooleanBinding mKeyPress = openMastery.or(openMastery);
+    private final BooleanBinding masteryKeyPress = openMastery.or(openMastery);
 
     public void init(Player player){
         masteryOpen = new MasteryOpen(initializable, player);
@@ -32,7 +32,7 @@ public class KeyAction {
                 throw new RuntimeException(e);
             }
         }));
-        mKeyPress.addListener((((observableValue, aBoolean, t1) -> {
+        masteryKeyPress.addListener((((observableValue, aBoolean, t1) -> {
             try {
                 masteryOpen.masteryAction(aBoolean);
             } catch (IOException e) {
