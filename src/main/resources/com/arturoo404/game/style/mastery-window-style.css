@@ -1,0 +1,13 @@
+#startButton{
+    background-color: aqua;
+}
+.background{
+    -fx-background-color: transparent;
+    -fx-background-color: rgba(108, 175, 170, 0.9);
+    -fx-border-color: rgb(4, 111, 135);
+    -fx-border-width: 3;
+}
+.upperPane{
+    -fx-background-color: transparent;
+    -fx-background-color: rgba(108, 135, 130, 0.9);
+}

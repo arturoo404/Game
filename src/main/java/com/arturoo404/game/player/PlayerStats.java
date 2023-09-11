@@ -21,7 +21,7 @@ public class PlayerStats {
     private int damage = 200;
     private int playerLvl = 1;
     private int currentLvl = 1;
-    private int skillPoint = 0;
+    private int skillPoint = 50;
     private int abilityPoint = 0;
 
     public Integer basicAttackDamage(){

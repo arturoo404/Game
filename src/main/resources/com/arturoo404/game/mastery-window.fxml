@@ -2,14 +2,77 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.arturoo404.game.player.gui.mastery.MasteryController">
+<AnchorPane prefHeight="520.0" prefWidth="900.0" stylesheets="@style/mastery-window-style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.arturoo404.game.player.gui.mastery.MasteryController">
    <children>
-      <ButtonBar layoutX="107.0" layoutY="160.0" prefHeight="40.0" prefWidth="200.0">
-        <buttons>
-          <Button mnemonicParsing="false" text="Button" />
-        </buttons>
-      </ButtonBar>
-      <Pane layoutX="-5.0" layoutY="-3.0" prefHeight="410.0" prefWidth="608.0" style="-fx-background-color: red;" />
+      <Pane layoutX="-5.0" layoutY="-3.0" prefHeight="520.0" prefWidth="900.0" styleClass="background">
+         <children>
+            <Pane layoutX="3.0" layoutY="3.0" prefHeight="130.0" prefWidth="894.0" styleClass="upperPane">
+               <children>
+                  <Label fx:id="masteryPoints" layoutX="744.0" prefHeight="130.0" prefWidth="146.0" text="1" textAlignment="CENTER" textFill="#464883">
+                     <font>
+                        <Font name="Ebrima Bold" size="83.0" />
+                     </font>
+                  </Label>
+               </children></Pane>
+            <Label fx:id="vigorLvl" layoutX="50.0" layoutY="163.0" prefHeight="50.0" prefWidth="33.0" text="0">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Label>
+            <Label fx:id="intelligenceLvl" layoutX="50.0" layoutY="213.0" prefHeight="50.0" prefWidth="33.0" text="99">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Label>
+            <Label layoutX="95.0" layoutY="163.0" prefHeight="50.0" prefWidth="106.0" text="Vigor">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="vigorValue" layoutX="226.0" layoutY="174.0" prefHeight="26.0" prefWidth="50.0" text="(+12)">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="currentHealth" layoutX="282.0" layoutY="174.0" prefHeight="26.0" prefWidth="79.0" text="1000 HP">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lvlUpHealth" layoutX="380.0" layoutY="174.0" prefHeight="3.0" prefWidth="79.0" text="1000 HP">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="vigorUp" layoutX="201.0" layoutY="176.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="+" />
+            <Label layoutX="361.0" layoutY="176.0" prefHeight="25.0" prefWidth="25.0" text="&gt;">
+               <font>
+                  <Font name="Fira Code Medium" size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="95.0" layoutY="213.0" prefHeight="50.0" prefWidth="106.0" text="Intelligence">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Button fx:id="intelligenceUp" layoutX="201.0" layoutY="226.0" mnemonicParsing="false" text="+" />
+            <Label fx:id="intelligenceValue" layoutX="226.0" layoutY="224.0" prefHeight="30.0" prefWidth="50.0" text="0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="currentAp" layoutX="282.0" layoutY="224.0" prefHeight="30.0" prefWidth="79.0" text="Label">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lvlUpAp" layoutX="386.0" layoutY="224.0" prefHeight="30.0" prefWidth="79.0" text="Label">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+         </children></Pane>
    </children>
 </AnchorPane>
