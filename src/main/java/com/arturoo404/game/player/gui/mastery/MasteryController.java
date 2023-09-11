@@ -24,34 +24,13 @@ public class MasteryController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         player = getPlayer();
-        labelDisplay();
+        labelUpdate();
         initButtons();
     }
 
     private void initButtons(){
         vigorUp.setOnAction(this::vigorUp);
         intelligenceUp.setOnAction(this::intelligenceUp);
-    }
-
-    private void labelDisplay(){
-        Timeline timeline = new Timeline(
-                new KeyFrame(Duration.seconds(0.1), event -> {
-                    vigorLvl.setText(String.valueOf(player.getPlayerMastery().getVigor()));
-                    intelligenceLvl.setText(String.valueOf(player.getPlayerMastery().getIntelligence()));
-
-                    vigorValue.setText("(+" +(player.getPlayerMastery().getVigorValue()) + ")");
-                    currentHealth.setText((player.getSkillStats().getMaxHealth()) + " HP");
-                    lvlUpHealth.setText((player.getSkillStats().getMaxHealth() + player.getPlayerMastery().getVigorValue()) + " HP");
-
-                    intelligenceValue.setText("(+" +(player.getPlayerMastery().getIntelligenceValue()) + ")");
-                    currentAp.setText((player.getSkillStats().getDamage()) + " AP");
-                    lvlUpAp.setText((player.getSkillStats().getDamage() + player.getPlayerMastery().getIntelligenceValue()) + " AP");
-
-                    masteryPoints.setText(String.valueOf(player.getSkillStats().getSkillPoint()));
-                })
-        );
-        timeline.setCycleCount(Timeline.INDEFINITE);
-        timeline.play();
     }
 
     private void vigorUp(ActionEvent event){
@@ -64,6 +43,7 @@ public class MasteryController implements Initializable {
                 case 40 -> player.getPlayerMastery().setVigorValue(8);
                 case 70 -> player.getPlayerMastery().setVigorValue(5);
             }
+            labelUpdate();
         }
     }
 
@@ -77,6 +57,22 @@ public class MasteryController implements Initializable {
                 case 40 -> player.getPlayerMastery().setIntelligenceValue(2);
                 case 70 -> player.getPlayerMastery().setIntelligenceValue(1);
             }
+            labelUpdate();
         }
+    }
+
+    private void labelUpdate(){
+        vigorLvl.setText(String.valueOf(player.getPlayerMastery().getVigor()));
+        intelligenceLvl.setText(String.valueOf(player.getPlayerMastery().getIntelligence()));
+
+        vigorValue.setText("(+" +(player.getPlayerMastery().getVigorValue()) + ")");
+        currentHealth.setText((player.getSkillStats().getMaxHealth()) + " HP");
+        lvlUpHealth.setText((player.getSkillStats().getMaxHealth() + player.getPlayerMastery().getVigorValue()) + " HP");
+
+        intelligenceValue.setText("(+" +(player.getPlayerMastery().getIntelligenceValue()) + ")");
+        currentAp.setText((player.getSkillStats().getDamage()) + " AP");
+        lvlUpAp.setText((player.getSkillStats().getDamage() + player.getPlayerMastery().getIntelligenceValue()) + " AP");
+
+        masteryPoints.setText(String.valueOf(player.getSkillStats().getSkillPoint()));
     }
 }
