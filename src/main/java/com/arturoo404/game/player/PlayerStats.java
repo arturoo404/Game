@@ -16,9 +16,9 @@ public class PlayerStats {
     private double percentHealthRegen = (double) maxHealth / 200;
     private double manaRegen = 10;
     private double percentManaRegen = (double) maxMana / 200;
-    private int armor = 50;
-    private int cooldownReduction = 0;
-    private int damage = 200;
+    private int armor = 0;
+    private double cooldownReduction = 0;
+    private int damage = 20;
     private int playerLvl = 1;
     private int currentLvl = 1;
     private int skillPoint = 50;

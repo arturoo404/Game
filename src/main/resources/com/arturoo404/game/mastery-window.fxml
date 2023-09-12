@@ -6,11 +6,11 @@
 
 <AnchorPane prefHeight="520.0" prefWidth="900.0" stylesheets="@style/mastery-window-style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.arturoo404.game.player.gui.mastery.MasteryController">
    <children>
-      <Pane layoutX="-5.0" layoutY="-3.0" prefHeight="520.0" prefWidth="900.0" styleClass="background">
+      <Pane prefHeight="520.0" prefWidth="900.0" styleClass="background">
          <children>
             <Pane layoutX="3.0" layoutY="3.0" prefHeight="130.0" prefWidth="894.0" styleClass="upperPane">
                <children>
-                  <Label fx:id="masteryPoints" layoutX="744.0" prefHeight="130.0" prefWidth="146.0" text="1" textAlignment="CENTER" textFill="#464883">
+                  <Label fx:id="masteryPoints" layoutX="744.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="130.0" prefWidth="146.0" text="1" textAlignment="CENTER" textFill="#464883">
                      <font>
                         <Font name="Ebrima Bold" size="83.0" />
                      </font>
@@ -21,7 +21,7 @@
                   <Font size="29.0" />
                </font>
             </Label>
-            <Label fx:id="intelligenceLvl" layoutX="50.0" layoutY="213.0" prefHeight="50.0" prefWidth="33.0" text="99">
+            <Label fx:id="intelligenceLvl" layoutX="50.0" layoutY="200.0" prefHeight="50.0" prefWidth="33.0" text="0">
                <font>
                   <Font size="29.0" />
                </font>
@@ -31,44 +31,150 @@
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="vigorValue" layoutX="226.0" layoutY="174.0" prefHeight="26.0" prefWidth="50.0" text="(+12)">
+            <Label fx:id="vigorValue" layoutX="226.0" layoutY="174.0" prefHeight="26.0" prefWidth="50.0" text="0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="currentHealth" layoutX="282.0" layoutY="174.0" prefHeight="26.0" prefWidth="79.0" text="1000 HP">
+            <Label fx:id="currentHealth" layoutX="502.0" layoutY="174.0" prefHeight="30.0" prefWidth="57.0" text="0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="lvlUpHealth" layoutX="380.0" layoutY="174.0" prefHeight="3.0" prefWidth="79.0" text="1000 HP">
+            <Label fx:id="lvlUpHealth" layoutX="595.0" layoutY="174.0" prefHeight="30.0" prefWidth="57.0" text="0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
             <Button fx:id="vigorUp" layoutX="201.0" layoutY="176.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0" text="+" />
-            <Label layoutX="361.0" layoutY="176.0" prefHeight="25.0" prefWidth="25.0" text="&gt;">
+            <Label layoutX="576.0" layoutY="164.0" prefHeight="50.0" prefWidth="12.0" text="&gt;">
                <font>
                   <Font name="Fira Code Medium" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="95.0" layoutY="213.0" prefHeight="50.0" prefWidth="106.0" text="Intelligence">
+            <Label layoutX="95.0" layoutY="200.0" prefHeight="50.0" prefWidth="106.0" text="Intelligence">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Button fx:id="intelligenceUp" layoutX="201.0" layoutY="226.0" mnemonicParsing="false" text="+" />
-            <Label fx:id="intelligenceValue" layoutX="226.0" layoutY="224.0" prefHeight="30.0" prefWidth="50.0" text="0">
+            <Button fx:id="intelligenceUp" layoutX="201.0" layoutY="212.0" mnemonicParsing="false" text="+" />
+            <Label fx:id="intelligenceValue" layoutX="226.0" layoutY="210.0" prefHeight="30.0" prefWidth="50.0" text="0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="currentAp" layoutX="282.0" layoutY="224.0" prefHeight="30.0" prefWidth="79.0" text="Label">
+            <Label fx:id="currentAp" layoutX="502.0" layoutY="210.0" prefHeight="30.0" prefWidth="57.0" text="0">
                <font>
                   <Font size="20.0" />
                </font>
             </Label>
-            <Label fx:id="lvlUpAp" layoutX="386.0" layoutY="224.0" prefHeight="30.0" prefWidth="79.0" text="Label">
+            <Label fx:id="lvlUpAp" layoutX="595.0" layoutY="210.0" prefHeight="30.0" prefWidth="57.0" text="0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="305.0" layoutY="174.0" prefHeight="30.0" prefWidth="79.0" text="Health">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="305.0" layoutY="210.0" prefHeight="30.0" prefWidth="133.0" text="Attack power">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+
+            <Button fx:id="mindUp" layoutX="201.0" layoutY="248.0" mnemonicParsing="false" text="+" />
+            <Label fx:id="mindValue" layoutX="226.0" layoutY="247.0" prefHeight="30.0" prefWidth="50.0" text="0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="currentMana" layoutX="502.0" layoutY="247.0" prefHeight="30.0" prefWidth="57.0" text="0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lvlUpMana" layoutX="595.0" layoutY="247.0" prefHeight="30.0" prefWidth="57.0" text="0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="305.0" layoutY="247.0" prefHeight="30.0" prefWidth="133.0" text="Mana">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="mindLvl" layoutX="50.0" layoutY="240.0" prefHeight="43.0" prefWidth="33.0" text="0">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Label>
+            <Label layoutX="95.0" layoutY="247.0" prefHeight="30.0" prefWidth="106.0" text="Mind">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+
+            <Button fx:id="dexterityUp" layoutX="201.0" layoutY="286.0" mnemonicParsing="false" text="+" />
+            <Label fx:id="dexterityValue" layoutX="226.0" layoutY="284.0" prefHeight="30.0" prefWidth="79.0" text="0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="currentAttackSpeed" layoutX="502.0" layoutY="284.0" prefHeight="30.0" prefWidth="57.0" text="0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lvlUpAttackSpeed" layoutX="595.0" layoutY="284.0" prefHeight="30.0" prefWidth="57.0" text="0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="305.0" layoutY="284.0" prefHeight="30.0" prefWidth="133.0" text="Attack speed">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="dexterityLvl" layoutX="50.0" layoutY="277.0" prefHeight="43.0" prefWidth="33.0" text="0">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Label>
+            <Label layoutX="95.0" layoutY="284.0" prefHeight="30.0" prefWidth="106.0" text="Dexterity">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+
+            <Button fx:id="arcaneUp" layoutX="201.0" layoutY="320.0" mnemonicParsing="false" text="+" />
+            <Label fx:id="arcaneValue" layoutX="226.0" layoutY="319.0" prefHeight="30.0" prefWidth="79.0" text="(+1.0%)">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="currentCooldownReduction" layoutX="502.0" layoutY="319.0" prefHeight="30.0" prefWidth="57.0" text="0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="lvlUpCooldownReduction" layoutX="595.0" layoutY="319.0" prefHeight="30.0" prefWidth="57.0" text="0">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label layoutX="305.0" layoutY="318.0" prefHeight="30.0" prefWidth="185.0" text="Cooldown reduction">
+               <font>
+                  <Font size="20.0" />
+               </font>
+            </Label>
+            <Label fx:id="arcaneLvl" layoutX="50.0" layoutY="312.0" prefHeight="43.0" prefWidth="33.0" text="0">
+               <font>
+                  <Font size="29.0" />
+               </font>
+            </Label>
+            <Label layoutX="95.0" layoutY="318.0" prefHeight="30.0" prefWidth="106.0" text="Arcane">
                <font>
                   <Font size="20.0" />
                </font>

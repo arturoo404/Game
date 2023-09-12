@@ -17,6 +17,6 @@ public class PlayerMastery {
     private int intelligenceValue = 3;
     private int vigorValue = 12;
     private int mindValue = 8;
-    private double dexterityValue = 0.02;
-    private double arcaneValue = 1;
+    private double dexterityValue = 0.05;
+    private double arcaneValue = 4;
 }
