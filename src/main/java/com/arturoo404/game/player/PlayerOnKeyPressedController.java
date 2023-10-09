@@ -35,6 +35,9 @@ public class PlayerOnKeyPressedController implements EventHandler<KeyEvent> {
         switch (keyEvent.getCode()) {
             case SPACE -> skillsController.setBasicAttack(true);
         }
+        switch (keyEvent.getCode()) {
+            case Q -> skillsController.sethealAbilityBoolean(true);
+        }
 
         switch (keyEvent.getCode()){
             case I -> keyAction.setOpenInventory(!keyAction.getKeyPress().get());

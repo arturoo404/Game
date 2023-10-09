@@ -14,5 +14,17 @@
     "itemSet": "NONE",
     "txtPath": "txt.txt",
     "itemType": "ARMOR"
+  },
+  "LEATHER_ARMOR" : {
+    "name": "Leather Armor",
+    "description": "Description",
+    "armor": 10,
+    "lvlRequirement": 1,
+    "marketPrice": 3,
+    "tier": "COMMON",
+    "itemSet": "NONE",
+    "txtPath": "txt.txt",
+    "itemType": "ARMOR"
   }
+
 }

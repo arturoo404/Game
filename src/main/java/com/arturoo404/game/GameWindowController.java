@@ -17,8 +17,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
-import javafx.stage.Stage;
-import lombok.Getter;
 
 import java.io.IOException;
 import java.net.URL;

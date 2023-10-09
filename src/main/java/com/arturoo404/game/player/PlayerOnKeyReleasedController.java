@@ -34,5 +34,8 @@ public class PlayerOnKeyReleasedController implements EventHandler<KeyEvent> {
         switch (keyEvent.getCode()){
             case SPACE -> skillsController.setBasicAttack(false);
         }
+        switch (keyEvent.getCode()){
+            case Q -> skillsController.sethealAbilityBoolean(false);
+        }
     }
 }

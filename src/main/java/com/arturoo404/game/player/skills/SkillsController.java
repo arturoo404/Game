@@ -12,9 +12,13 @@ public class SkillsController {
 
     private final BooleanProperty basicAttack = new SimpleBooleanProperty();
 
+    private final BooleanProperty healAbilityBoolean = new SimpleBooleanProperty();
+
+    private final BooleanBinding healAbilityKeyPress = healAbilityBoolean.or(healAbilityBoolean);
     private final BooleanBinding keyPress = basicAttack.or(basicAttack);
 
     private final BasicAttack basic;
+    private final HealAbility healAbility;
 
     /**
      * Initialize the player skills
@@ -22,6 +26,10 @@ public class SkillsController {
     public void init(){
         player.setSkillsController(this);
         basic.init();
+        healAbility.init();
+        healAbilityKeyPress.addListener((((observableValue, aBoolean, t1) -> {
+            healAbility.setStart(!aBoolean);
+        })));
         keyPress.addListener(((observableValue, aBoolean, t1) -> {
             basic.setPlay(!aBoolean);
         }));
@@ -31,13 +39,20 @@ public class SkillsController {
     public SkillsController(Player player) {
         this.player = player;
         basic = new BasicAttack(player);
+        healAbility = new HealAbility(player);
     }
 
     public void setBasicAttack(boolean basicAttack) {
         this.basicAttack.set(basicAttack);
     }
+    public void sethealAbilityBoolean(boolean healAbilityBoolean) {
+        this.healAbilityBoolean.set(healAbilityBoolean);
+    }
 
     public BasicAttack getBasic() {
         return basic;
+    }
+    public HealAbility getHealAbility() {
+        return healAbility;
     }
 }
