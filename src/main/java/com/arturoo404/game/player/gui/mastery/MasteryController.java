@@ -1,11 +1,15 @@
 package com.arturoo404.game.player.gui.mastery;
 
 import com.arturoo404.game.player.Player;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
+import lombok.Getter;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,6 +19,9 @@ import static com.arturoo404.game.GameWindowController.getPlayer;
 public class MasteryController implements Initializable {
     private Player player;
     @FXML
+    private AnchorPane mainPane;
+    @FXML
+    @Getter
     private Button vigorUp, intelligenceUp, mindUp, dexterityUp, arcaneUp;
     @FXML
     private Label vigorValue, currentHealth, lvlUpHealth, vigorLvl, masteryPoints, intelligenceValue, currentAp, lvlUpAp, intelligenceLvl, mindValue, currentMana, lvlUpMana,

@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="520.0" prefWidth="900.0" stylesheets="@style/mastery-window-style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.arturoo404.game.player.gui.mastery.MasteryController">
+<AnchorPane fx:id="mainPane" prefHeight="520.0" prefWidth="900.0" stylesheets="@style/mastery-window-style.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.arturoo404.game.player.gui.mastery.MasteryController">
    <children>
       <Pane prefHeight="520.0" prefWidth="900.0" styleClass="background">
          <children>

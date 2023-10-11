@@ -9,8 +9,8 @@ import lombok.Getter;
 import java.io.IOException;
 
 public class MasteryOpen {
-    private Initializable initializable;
-    private Player player;
+    private final Initializable initializable;
+    private final Player player;
     @Getter
     private  Parent root;
 
@@ -23,6 +23,7 @@ public class MasteryOpen {
             player.getAnchorPane().getChildren().addAll(root);
         }else {
             player.getAnchorPane().getChildren().remove(root);
+            player.getAnchorPane().requestFocus();
         }
     }
 

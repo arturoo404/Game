@@ -23,6 +23,7 @@ public class InventoryOpen {
             player.getAnchorPane().getChildren().addAll(root);
         }else {
             player.getAnchorPane().getChildren().remove(root);
+            player.getAnchorPane().requestFocus();
         }
     }
 

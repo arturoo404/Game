@@ -26,13 +26,8 @@ public class SkillsController {
     public void init(){
         player.setSkillsController(this);
         basic.init();
-        healAbility.init();
-        healAbilityKeyPress.addListener((((observableValue, aBoolean, t1) -> {
-            healAbility.setStart(!aBoolean);
-        })));
-        keyPress.addListener(((observableValue, aBoolean, t1) -> {
-            basic.setPlay(!aBoolean);
-        }));
+        healAbilityKeyPress.addListener((((observableValue, aBoolean, t1) -> healAbility.heal())));
+        keyPress.addListener(((observableValue, aBoolean, t1) -> basic.setPlay(!aBoolean)));
     }
 
 
@@ -45,14 +40,11 @@ public class SkillsController {
     public void setBasicAttack(boolean basicAttack) {
         this.basicAttack.set(basicAttack);
     }
-    public void sethealAbilityBoolean(boolean healAbilityBoolean) {
+    public void setHealAbilityBoolean(boolean healAbilityBoolean) {
         this.healAbilityBoolean.set(healAbilityBoolean);
     }
 
     public BasicAttack getBasic() {
         return basic;
-    }
-    public HealAbility getHealAbility() {
-        return healAbility;
     }
 }

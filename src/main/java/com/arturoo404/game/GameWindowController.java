@@ -95,7 +95,7 @@ public class GameWindowController implements Initializable{
     }
 
     private ItemAction initItems(){
-        ItemAction itemAction = new ItemAction();
+        ItemAction itemAction = new ItemAction(this.pane);
         itemAction.init();
 
         return itemAction;

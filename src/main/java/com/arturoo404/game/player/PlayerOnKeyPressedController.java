@@ -36,7 +36,7 @@ public class PlayerOnKeyPressedController implements EventHandler<KeyEvent> {
             case SPACE -> skillsController.setBasicAttack(true);
         }
         switch (keyEvent.getCode()) {
-            case Q -> skillsController.sethealAbilityBoolean(true);
+            case Q -> skillsController.setHealAbilityBoolean(true);
         }
 
         switch (keyEvent.getCode()){
